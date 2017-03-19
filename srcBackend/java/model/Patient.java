@@ -2,26 +2,27 @@ package java.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by Vanessa on 19.03.17.
  */
-public class Patient {
+public class Patient extends pEntityWithID{
 
     private String surname;
     private String lastname;
-    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "id")
     private Therapeut therapeut;
-    //private List<Exercise> exerciseList;
     private Programm programm;
 
-    public Patient(String surname, String lastname,int id, Therapeut therapeut){
+    public Patient(String surname, String lastname, Therapeut therapeut){
         this.surname = surname;
         this.lastname = lastname;
         this.therapeut = therapeut;
         this.programm = new Programm("Placeholder");
-        //exerciseList = new ArrayList<Exercise>();
-        this.id = id;
     }
 
     public String getTherapeut(String t){

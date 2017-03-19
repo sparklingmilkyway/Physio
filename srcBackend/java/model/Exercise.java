@@ -3,7 +3,7 @@ package java.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Exercise {
+public class Exercise extends pEntityWithID {
 
     private String name;
     private String type;

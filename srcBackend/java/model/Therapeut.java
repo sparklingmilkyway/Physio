@@ -3,19 +3,19 @@ package java.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Therapeut {
+public class Therapeut extends pEntityWithID {
     private String surname;
     private String lastname;
     //we should change the data type for PW later...
-    private String password;
+    private String passwordHash;
     private int id;
     private List<Patient> patientList;
 
-    public Therapeut(String surname, String lastname, int id, String password){
+    public Therapeut(String surname, String lastname, int id, String passwordHash){
         this.surname = surname;
         this.lastname = lastname;
         this.id = id;
-        this.password = password;
+        this.passwordHash = passwordHash;
         patientList = new ArrayList<Patient>();
     }
 
@@ -42,12 +42,12 @@ public class Therapeut {
         return false;
     }
 
-    public void changePassword(String password){
-        this.password = password;
+    public void changePasswordHash(String passwordHash){
+        this.passwordHash = passwordHash;
     }
 
-    public String getPassword(){
-        return this.password;
+    public String getPasswordHash(){
+        return this.passwordHash;
     }
 
     public boolean addExercise(String name, String type){
