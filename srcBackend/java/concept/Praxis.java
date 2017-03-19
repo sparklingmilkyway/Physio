@@ -1,4 +1,4 @@
-package java.model;
+package java.concept;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,8 +1,7 @@
 package java.service;
 
-import java.model.Exercise;
-import java.model.ProgrammExponent;
-import java.util.Set;
+import java.concept.Exercise;
+import java.concept.ProgrammExponent;
 
 public class ProgrammService {
 

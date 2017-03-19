@@ -1,7 +1,5 @@
-package java.model;
+package java.concept;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 

@@ -1,4 +1,4 @@
-package java.model;
+package java.concept;
 
 /**
  * Created by Vanessa on 19.03.17.

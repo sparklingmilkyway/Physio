@@ -1,6 +1,6 @@
 package java.service;
 
-import java.model.Programm;
+import java.concept.Programm;
 
 /**
  * Created by Vanessa on 19.03.17.

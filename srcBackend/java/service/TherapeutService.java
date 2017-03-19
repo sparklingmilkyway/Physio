@@ -1,7 +1,7 @@
 package java.service;
 
-import java.model.Exercise;
-import java.model.Patient;
+import java.concept.Exercise;
+import java.concept.Patient;
 
 /**
  * Created by Vanessa on 19.03.17.

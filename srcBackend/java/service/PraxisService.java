@@ -1,6 +1,6 @@
 package java.service;
 
-import java.model.Therapeut;
+import java.concept.Therapeut;
 
 /**
  * Created by Vanessa on 19.03.17.
