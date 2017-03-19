@@ -61,4 +61,5 @@ public class Therapeut {
          /*We'll need some persistence manager later which removes the exercise to the DB*/
         return true;
     }
+
 }
