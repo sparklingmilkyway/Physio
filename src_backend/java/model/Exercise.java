@@ -23,6 +23,10 @@ public class Exercise {
         return this.type;
     }
 
+    public Exercise getExercise(){
+        return this;
+    }
+
     public void AddNote(String note){
         notes.add(note);
     }
