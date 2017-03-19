@@ -25,34 +25,35 @@ public class Patient extends pEntityWithID{
         this.programm = new Programm("Placeholder");
     }
 
-    public String getTherapeut(String t){
-        return this.therapeut.getName();
+    public String getSurname() {
+        return surname;
     }
 
-    public void addProgramm(Programm programm){
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public Therapeut getTherapeut() {
+        return therapeut;
+    }
+
+    public void setTherapeut(Therapeut therapeut) {
+        this.therapeut = therapeut;
+    }
+
+    public Programm getProgramm() {
+        return programm;
+    }
+
+    public void setProgramm(Programm programm) {
         this.programm = programm;
-    }
-
-    /*
-    public void addExercise(Exercise exercise){
-        if(exerciseList.contains(exercise)){
-            return;
-        }
-        exerciseList.add(exercise);
-    }
-
-    public void removeExercise(Exercise exercise){
-        if(exerciseList.contains(exercise)){
-            exerciseList.remove(exercise);
-        }
-        return;
-    }
-
-    public List getExercises(){
-        return this.exerciseList;
-    }
-    */
-    public String getName(){
-        return (this.surname+this.lastname);
     }
 }

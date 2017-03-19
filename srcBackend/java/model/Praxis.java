@@ -13,18 +13,6 @@ public class Praxis extends pEntityWithID{
         therapeuts = new HashSet<Therapeut>();
     }
 
-    public void addTherapeut(Therapeut therapeut){
-        this.therapeuts.add(therapeut);
-    }
-
-    public boolean removeTherapeut(Therapeut therapeut){
-        if(this.therapeuts.contains(therapeut)){
-            this.therapeuts.remove(therapeut);
-            return true;
-        }
-        return false;
-    }
-
     public String getName() {
         return name;
     }

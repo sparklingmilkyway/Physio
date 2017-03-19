@@ -1,65 +1,52 @@
 package java.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Therapeut extends pEntityWithID {
     private String surname;
     private String lastname;
-    //we should change the data type for PW later...
     private String passwordHash;
     private int id;
-    private List<Patient> patientList;
+    private Set<Patient> patientList;
 
     public Therapeut(String surname, String lastname, int id, String passwordHash){
         this.surname = surname;
         this.lastname = lastname;
         this.id = id;
         this.passwordHash = passwordHash;
-        patientList = new ArrayList<Patient>();
+        patientList = new HashSet<Patient>();
     }
 
-    public String getName() {
-        return (this.surname+this.lastname);
+    public String getSurname() {
+        return surname;
     }
 
-    public List getPatients(){
-        return this.patientList;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public void addPatient(Patient patient){
-        if(patientList.contains(patient)){
-            return;
-        }
-        patientList.add(patient);
+    public String getLastname() {
+        return lastname;
     }
 
-    public boolean removePatient(Patient patient){
-        if(patientList.contains(patient)){
-            patientList.remove(patient);
-            return true;
-        }
-        return false;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public void changePasswordHash(String passwordHash){
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
-    public String getPasswordHash(){
-        return this.passwordHash;
+    public Set<Patient> getPatientList() {
+        return patientList;
     }
 
-    public boolean addExercise(String name, String type){
-        Exercise e;
-        e = new Exercise(name, type);
-        /*We'll need some persistence manager later which adds the exercise to the DB*/
-        return true;
+    public void setPatientList(Set<Patient> patientList) {
+        this.patientList = patientList;
     }
-
-    public boolean removeExercise(String name, String type){
-         /*We'll need some persistence manager later which removes the exercise to the DB*/
-        return true;
-    }
-
 }

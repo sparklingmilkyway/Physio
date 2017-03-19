@@ -15,29 +15,27 @@ public class Exercise extends pEntityWithID {
         notes = new ArrayList<String>();
     }
 
-    public String getName(){
-        return this.name;
+    public String getName() {
+        return name;
     }
 
-    public String getType(){
-        return this.type;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Exercise getExercise(){
-        return this;
+    public String getType() {
+        return type;
     }
 
-    public void AddNote(String note){
-        notes.add(note);
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public boolean RemoveNote(String note){
-        for(String n : this.notes){
-            if(n.equals(note)){
-                notes.remove(n);
-                return true;
-            }
-        }
-        return false;
+    public List<String> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<String> notes) {
+        this.notes = notes;
     }
 }
