@@ -1,4 +1,4 @@
-package java.service;
+package java.manager;
 
 import java.concept.Exercise;
 import java.concept.ProgrammExponent;
