@@ -1,19 +1,44 @@
 package java.manager;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.concept.Exercise;
+import java.concept.Patient;
 import java.concept.Programm;
+import java.concept.Therapeut;
+import java.util.Set;
 
 /**
  * Created by Vanessa on 19.03.17.
  */
 public class PatientManager {
 
+    // private EntityManager entityManager = new EntityManager();
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
+    private EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
 
-    public String getTherapeut(String t){
-        return this.therapeut.getName();
+
+    public String getTherapeut(Patient patient){
+        Patient pa = getPatientById(patient.getId());
+        Therapeut te = pa.getTherapeut();
+        return te.getSurname()+" "+te.getLastname();
     }
 
-    public void addProgramm(Programm programm){
-        this.programm = programm;
+    public void addProgramm(Programm programm,long id){
+        Patient pa = getPatientById(id);
+        Set<Programm> programmList = pa.getProgramms();
+        programmList.add(programm);
+        pa.setProgramms(programmList);
+        save(pa);
+    }
+
+    public void removeProgramm(Programm programm,long id){
+        Patient pa = getPatientById(id);
+        Set<Programm> programmList = pa.getProgramms();
+        programmList.remove(programm);
+        pa.setProgramms(programmList);
+        save(pa);
     }
 
     /*
@@ -35,7 +60,25 @@ public class PatientManager {
         return this.exerciseList;
     }
     */
-    public String getName(){
-        return (this.surname+this.lastname);
+
+    public void save(Patient ex) {
+        em.persist(ex);
+    }
+
+    private Patient getPatientById(long id){
+        Patient pa = em.find(Patient.class,id);
+        return pa;
+    }
+
+    public void test(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
+        EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
+
+
+        // Work with the EM
+        em.close();
+
+        emf.close(); //close at application end
+
     }
 }

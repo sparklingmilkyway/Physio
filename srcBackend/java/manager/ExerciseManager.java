@@ -40,9 +40,10 @@ public class ExerciseManager {
 
     public Exercise getExe(String note, Exercise exercise){
         //Was söu die Methode genau chönne?
+        return exercise;
     }
 
-    public Exercise newExercise(String name,String type) {
+    public void newExercise(String name,String type) {
         Exercise ex = new Exercise();
         ex.setName(name);
         ex.setType(type);
@@ -53,13 +54,13 @@ public class ExerciseManager {
         em.persist(ex);
     }
 
-    public Exercise getExerciseById(long id){
+    private Exercise getExerciseById(long id){
         Exercise ex = em.find(Exercise.class,id);
         return ex;
     }
 
     public void test(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1")
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
         EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
 
 
