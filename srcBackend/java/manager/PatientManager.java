@@ -41,6 +41,12 @@ public class PatientManager {
         save(pa);
     }
 
+    public void changeTherapeut(Therapeut therapeut, long id){
+        Patient pa = getPatientById(id);
+        pa.setTherapeut(therapeut);
+        save(pa);
+    }
+
     /*
     public void addExercise(Exercise exercise){
         if(exerciseList.contains(exercise)){
