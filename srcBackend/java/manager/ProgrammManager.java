@@ -3,7 +3,7 @@ package java.manager;
 import java.concept.Exercise;
 import java.concept.ProgrammExponent;
 
-public class ProgrammService {
+public class ProgrammManager {
 
     private EntityManager entityManager = new EntityManager();
 

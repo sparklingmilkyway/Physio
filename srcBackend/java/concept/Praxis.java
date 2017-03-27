@@ -8,6 +8,11 @@ public class Praxis extends pEntityWithID{
     private String name;
     private Set<Therapeut> therapeuts;
 
+    /** TO KEEP HIBERNATE HAPPY */
+    public Praxis(){
+
+    }
+
     public Praxis(String name){
         this.name = name;
         therapeuts = new HashSet<Therapeut>();

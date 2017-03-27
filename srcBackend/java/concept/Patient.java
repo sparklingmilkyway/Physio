@@ -3,6 +3,10 @@ package java.concept;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import java.util.HashSet;
+import java.util.Set;
+
+
 /**
  * Created by Vanessa on 19.03.17.
  */
@@ -14,7 +18,15 @@ public class Patient extends pEntityWithID{
     @ManyToOne
     @JoinColumn(name = "id")
     private Therapeut therapeut;
-    private Programm programm;
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Set<Programm> programms = new HashSet<Programm>();
+
+    /** TO KEEP HIBERNATE HAPPY */
+    public Patient(){
+
+    }
 
     public Patient(String surname, String lastname, Therapeut therapeut){
         this.surname = surname;
@@ -47,11 +59,11 @@ public class Patient extends pEntityWithID{
         this.therapeut = therapeut;
     }
 
-    public Programm getProgramm() {
-        return programm;
+    public Set<Programm> getProgramms() {
+        return programms;
     }
 
-    public void setProgramm(Programm programm) {
-        this.programm = programm;
+    public void setProgramms(Set<Programm> programm) {
+        this.programms = programms;
     }
 }

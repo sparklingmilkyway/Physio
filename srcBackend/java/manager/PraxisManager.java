@@ -1,11 +1,11 @@
-package java.service;
+package java.manager;
 
 import java.concept.Therapeut;
 
 /**
  * Created by Vanessa on 19.03.17.
  */
-public class PraxisService {
+public class PraxisManager {
 
     public void addTherapeut(Therapeut therapeut){
         this.therapeuts.add(therapeut);

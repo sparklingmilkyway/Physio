@@ -1,11 +1,11 @@
-package java.service;
+package java.manager;
 
 import java.concept.Programm;
 
 /**
  * Created by Vanessa on 19.03.17.
  */
-public class PatientService {
+public class PatientManager {
 
 
     public String getTherapeut(String t){

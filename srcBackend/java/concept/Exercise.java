@@ -9,6 +9,11 @@ public class Exercise extends pEntityWithID {
     private String type;
     private List<String> notes;
 
+    /** TO KEEP HIBERNATE HAPPY */
+    public Exercise(){
+
+    }
+
     public Exercise(String name,String type){
         this.name = name;
         this.type = type;
@@ -38,4 +43,5 @@ public class Exercise extends pEntityWithID {
     public void setNotes(List<String> notes) {
         this.notes = notes;
     }
+
 }

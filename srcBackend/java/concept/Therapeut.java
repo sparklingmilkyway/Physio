@@ -10,6 +10,11 @@ public class Therapeut extends pEntityWithID {
     private int id;
     private Set<Patient> patientList;
 
+    /** TO KEEP HIBERNATE HAPPY */
+    public Therapeut(){
+
+    }
+
     public Therapeut(String surname, String lastname, int id, String passwordHash){
         this.surname = surname;
         this.lastname = lastname;

@@ -1,10 +1,16 @@
 package java.concept;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 /**
  * Created by Vanessa on 19.03.17.
  */
 public class ProgrammExponent extends pEntityWithID {
 
+    @OneToOne
+    @JoinColumn(name = "id")
     private Exercise exercise;
     private int reps;
     private int sets;

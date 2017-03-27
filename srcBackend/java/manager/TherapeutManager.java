@@ -6,7 +6,7 @@ import java.concept.Patient;
 /**
  * Created by Vanessa on 19.03.17.
  */
-public class TherapeutService {
+public class TherapeutManager {
 
     private EntityManager entityManager = new EntityManager();
 

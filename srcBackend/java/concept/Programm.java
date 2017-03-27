@@ -7,6 +7,10 @@ public class Programm extends pEntityWithID{
     private List<ProgrammExponent> exerciseList;
     private String name;
 
+    /** TO KEEP HIBERNATE HAPPY */
+    public Programm(){
+
+    }
 
     public Programm(String name){
         this.name = name;
