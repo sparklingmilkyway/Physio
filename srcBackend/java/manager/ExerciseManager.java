@@ -38,12 +38,8 @@ public class ExerciseManager {
         return false;
     }
 
-    public void addNote(Exercise ex, String note){
-
-    }
-
-    public Exercise getExe(Exercise ex, String note){
-
+    public Exercise getExe(String note, Exercise exercise){
+        //Was söu die Methode genau chönne?
     }
 
     public Exercise newExercise(String name,String type) {
