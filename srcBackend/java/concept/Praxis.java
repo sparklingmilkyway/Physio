@@ -30,7 +30,7 @@ public class Praxis extends pEntityWithID{
         return therapeuts;
     }
 
-    public void setTherapeuts(Set<Therapeut> therapeuts) {
-        this.therapeuts = therapeuts;
+    public void setTherapeut(Therapeut therapeut){
+        this.therapeuts.add(therapeut);
     }
 }
