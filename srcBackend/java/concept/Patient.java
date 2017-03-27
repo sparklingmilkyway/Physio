@@ -32,7 +32,8 @@ public class Patient extends pEntityWithID{
         this.surname = surname;
         this.lastname = lastname;
         this.therapeut = therapeut;
-        this.programm = new Programm("Placeholder");
+        Programm placeholder = new Programm();
+        this.programms.add(placeholder);
     }
 
     public String getSurname() {
