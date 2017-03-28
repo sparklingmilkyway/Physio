@@ -10,10 +10,9 @@ import java.util.Set;
 /**
  * Created by Vanessa on 19.03.17.
  */
-public class Patient extends pEntityWithID{
 
-    private String surname;
-    private String lastname;
+public class Patient extends User{
+
 
     @ManyToOne
     @JoinColumn(name = "id")
@@ -29,27 +28,11 @@ public class Patient extends pEntityWithID{
     }
 
     public Patient(String surname, String lastname, Therapeut therapeut){
-        this.surname = surname;
-        this.lastname = lastname;
+        this.setSurname(surname);
+        this.setLastname(lastname);
         this.therapeut = therapeut;
         Programm placeholder = new Programm();
         this.programms.add(placeholder);
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public Therapeut getTherapeut() {
