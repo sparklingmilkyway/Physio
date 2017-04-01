@@ -1,4 +1,4 @@
-package concept;
+package ch.ti.bfh.physio_app.concept;
 
 import java.util.HashSet;
 import java.util.Set;

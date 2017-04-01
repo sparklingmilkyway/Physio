@@ -1,4 +1,4 @@
-package concept;
+package ch.ti.bfh.physio_app.concept;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

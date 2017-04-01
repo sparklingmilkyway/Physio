@@ -1,12 +1,11 @@
-package manager;
+package ch.ti.bfh.physio_app.manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import concept.Exercise;
-import concept.Praxis;
-import concept.Programm;
-import concept.ProgrammExponent;
+import ch.ti.bfh.physio_app.concept.Exercise;
+import ch.ti.bfh.physio_app.concept.Programm;
+import ch.ti.bfh.physio_app.concept.ProgrammExponent;
 import java.util.List;
 
 public class ProgrammManager {

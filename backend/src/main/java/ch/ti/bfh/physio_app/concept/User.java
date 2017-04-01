@@ -1,6 +1,4 @@
-package concept;
-
-import java.util.Set;
+package ch.ti.bfh.physio_app.concept;
 
 /**
  * Created by Jonas on 28.03.2017.

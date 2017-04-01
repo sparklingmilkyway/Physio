@@ -1,12 +1,12 @@
-package manager;
+package ch.ti.bfh.physio_app.manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import concept.Patient;
-import concept.Praxis;
-import concept.Therapeut;
-import java.util.List;
+
+import ch.ti.bfh.physio_app.concept.Praxis;
+import ch.ti.bfh.physio_app.concept.Therapeut;
+
 import java.util.Set;
 
 /**

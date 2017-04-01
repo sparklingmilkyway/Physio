@@ -1,7 +1,6 @@
-package concept;
+package ch.ti.bfh.physio_app.concept;
 
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
