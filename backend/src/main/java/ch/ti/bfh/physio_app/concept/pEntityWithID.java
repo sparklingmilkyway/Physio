@@ -1,4 +1,4 @@
-package java.concept;
+package concept;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

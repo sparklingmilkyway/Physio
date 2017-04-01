@@ -1,4 +1,4 @@
-package java.concept;
+package concept;
 
 import java.util.HashSet;
 import java.util.Set;

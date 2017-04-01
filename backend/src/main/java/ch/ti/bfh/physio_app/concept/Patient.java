@@ -1,4 +1,4 @@
-package java.concept;
+package concept;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;

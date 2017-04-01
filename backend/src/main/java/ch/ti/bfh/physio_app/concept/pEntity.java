@@ -1,4 +1,4 @@
-package java.concept;
+package concept;
 
 public interface pEntity {
 

@@ -1,12 +1,12 @@
-package java.manager;
+package manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.concept.Exercise;
-import java.concept.Praxis;
-import java.concept.Programm;
-import java.concept.ProgrammExponent;
+import concept.Exercise;
+import concept.Praxis;
+import concept.Programm;
+import concept.ProgrammExponent;
 import java.util.List;
 
 public class ProgrammManager {

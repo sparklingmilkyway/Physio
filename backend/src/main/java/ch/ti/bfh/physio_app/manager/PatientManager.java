@@ -1,12 +1,12 @@
-package java.manager;
+package manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.concept.Exercise;
-import java.concept.Patient;
-import java.concept.Programm;
-import java.concept.Therapeut;
+import concept.Exercise;
+import concept.Patient;
+import concept.Programm;
+import concept.Therapeut;
 import java.util.Set;
 
 /**

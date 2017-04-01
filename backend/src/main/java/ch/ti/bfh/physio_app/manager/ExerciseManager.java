@@ -1,9 +1,9 @@
-package java.manager;
+package manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.concept.Exercise;
+import concept.Exercise;
 import java.util.List;
 
 /**
