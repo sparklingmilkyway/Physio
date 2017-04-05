@@ -63,5 +63,41 @@ public class PatientTest {
         assertEquals(patient.getProgramms(),programmlist);
     }
 
+    @Test
+    public void getSurname(){
+        Therapeut therapeut = new Therapeut();
 
+        Patient patient = new Patient("Doe","John",therapeut);
+
+        assertEquals(patient.getSurname(),"Doe");
+    }
+
+    @Test
+    public void getLastName(){
+        Therapeut therapeut = new Therapeut();
+
+        Patient patient = new Patient("Doe","John",therapeut);
+
+        assertEquals(patient.getLastname(),"John");
+    }
+
+    @Test
+    public void setSurname(){
+        Therapeut therapeut = new Therapeut();
+
+        Patient patient = new Patient("Doe","John",therapeut);
+        patient.setSurname("Peter");
+
+        assertEquals(patient.getSurname(),"Peter");
+    }
+
+    @Test
+    public void setLastname(){
+        Therapeut therapeut = new Therapeut();
+
+        Patient patient = new Patient("Doe","John",therapeut);
+        patient.setLastname("Pan");
+
+        assertEquals(patient.getLastname(),"Pan");
+    }
 }

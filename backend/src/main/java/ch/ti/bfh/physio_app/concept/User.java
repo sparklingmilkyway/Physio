@@ -8,7 +8,6 @@ public class User extends pEntityWithID {
     private String surname;
     private String lastname;
     private String passwordHash;
-    private int id;
 
     public String getSurname() {
         return surname;

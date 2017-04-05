@@ -33,4 +33,41 @@ public class TherapeutTest {
 
         assertEquals(therapeut.getPatientList(),patientSet);
     }
+
+    @Test
+    public void getSurname(){
+        Therapeut therapeut = new Therapeut("John","Doe","12345");
+
+        assertEquals(therapeut.getSurname(),"John");
+    }
+
+    @Test
+    public void getLastname(){
+        Therapeut therapeut = new Therapeut("John","Doe","12345");
+
+        assertEquals(therapeut.getLastname(),"Doe");
+    }
+
+    @Test
+    public void setSurname(){
+        Therapeut therapeut = new Therapeut("John","Doe","12345");
+        therapeut.setSurname("Peter");
+        assertEquals(therapeut.getSurname(),"Peter");
+    }
+
+    @Test
+    public void setLastname(){
+        Therapeut therapeut = new Therapeut("John","Doe","12345");
+        therapeut.setLastname("Pan");
+        assertEquals(therapeut.getLastname(),"Pan");
+    }
+
+    @Test
+    public void damnPasswordTests(){
+        Therapeut therapeut = new Therapeut("John","Doe","12345");
+        assertEquals(therapeut.getPasswordHash(),"12345");
+        therapeut.setPasswordHash("54321");
+        assertEquals(therapeut.getPasswordHash(),"54321");
+        assertNotEquals(therapeut.getPasswordHash(),"12345");
+    }
 }
