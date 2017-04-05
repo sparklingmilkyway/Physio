@@ -1,5 +1,7 @@
 package ch.ti.bfh.physio_app.manager;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -8,10 +10,11 @@ import ch.ti.bfh.physio_app.concept.Programm;
 import ch.ti.bfh.physio_app.concept.ProgrammExponent;
 import java.util.List;
 
+@ApplicationScoped
 public class ProgrammManager {
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
-    private EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
+    @Inject
+    private EntityManager entityManager;
 
     public void addExercise(ProgrammExponent programmExponent, int sets, int reps, long id){
         Programm pr = getProgrammById(id);
@@ -52,11 +55,11 @@ public class ProgrammManager {
     }
 
     public void save(Programm programm) {
-        em.persist(programm);
+        entityManager.persist(programm);
     }
 
     private Programm getProgrammById(long id){
-        Programm pr = em.find(Programm.class,id);
+        Programm pr = entityManager.find(Programm.class,id);
         return pr;
     }
 

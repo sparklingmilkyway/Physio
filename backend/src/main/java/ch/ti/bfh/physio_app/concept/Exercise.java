@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Exercise extends pEntityWithID {
 
-    private String name;
-    private String type;
-    private List<String> notes;
+    private String ex_name;
+    private String ex_type;
+    private List<String> ex_notes;
 
     /** TO KEEP HIBERNATE HAPPY */
     public Exercise(){
@@ -15,33 +15,33 @@ public class Exercise extends pEntityWithID {
     }
 
     public Exercise(String name,String type){
-        this.name = name;
-        this.type = type;
-        notes = new ArrayList<String>();
+        this.ex_name = name;
+        this.ex_type = type;
+        ex_notes = new ArrayList<String>();
     }
 
     public String getName() {
-        return name;
+        return ex_name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.ex_name = name;
     }
 
     public String getType() {
-        return type;
+        return ex_type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.ex_type = type;
     }
 
     public List<String> getNotes() {
-        return notes;
+        return ex_notes;
     }
 
     public void setNotes(List<String> notes) {
-        this.notes = notes;
+        this.ex_notes = notes;
     }
 
 }

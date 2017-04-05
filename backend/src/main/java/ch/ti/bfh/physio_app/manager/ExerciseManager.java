@@ -1,20 +1,18 @@
 package ch.ti.bfh.physio_app.manager;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import ch.ti.bfh.physio_app.concept.Exercise;
 import java.util.List;
 
-/**
- * Created by Vanessa on 19.03.17.
- */
+@ApplicationScoped
 public class ExerciseManager {
 
-    // private EntityManager entityManager = new EntityManager();
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
-    private EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
-
+    @Inject
+    private EntityManager entityManager;
 
     public void AddNote(String note, Exercise exercise){
         Exercise ex = getExerciseById(exercise.getId());
@@ -51,23 +49,12 @@ public class ExerciseManager {
     }
 
     public void save(Exercise ex) {
-        em.persist(ex);
+        entityManager.persist(ex);
     }
 
     private Exercise getExerciseById(long id){
-        Exercise ex = em.find(Exercise.class,id);
+        Exercise ex = entityManager.find(Exercise.class,id);
         return ex;
     }
 
-    public void test(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
-        EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
-
-
-        // Work with the EM
-        em.close();
-
-        emf.close(); //close at application end
-
-    }
 }

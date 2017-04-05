@@ -1,5 +1,7 @@
 package ch.ti.bfh.physio_app.manager;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -9,14 +11,11 @@ import ch.ti.bfh.physio_app.concept.Programm;
 import ch.ti.bfh.physio_app.concept.Therapeut;
 import java.util.Set;
 
-/**
- * Created by Vanessa on 19.03.17.
- */
+@ApplicationScoped
 public class PatientManager {
 
-    // private EntityManager entityManager = new EntityManager();
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
-    private EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
+    @Inject
+    private EntityManager entityManager;
 
 
     public String getTherapeut(Patient patient){
@@ -68,23 +67,12 @@ public class PatientManager {
     */
 
     public void save(Patient ex) {
-        em.persist(ex);
+        entityManager.persist(ex);
     }
 
     private Patient getPatientById(long id){
-        Patient pa = em.find(Patient.class,id);
+        Patient pa = entityManager.find(Patient.class,id);
         return pa;
     }
 
-    public void test(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
-        EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
-
-
-        // Work with the EM
-        em.close();
-
-        emf.close(); //close at application end
-
-    }
 }

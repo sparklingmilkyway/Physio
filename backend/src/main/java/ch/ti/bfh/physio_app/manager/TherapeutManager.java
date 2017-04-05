@@ -1,5 +1,7 @@
 package ch.ti.bfh.physio_app.manager;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -9,14 +11,12 @@ import ch.ti.bfh.physio_app.concept.Therapeut;
 
 import java.util.Set;
 
-/**
- * Created by Vanessa on 19.03.17.
- */
+
+@ApplicationScoped
 public class TherapeutManager {
 
-    //private EntityManager entityManager = new EntityManager();
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
-    private EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
+    @Inject
+    private EntityManager entityManager;
 
     public void addPatient(Patient patient, long id){
         Therapeut te = getTherapeutById(id);
@@ -63,24 +63,24 @@ public class TherapeutManager {
     }
 
     public void save(Therapeut therapeut) {
-        em.persist(therapeut);
+        entityManager.persist(therapeut);
     }
 
     public void remove(Exercise exercise){
-        em.remove(exercise);
+        entityManager.remove(exercise);
     }
 
     public void saveExercise(Exercise exercise){
-        em.persist(exercise);
+        entityManager.persist(exercise);
     }
 
     private Therapeut getTherapeutById(long id){
-        Therapeut te = em.find(Therapeut.class,id);
+        Therapeut te = entityManager.find(Therapeut.class,id);
         return te;
     }
 
     private Exercise getExerciseById(long id){
-        Exercise ex = em.find(Exercise.class, id);
+        Exercise ex = entityManager.find(Exercise.class, id);
         return ex;
     }
 
