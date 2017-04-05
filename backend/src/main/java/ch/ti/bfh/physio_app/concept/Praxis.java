@@ -31,6 +31,6 @@ public class Praxis extends pEntityWithID{
     }
 
     public void setTherapeuts(Set<Therapeut> therapeutSet){
-        therapeutSet = this.therapeuts;
+        this.therapeuts = therapeutSet;
     }
 }
