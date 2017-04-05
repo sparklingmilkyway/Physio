@@ -22,7 +22,7 @@
 	</persistence-unit>
 
 
-	<!-- beispiel -->
+	<!-- beispiel
 
 	<persistence-unit name="manager1" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
@@ -40,7 +40,7 @@
 		</properties>
 	</persistence-unit>
 
-
+-->
 
 
 </persistence>
