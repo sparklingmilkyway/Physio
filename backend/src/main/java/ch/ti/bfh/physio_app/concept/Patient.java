@@ -31,8 +31,8 @@ public class Patient extends User{
         this.setSurname(surname);
         this.setLastname(lastname);
         this.therapeut = therapeut;
-        Programm placeholder = new Programm();
-        this.programms.add(placeholder);
+        //Programm placeholder = new Programm();
+        //this.programms.add(placeholder);
     }
 
     public Therapeut getTherapeut() {
@@ -47,7 +47,7 @@ public class Patient extends User{
         return programms;
     }
 
-    public void setProgramms(Set<Programm> programm) {
+    public void setProgramms(Set<Programm> programms) {
         this.programms = programms;
     }
 }
