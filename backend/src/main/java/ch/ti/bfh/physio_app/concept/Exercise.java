@@ -3,6 +3,11 @@ package ch.ti.bfh.physio_app.concept;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class describes the attributes and functionality of an Exercise. Attention! Deleting the default constructor
+ * will corrupt the junit tests.
+ */
+
 public class Exercise extends pEntityWithID {
 
     private String ex_name;

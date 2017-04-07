@@ -3,6 +3,9 @@ package ch.ti.bfh.physio_app.concept;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * This class describes the attributes and function of a Praxis.
+ */
 public class Praxis extends pEntityWithID{
 
     private String name;
