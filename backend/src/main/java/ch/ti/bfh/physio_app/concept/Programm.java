@@ -2,6 +2,12 @@ package ch.ti.bfh.physio_app.concept;
 
 import java.util.*;
 
+/**
+ * This class describes the attributes and functionality of a Programm object. A Programm does not contain directly
+ * A List with Exercises but a ProgrammExponent List. The Objects contains one Exercise Object each. Attention! Deleting
+ * the default constructor will corrupt the Junit tests.
+ */
+
 public class Programm extends pEntityWithID{
 
     private List<ProgrammExponent> exerciseList;

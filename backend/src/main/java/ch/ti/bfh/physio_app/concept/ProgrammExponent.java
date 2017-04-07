@@ -6,6 +6,11 @@ import javax.persistence.OneToOne;
 /**
  * Created by Vanessa on 19.03.17.
  */
+
+/**
+ * The Idea of this class is to wrap an Exercise Object with it. The intention is to be able to configure the sets and
+ * reps property not in the exercise but in the ProgrammExponent class.
+ */
 public class ProgrammExponent extends pEntityWithID {
 
     @OneToOne
