@@ -1,17 +1,33 @@
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
     <persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
-        <class>com.test.jpa.Student</class>
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@192.148.27.140:1521:database"/>
-            <property name="javax.persistence.jdbc.user" value="username"/>
-            <property name="javax.persistence.jdbc.password" value="password"/>
-            <property name="hibernate.connection.pool_size" value="1"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
-            <property name="show_sql" value="true"/>
-            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+            <property name="hibernate.archive.autodetection" value="class" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver" />
+            <property name="hibernate.connection.url" value="jdbc:h2:target/h2-1" />
+            <property name="hibernate.connection.user" value="sa" />
+            <!-- <property name="hibernate.show_sql" value="true"/> -->
+            <property name="hibernate.flushMode" value="FLUSH_AUTO" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
         </properties>
     </persistence-unit>
+
+    <persistence-unit name="test2"
+                      transaction-type="RESOURCE_LOCAL">
+        <provider>javax.persistence.spi.PersistenceProvider</provider>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:target/h2-2" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+            <property name="eclipselink.ddl-generation.output-mode" value="database" />
+        </properties>
+    </persistence-unit>
+
 </persistence>
+
