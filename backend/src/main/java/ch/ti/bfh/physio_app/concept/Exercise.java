@@ -1,5 +1,7 @@
 package ch.ti.bfh.physio_app.concept;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +10,15 @@ import java.util.List;
  * will corrupt the junit tests.
  */
 
+
+@Table(name = "EXERCISE") /* @Table is set at the class level; it allows you to define the table, catalog, and schema names for your entity mapping. If no @Table is defined the default values are used: the unqualified class name of the entity.*/
 public class Exercise extends pEntityWithID {
 
+    @Column(name = "EX_NAME")
     private String ex_name;
+    @Column(name = "EX_TYPE")
     private String ex_type;
+    @Column(name = "EX_NOTES")
     private List<String> ex_notes;
 
     /** TO KEEP HIBERNATE HAPPY */
