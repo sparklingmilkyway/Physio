@@ -10,9 +10,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="physio_app" target="1.5" />
-      <module name="physio_app_backend" target="1.5" />
-      <module name="physio_app_frontend" target="1.5" />
+      <module name="physio_app" target="1.6" />
+      <module name="physio_app_backend" target="1.6" />
+      <module name="physio_app_frontend" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
