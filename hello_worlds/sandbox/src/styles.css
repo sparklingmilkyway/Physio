@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+form{
+  align-self: center;
+  background-color: blue;
+  font-size: 15px;
+}
+
+header{
+  border: 2px;
+  border-style: solid;
+}
+
+div.indexDiv{
+  border: 2px;
+  border-style: solid;
+
+}
+
+.column{
+  margin-left: 3%;
+  margin-right:3%;
+  align-items: center;
+}
+
+.col-1 { width: 20%; }
+.col-2 { width: 30%; }
+.col-3 { width: 40%; }
+.col-4 { width: 60%; }
+.col-5 { width: 80%; }
+.col-6 { width: 99%; }
