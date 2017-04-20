@@ -1,10 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+for global changes on our Form Elements(Login,Register etc.)
+*/
 form{
   align-self: center;
-  background-color: blue;
+  background-color: lightblue;
   font-size: 15px;
 }
 
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  margin-left:1%;
+}
 header{
   border: 2px;
   border-style: solid;
@@ -13,15 +25,30 @@ header{
 div.indexDiv{
   border: 2px;
   border-style: solid;
-
+  margin: 2px;
 }
 
+div.footerDiv{
+  border: 2px;
+  border-style: dashed;
+  margin: 2px;
+}
+
+div.navigationDiv{
+  border: 2px;
+  border-style: dotted;
+  margin: 2px;
+  background-color: lightgray;
+}
 .column{
   margin-left: 3%;
   margin-right:3%;
   align-items: center;
 }
 
+/*
+Use them for declaring <div> and making them responsive
+*/
 .col-1 { width: 20%; }
 .col-2 { width: 30%; }
 .col-3 { width: 40%; }

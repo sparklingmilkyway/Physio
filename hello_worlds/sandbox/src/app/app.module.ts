@@ -5,11 +5,16 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import {TabComponent, TabsComponent} from './tabs/tabs.component';
+import { WelcomeFormComponent } from './welcome-form/welcome-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    TabsComponent,
+    TabComponent,
+    WelcomeFormComponent
   ],
   imports: [
     BrowserModule,
