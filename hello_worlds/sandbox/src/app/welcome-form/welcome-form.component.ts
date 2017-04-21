@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './welcome-form.component.html',
   styleUrls: ['./welcome-form.component.css']
 })
-export class WelcomeFormComponent implements OnInit {
+export class WelcomeFormComponent {
+  text: string = "Willkommen Benutzer!";
 
-  constructor() { }
-
-  ngOnInit() {
+  addWelcomeText(){
+    return this.text;
   }
 
 }
