@@ -1,5 +1,26 @@
 /*
-for global changes on our Form Elements(Login,Register etc.)
+Global style settings done here. Specific style setting will be done inside the component .css file
+ */
+header{
+  border: 2px;
+  border-style: solid;
+}
+
+body{
+  background-color: azure;
+}
+
+footer{
+  text-align: center;
+}
+
+div{
+  border: 2px;
+  margin: 2px;
+}
+
+/*
+for changes on our Form Elements(Login,Register etc.)
 */
 form{
   align-self: center;
@@ -17,29 +38,27 @@ li {
   display: inline;
   margin-left:1%;
 }
-header{
-  border: 2px;
-  border-style: solid;
-}
-
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*
+Maybe these style configurations should be put into the components...
+ */
 div.indexDiv{
-  border: 2px;
   border-style: solid;
-  margin: 2px;
 }
 
 div.footerDiv{
-  border: 2px;
   border-style: dashed;
-  margin: 2px;
 }
 
 div.navigationDiv{
-  border: 2px;
   border-style: dotted;
-  margin: 2px;
   background-color: lightgray;
 }
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*
+Use them for declaring <div> and making them responsive
+*/
 .column{
   margin-left: 3%;
   margin-right:3%;
