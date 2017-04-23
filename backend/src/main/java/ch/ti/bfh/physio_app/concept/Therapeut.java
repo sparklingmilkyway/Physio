@@ -1,30 +1,36 @@
 package ch.ti.bfh.physio_app.concept;
 
+import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+@Entity
 public class Therapeut extends User{
 
-    private Set<Patient> patientList;
+
+    @ManyToOne
+    @Column
+    private Praxis praxis;
+
 
     /** TO KEEP HIBERNATE HAPPY */
     public Therapeut(){
 
     }
 
-    public Therapeut(String surname, String lastname, String passwordHash){
+    public Therapeut(Praxis praxis, String surname, String lastname, String passwordHash){
         this.setSurname(surname);
-        this.setLastname(lastname);
+        this.setFirstname(lastname);
         this.setPasswordHash(passwordHash);
-        patientList = new HashSet<Patient>();
+        this.praxis = praxis;
     }
 
-
-    public Set<Patient> getPatientList() {
-        return patientList;
+    public Praxis getPraxis() {
+        return praxis;
     }
 
-    public void setPatientList(Set<Patient> patientList) {
-        this.patientList = patientList;
+    public void setPraxis(Praxis praxis) {
+        this.praxis = praxis;
     }
 }

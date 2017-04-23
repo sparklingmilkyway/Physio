@@ -1,7 +1,6 @@
 package ch.ti.bfh.physio_app.concept;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,27 +8,35 @@ import java.util.List;
  * This class describes the attributes and functionality of an Exercise. Attention! Deleting the default constructor
  * will corrupt the junit tests.
  */
-
-
-@Table(name = "EXERCISE") /* @Table is set at the class level; it allows you to define the table, catalog, and schema names for your entity mapping. If no @Table is defined the default values are used: the unqualified class name of the entity.*/
+@Entity
 public class Exercise extends pEntityWithID {
 
-    @Column(name = "EX_NAME")
+    @Column
     private String ex_name;
-    @Column(name = "EX_TYPE")
+
+    @Column
     private String ex_type;
-    @Column(name = "EX_NOTES")
-    private List<String> ex_notes;
+
+    @OneToMany
+    @Column
+    private List<ExerciseNote> ex_notes = new ArrayList<>();
+
+    @ManyToOne
+    @Column
+    private Therapeut therapeut;
 
     /** TO KEEP HIBERNATE HAPPY */
-    public Exercise(){
+    public Exercise(){ }
 
-    }
-
-    public Exercise(String name,String type){
+    public Exercise(String name, String type){
         this.ex_name = name;
         this.ex_type = type;
-        ex_notes = new ArrayList<String>();
+    }
+
+    public Exercise(String name, String type, ArrayList<ExerciseNote> notes, Therapeut therapeut){
+        this.ex_name = name;
+        this.ex_type = type;
+        this.ex_notes = notes;
     }
 
     public String getName() {
@@ -48,11 +55,11 @@ public class Exercise extends pEntityWithID {
         this.ex_type = type;
     }
 
-    public List<String> getNotes() {
+    public List<ExerciseNote> getNotes() {
         return ex_notes;
     }
 
-    public void setNotes(List<String> notes) {
+    public void setNotes(List<ExerciseNote> notes) {
         this.ex_notes = notes;
     }
 
