@@ -26,9 +26,10 @@ public class Exercise extends pEntityWithID {
     /** TO KEEP HIBERNATE HAPPY */
     public Exercise(){ }
 
-    public Exercise(String name, String type){
+    public Exercise(String name, String type, Therapeut therapeut){
         this.ex_name = name;
         this.ex_type = type;
+        this.therapeut = therapeut;
     }
 
     public Exercise(String name, String type, ArrayList<ExerciseNote> notes, Therapeut therapeut){

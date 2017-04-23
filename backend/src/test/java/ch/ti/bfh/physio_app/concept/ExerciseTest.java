@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class ExerciseTest {
     @Test
     public void getName() throws Exception {
-        Exercise exercise = new Exercise("stretching","Back");
+        Exercise exercise = new Exercise("stretching","Back", new Therapeut());
         assertNotNull(exercise.getName());
 
         Exercise exercise1 = new Exercise();
@@ -22,14 +22,14 @@ public class ExerciseTest {
 
     @Test
     public void setName() throws Exception {
-        Exercise exercise = new Exercise("stretching","Back");
+        Exercise exercise = new Exercise("stretching","Back", new Therapeut());
         exercise.setName("liverStretch");
         assertEquals(exercise.getName(),"liverStretch");
     }
 
     @Test
     public void getType() throws Exception {
-        Exercise exercise = new Exercise("stretching","Back");
+        Exercise exercise = new Exercise("stretching","Back", new Therapeut());
         assertNotNull(exercise.getType());
 
         Exercise exercise1 = new Exercise();
@@ -38,14 +38,14 @@ public class ExerciseTest {
 
     @Test
     public void setType() throws Exception {
-        Exercise exercise = new Exercise("stretching","Back");
+        Exercise exercise = new Exercise("stretching","Back", new Therapeut());
         exercise.setType("liverStretch");
         assertEquals(exercise.getType(),"liverStretch");
     }
 
     @Test
     public void getNotes() throws Exception {
-        Exercise exercise = new Exercise("stretching","Back");
+        Exercise exercise = new Exercise("stretching","Back", new Therapeut());
         assertNotNull(exercise.getNotes());
     }
 

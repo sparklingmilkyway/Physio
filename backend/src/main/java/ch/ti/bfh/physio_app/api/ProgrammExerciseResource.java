@@ -50,18 +50,6 @@ public class ProgrammExerciseResource {
     @Path("/exercise")
     public Response exercise() {
 
-        Exercise ex1 = new Exercise("Exercise 1", "Rücken");
-        System.out.println(ex1);
-        exerciseManager.save(ex1);
-        Exercise ex2 = new Exercise("Exercise 2", "Rücken");
-        System.out.println(ex2);
-        exerciseManager.save(ex2);
-        Exercise ex3 = new Exercise("Exercise 3", "Rücken");
-        System.out.println(ex3);
-        exerciseManager.save(ex3);
-
-
-        //exerciseManager.start();
         return ok("Exercise site").build();
     }
 

@@ -10,8 +10,8 @@ import static org.junit.Assert.*;
 public class ProgrammExponentTest {
     @Test
     public void getExercise() throws Exception {
-        Exercise exercise = new Exercise("exercise","back");
-        Exercise exercise1 = new Exercise("exercise", "back");
+        Exercise exercise = new Exercise( "exercise","back",new Therapeut());
+        Exercise exercise1 = new Exercise("exercise", "back", new Therapeut());
 
         ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
 
@@ -21,8 +21,8 @@ public class ProgrammExponentTest {
 
     @Test
     public void setExercise() throws Exception {
-        Exercise exercise = new Exercise("exercise","back");
-        Exercise exercise1 = new Exercise("exercise", "back");
+        Exercise exercise = new Exercise("exercise","back", new Therapeut());
+        Exercise exercise1 = new Exercise("exercise", "back", new Therapeut());
 
         ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
 
@@ -32,7 +32,7 @@ public class ProgrammExponentTest {
 
     @Test
     public void getReps() throws Exception {
-        Exercise exercise = new Exercise("exercise","back");
+        Exercise exercise = new Exercise("exercise","back", new Therapeut());
 
         ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
 
@@ -41,7 +41,7 @@ public class ProgrammExponentTest {
 
     @Test
     public void setReps() throws Exception {
-        Exercise exercise = new Exercise("exercise","back");
+        Exercise exercise = new Exercise("exercise","back", new Therapeut());
 
         ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
 
@@ -53,7 +53,7 @@ public class ProgrammExponentTest {
 
     @Test
     public void getSets() throws Exception {
-        Exercise exercise = new Exercise("exercise","back");
+        Exercise exercise = new Exercise("exercise","back", new Therapeut());
 
         ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
 
@@ -62,7 +62,7 @@ public class ProgrammExponentTest {
 
     @Test
     public void setSets() throws Exception {
-        Exercise exercise = new Exercise("exercise","back");
+        Exercise exercise = new Exercise("exercise","back", new Therapeut());
 
         ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
 
