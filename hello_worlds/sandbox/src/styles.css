@@ -1,6 +1,15 @@
 /*
 Global style settings done here. Specific style setting will be done inside the component .css file
  */
+
+/* FONT */
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC');
+
+html {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 1.5em;
+}
+
 header{
   border: 2px;
   border-style: solid;
@@ -12,6 +21,8 @@ body{
 
 footer{
   text-align: center;
+  margin: 100px;
+
 }
 
 div{
