@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  db:
+    container_name: physio_app_db
+    image: oscarfonts/h2
+    ports:
+      - '1521:1521'
+      - '81:81'
