@@ -78,7 +78,7 @@ public class PatientTest {
 
         Patient patient = new Patient("Doe","John",therapeut);
 
-        assertEquals(patient.getLastname(),"John");
+        assertEquals(patient.getFirstname(),"John");
     }
 
     @Test
@@ -96,8 +96,8 @@ public class PatientTest {
         Therapeut therapeut = new Therapeut();
 
         Patient patient = new Patient("Doe","John",therapeut);
-        patient.setLastname("Pan");
+        patient.setFirstname("Pan");
 
-        assertEquals(patient.getLastname(),"Pan");
+        assertEquals(patient.getFirstname(),"Pan");
     }
 }

@@ -49,17 +49,4 @@ public class ExerciseTest {
         assertNotNull(exercise.getNotes());
     }
 
-    @Test
-    public void setNotes() throws Exception {
-
-        List<String> notelist = new ArrayList<String>();
-        notelist.add("Note1");
-        notelist.add("Note2");
-
-        Exercise exercise = new Exercise("stretching","Back");
-
-        exercise.setNotes(notelist);
-        assertEquals(exercise.getNotes(),notelist);
-    }
-
 }

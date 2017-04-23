@@ -45,7 +45,7 @@ public class TherapeutTest {
     public void getLastname(){
         Therapeut therapeut = new Therapeut("John","Doe","12345");
 
-        assertEquals(therapeut.getLastname(),"Doe");
+        assertEquals(therapeut.getFirstname(),"Doe");
     }
 
     @Test
@@ -58,8 +58,8 @@ public class TherapeutTest {
     @Test
     public void setLastname(){
         Therapeut therapeut = new Therapeut("John","Doe","12345");
-        therapeut.setLastname("Pan");
-        assertEquals(therapeut.getLastname(),"Pan");
+        therapeut.setFirstname("Pan");
+        assertEquals(therapeut.getFirstname(),"Pan");
     }
 
     @Test
