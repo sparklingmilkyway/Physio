@@ -5,56 +5,62 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import ch.ti.bfh.physio_app.concept.Exercise;
-import java.util.List;
+import ch.ti.bfh.physio_app.concept.ExerciseNote;
 
 @ApplicationScoped
 public class ExerciseManager {
 
-    @Inject
+    @PersistenceContext(unitName = "physio_app")
     private EntityManager entityManager;
 
-    public void AddNote(String note, Exercise exercise){
-        Exercise ex = getExerciseById(exercise.getId());
-        List<String> notes = ex.getNotes();
-        notes.add(note);
-        ex.setNotes(notes);
-        save(ex);
-    }
-
-    public boolean RemoveNote(String note, Exercise exercise){
-        Exercise ex = getExerciseById(exercise.getId());
-        List<String> notes = ex.getNotes();
-        for(String n: notes){
-            if(n.equals(note)){
-                notes.remove(note);
-                ex.setNotes(notes);
-                save(ex);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Exercise getExe(String note, Exercise exercise){
-        //Was söu die Methode genau chönne?
-        return exercise;
-    }
-
-    public void newExercise(String name,String type) {
-        Exercise ex = new Exercise();
-        ex.setName(name);
-        ex.setType(type);
-        save(ex);
-    }
-
+    @Transactional
     public void save(Exercise ex) {
         entityManager.persist(ex);
     }
 
-    private Exercise getExerciseById(long id){
-        Exercise ex = entityManager.find(Exercise.class,id);
-        return ex;
+    @Transactional
+    public Exercise getExerciseById(long id){
+        return entityManager.find(Exercise.class,id);
+    }
+
+    @Transactional
+    public Exercise addNote(String note, Exercise exercise){
+        exercise.getNotes().add(new ExerciseNote(note, exercise));
+        save(exercise);
+        return getExerciseById(exercise.getId());
+    }
+
+    @Transactional
+    public boolean removeNote(ExerciseNote note, Exercise exercise){
+        if (exercise.getNotes().contains(note)) {
+            exercise.getNotes().remove(note);
+            save(exercise);
+            return true;
+        }
+        return false;
+    }
+
+    @Transactional
+    public Exercise newExercise(String name,String type) {
+        Exercise ex = new Exercise();
+        ex.setName(name);
+        ex.setType(type);
+        long ex_id = ex.getId();
+        save(ex);
+        return getExerciseById(ex_id);
+    }
+
+    @Transactional
+    public boolean removeExercise(Exercise exercise){
+         if (entityManager.contains(exercise)) {
+            entityManager.remove(exercise);
+            return true;
+        }
+        else return false;
     }
 
 }

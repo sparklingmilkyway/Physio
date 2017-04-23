@@ -2,100 +2,50 @@ package ch.ti.bfh.physio_app.manager;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import javax.transaction.Transactional;
+
 import ch.ti.bfh.physio_app.concept.Exercise;
 import ch.ti.bfh.physio_app.concept.Patient;
+import ch.ti.bfh.physio_app.concept.Programm;
 import ch.ti.bfh.physio_app.concept.Therapeut;
 
+import java.util.List;
 import java.util.Set;
 
 
 @ApplicationScoped
 public class TherapeutManager {
 
-    @Inject
+    @PersistenceContext(unitName = "physio_app")
     private EntityManager entityManager;
 
-    public void addPatient(Patient patient, long id){
-        Therapeut te = getTherapeutById(id);
-        Set<Patient> patientList = te.getPatientList();
-        patientList.add(patient);
-        te.setPatientList(patientList);
-        save(te);
+    @Transactional
+    public List<Patient> getPatientList(Therapeut therapeut, Patient patient){
+        TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p WHERE p.therapeut = :therapeut", Patient.class);
+        return query.getResultList();
     }
 
-    public boolean removePatient(Patient patient, long id){
-        Therapeut te = getTherapeutById(id);
-        Set<Patient> patientSet = te.getPatientList();
-        if(patientSet.contains(patient)) {
-            patientSet.remove(patient);
-            te.setPatientList(patientSet);
-            save(te);
-            return true;
-        }
-        return false;
-    }
-
-    //chönnte mr die methode nid grad la si? chame ja mit de getter&setter regle
-    public void changePasswordHash(String passwordHash, long id){
-        Therapeut te = getTherapeutById(id);
-        te.setPasswordHash(passwordHash);
-        save(te);
-    }
-
-    // chönnte mr die Methode nid grad lasi? chame ja mit de getter&setter regle
-    public String getPasswordHash(long id){
-        Therapeut te = getTherapeutById(id);
-        return te.getPasswordHash();
-    }
-
-    //oh hie gits sicher no e besseri lösig...
-    public void createExercise(String name, String type){
-        Exercise exercise = new Exercise(name,type);
-        saveExercise(exercise);
-    }
-
-    public void removeExercise(long id){
-            Exercise ex = getExerciseById(id);
-            remove(ex);
-    }
-
+    @Transactional
     public void save(Therapeut therapeut) {
         entityManager.persist(therapeut);
     }
 
-    public void remove(Exercise exercise){
-        entityManager.remove(exercise);
+    public void remove(Therapeut therapeut){
+        entityManager.remove(therapeut);
     }
 
-    public void saveExercise(Exercise exercise){
-        entityManager.persist(exercise);
-    }
-
+    @Transactional
     private Therapeut getTherapeutById(long id){
-        Therapeut te = entityManager.find(Therapeut.class,id);
-        return te;
+        return entityManager.find(Therapeut.class, id);
     }
 
-    private Exercise getExerciseById(long id){
-        Exercise ex = entityManager.find(Exercise.class, id);
-        return ex;
-    }
-
-    public void test(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager1");
-        EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
-
-
-        // Work with the EM
-        em.close();
-
-        emf.close(); //close at application end
+    @Transactional
+    private List<Therapeut> getTherapeutBySurname(long id){
+        TypedQuery<Therapeut> query = entityManager.createQuery("SELECT t FROM Therapeut t WHERE t.surname = :name", Therapeut.class);
+        return query.getResultList();
 
     }
-
 
 
 }

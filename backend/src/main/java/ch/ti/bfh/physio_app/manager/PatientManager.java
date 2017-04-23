@@ -2,77 +2,58 @@ package ch.ti.bfh.physio_app.manager;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import javax.transaction.Transactional;
 
 import ch.ti.bfh.physio_app.concept.Patient;
 import ch.ti.bfh.physio_app.concept.Programm;
 import ch.ti.bfh.physio_app.concept.Therapeut;
+
+import java.util.List;
 import java.util.Set;
 
 @ApplicationScoped
 public class PatientManager {
 
-    @Inject
+    @PersistenceContext(unitName = "physio_app")
     private EntityManager entityManager;
 
 
-    public String getTherapeut(Patient patient){
-        Patient pa = getPatientById(patient.getId());
-        Therapeut te = pa.getTherapeut();
-        return te.getSurname()+" "+te.getLastname();
+    @Transactional
+    public List<Programm> getProgrammsOfAPatient(Patient patient){
+        TypedQuery<Programm> query = entityManager.createQuery("SELECT p FROM Programm p WHERE p.patient = :patient", Programm.class);
+        return query.getResultList();
     }
 
-    public void addProgramm(Programm programm,long id){
-        Patient pa = getPatientById(id);
-        Set<Programm> programmList = pa.getProgramms();
-        programmList.add(programm);
-        pa.setProgramms(programmList);
-        save(pa);
+    @Transactional
+    public Patient createNewPatient(Therapeut therapeut, String patientSurname, String patientFirstname){
+        Patient patient = new Patient(patientSurname, patientFirstname, therapeut);
+        save(patient);
+        return patient;
     }
 
-    public void removeProgramm(Programm programm,long id){
-        Patient pa = getPatientById(id);
-        Set<Programm> programmList = pa.getProgramms();
-        programmList.remove(programm);
-        pa.setProgramms(programmList);
-        save(pa);
+    @Transactional
+    private void save(Patient patient) {
+        entityManager.persist(patient);
     }
 
-    public void changeTherapeut(Therapeut therapeut, long id){
-        Patient pa = getPatientById(id);
-        pa.setTherapeut(therapeut);
-        save(pa);
-    }
-
-    /*
-    public void addExercise(Exercise exercise){
-        if(exerciseList.contains(exercise)){
-            return;
+    @Transactional
+    public boolean removePatient(Patient patient){
+        if(entityManager.find(Patient.class, patient.getId())!=null) {
+            entityManager.remove(patient);
+            return true;
         }
-        exerciseList.add(exercise);
+        else return false;
+    }
+    @Transactional
+    public Patient getPatientById(long id){
+        return entityManager.find(Patient.class, id);
     }
 
-    public void removeExercise(Exercise exercise){
-        if(exerciseList.contains(exercise)){
-            exerciseList.remove(exercise);
-        }
-        return;
-    }
-
-    public List getExercises(){
-        return this.exerciseList;
-    }
-    */
-
-    public void save(Patient ex) {
-        entityManager.persist(ex);
-    }
-
-    private Patient getPatientById(long id){
-        Patient pa = entityManager.find(Patient.class,id);
-        return pa;
+    @Transactional
+    public List<Patient> getPatientsBySurname(String name){
+        TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p WHERE p.surname = :name", Patient.class);
+        return query.getResultList();
     }
 
 }

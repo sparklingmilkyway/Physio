@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import ch.ti.bfh.physio_app.concept.Praxis;
 import ch.ti.bfh.physio_app.concept.Therapeut;
@@ -14,42 +16,33 @@ import java.util.Set;
 @ApplicationScoped
 public class PraxisManager {
 
-    @Inject
+    @PersistenceContext(unitName = "physio_app")
     private EntityManager entityManager;
 
-    public void addTherapeut(Therapeut therapeut, long id){
-        Praxis pr = getPraxisById(id);
-        Set<Therapeut> therapeutList= pr.getTherapeuts();
-        therapeutList.add(therapeut);
-        pr.setTherapeuts(therapeutList);
-        save(pr);
+    @Transactional
+    public Praxis addTherapeut(Praxis praxis, Therapeut therapeut){
+        praxis.getTherapeuts().add(therapeut);
+        save(praxis);
+        return praxis;
     }
 
-    public boolean removeTherapeut(Therapeut therapeut, long id){
-        Praxis pr = getPraxisById(id);
-        if(pr.getTherapeuts().contains(therapeut)){
-            Set<Therapeut> therapeutList = pr.getTherapeuts();
-            therapeutList.remove(therapeut);
-            pr.setTherapeuts(therapeutList);
-            save(pr);
+    @Transactional
+    public boolean removeTherapeut(Praxis praxis, Therapeut therapeut) {
+        if (praxis.getTherapeuts().contains(therapeut)) {
+            praxis.getTherapeuts().remove(therapeut);
+            save(praxis);
             return true;
-        }
-        return false;
+        } else return false;
     }
 
-    public void renamePraxis(String name, long id){
-        Praxis pr = getPraxisById(id);
-        pr.setName(name);
-        save(pr);
-    }
-
+    @Transactional
     public void save(Praxis praxis) {
         entityManager.persist(praxis);
     }
 
+    @Transactional
     private Praxis getPraxisById(long id){
-        Praxis pr = entityManager.find(Praxis.class,id);
-        return pr;
+        return entityManager.find(Praxis.class,id);
     }
 
 
