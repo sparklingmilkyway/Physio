@@ -2,30 +2,14 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
-    <persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <properties>
-            <property name="hibernate.archive.autodetection" value="class" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-            <property name="hibernate.connection.driver_class" value="org.h2.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:h2:target/h2-1" />
-            <property name="hibernate.connection.user" value="sa" />
-            <!-- <property name="hibernate.show_sql" value="true"/> -->
-            <property name="hibernate.flushMode" value="FLUSH_AUTO" />
-            <property name="hibernate.hbm2ddl.auto" value="update" />
-        </properties>
-    </persistence-unit>
-
-    <persistence-unit name="test2"
-                      transaction-type="RESOURCE_LOCAL">
-        <provider>javax.persistence.spi.PersistenceProvider</provider>
+    <persistence-unit name="physio_app" transaction-type="JTA">
+        <jta-data-source>java:jboss/jdbc/physio_app</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:target/h2-2" />
-            <property name="javax.persistence.jdbc.user" value="sa" />
-            <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
-            <property name="eclipselink.ddl-generation.output-mode" value="database" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+            <property name="hibernat.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
         </properties>
     </persistence-unit>
 
