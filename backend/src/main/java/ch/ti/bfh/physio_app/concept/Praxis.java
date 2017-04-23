@@ -18,7 +18,6 @@ public class Praxis extends pEntityWithID{
     private String name;
 
     @OneToMany
-    @Column
     private Set<Therapeut> therapeuts = new HashSet<>();
 
     /** TO KEEP HIBERNATE HAPPY */

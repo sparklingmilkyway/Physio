@@ -10,7 +10,6 @@ public class Therapeut extends User{
 
 
     @ManyToOne
-    @Column
     private Praxis praxis;
 
 

@@ -15,7 +15,6 @@ public class ExerciseNote extends pEntityWithID {
     private String exerciseNote;
 
     @ManyToOne
-    @Column
     private Exercise exercise;
 
     /** TO KEEP HIBERNATE HAPPY */

@@ -15,7 +15,6 @@ import java.util.Set;
 public class Patient extends User{
 
     @ManyToOne
-    @Column
     private Therapeut therapeut;
 
     /** TO KEEP HIBERNATE HAPPY */

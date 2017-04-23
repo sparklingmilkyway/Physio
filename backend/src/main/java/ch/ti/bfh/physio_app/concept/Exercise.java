@@ -18,11 +18,9 @@ public class Exercise extends pEntityWithID {
     private String ex_type;
 
     @OneToMany
-    @Column
     private List<ExerciseNote> ex_notes = new ArrayList<>();
 
     @ManyToOne
-    @Column
     private Therapeut therapeut;
 
     /** TO KEEP HIBERNATE HAPPY */

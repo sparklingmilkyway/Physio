@@ -14,19 +14,15 @@ import javax.persistence.*;
 public class ProgrammExponent extends pEntityWithID {
 
     @OneToOne
-    @Column
     private Exercise exercise;
 
     @ManyToOne
-    @Column
     private Programm programm;
 
     @ManyToOne
-    @Column
     private Therapeut therapeut;
 
     @ManyToOne
-    @Column
     private Patient patient;
 
     @Column

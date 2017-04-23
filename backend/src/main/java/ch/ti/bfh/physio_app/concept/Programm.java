@@ -15,14 +15,12 @@ import java.util.*;
 public class Programm extends pEntityWithID{
 
     @OneToMany
-    @Column
     private List<ProgrammExponent> programmExponents = new ArrayList<>();
 
     @Column
     private String programm_name;
 
     @ManyToOne
-    @Column
     private Patient patient;
 
     /** TO KEEP HIBERNATE HAPPY */
