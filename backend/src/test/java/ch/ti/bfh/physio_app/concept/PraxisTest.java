@@ -37,7 +37,7 @@ public class PraxisTest {
         Praxis praxis = new Praxis("Praxis");
 
         Therapeut therapeut = new Therapeut();
-        Therapeut therapeut1 = new Therapeut("John","Doe","12345");
+        Therapeut therapeut1 = new Therapeut(new Praxis("praxis"),"John","Doe","12345");
 
         Set<Therapeut> therapeutSet = new HashSet<Therapeut>();
         therapeutSet.add(therapeut);

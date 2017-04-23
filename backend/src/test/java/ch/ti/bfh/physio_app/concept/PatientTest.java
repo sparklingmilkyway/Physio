@@ -14,54 +14,22 @@ import static org.junit.Assert.*;
 public class PatientTest {
     @Test
     public void getTherapeut() throws Exception {
-        Therapeut therapeut = new Therapeut("Peter","Pan","12345");
+        Therapeut therapeut = new Therapeut(new Praxis("praxis"),"Peter","Pan","12345");
         Patient patient = new Patient("John","Doe",therapeut);
         assertEquals(patient.getTherapeut(),therapeut);
     }
 
     @Test
     public void setTherapeut() throws Exception {
-        Therapeut therapeut = new Therapeut("Peter", "Pan", "12345");
-        Therapeut therapeut1 = new Therapeut("Elon", "Musk", "hackalbe");
+        Therapeut therapeut = new Therapeut(new Praxis("praxis"),"Peter", "Pan", "12345");
+        Therapeut therapeut1 = new Therapeut(new Praxis("praxis"),"Elon", "Musk", "hackalbe");
         Patient patient = new Patient("John", "Doe", therapeut);
         assertEquals(patient.getTherapeut(), therapeut);
         patient.setTherapeut(therapeut1);
         assertEquals(patient.getTherapeut(), therapeut1);
     }
 
-    @Test
-    public void setProgramms(){
-        Set<Programm> programmlist = new HashSet<Programm>();
 
-        Programm programm = new Programm();
-        Programm programm1 = new Programm();
-
-        programmlist.add(programm);
-        programmlist.add(programm1);
-
-        Therapeut therapeut = new Therapeut("Peter", "Pan", "12345");
-
-        Patient patient = new Patient("Peter","Pan",therapeut);
-        patient.setProgramms(programmlist);
-        assertNotNull(patient.getProgramms());
-    }
-
-    @Test
-    public void getProgramms(){
-        Set<Programm> programmlist = new HashSet<Programm>();
-
-        Programm programm = new Programm();
-        Programm programm1 = new Programm();
-
-        programmlist.add(programm);
-        programmlist.add(programm1);
-
-        Therapeut therapeut = new Therapeut("Peter", "Pan", "12345");
-
-        Patient patient = new Patient("Peter","Pan",therapeut);
-        patient.setProgramms(programmlist);
-        assertEquals(patient.getProgramms(),programmlist);
-    }
 
     @Test
     public void getSurname(){
