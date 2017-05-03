@@ -11,6 +11,8 @@ import javax.transaction.Transactional;
 import ch.ti.bfh.physio_app.concept.Exercise;
 import ch.ti.bfh.physio_app.concept.ExerciseNote;
 
+import java.util.List;
+
 @ApplicationScoped
 public class ExerciseManager {
 
@@ -24,12 +26,19 @@ public class ExerciseManager {
 
     @Transactional
     public Exercise getExerciseById(long id){
-        return entityManager.find(Exercise.class,id);
+            return entityManager.find(Exercise.class, id);
     }
 
     @Transactional
     public Exercise addNote(String note, Exercise exercise){
         exercise.getNotes().add(new ExerciseNote(note, exercise));
+        save(exercise);
+        return getExerciseById(exercise.getId());
+    }
+
+    @Transactional
+    public Exercise addNote(ExerciseNote note, Exercise exercise){
+        exercise.getNotes().add(note);
         save(exercise);
         return getExerciseById(exercise.getId());
     }
@@ -42,6 +51,17 @@ public class ExerciseManager {
             return true;
         }
         return false;
+    }
+
+    public ExerciseNote getNote(Exercise exercise, ExerciseNote exerciseNote){
+        List<ExerciseNote> exerciseList = exercise.getNotes();
+        if(exerciseList.contains(exerciseNote)){
+            return exerciseNote;
+        }
+        else{
+            ExerciseNote exn = new ExerciseNote();
+            return exn;
+        }
     }
 
     @Transactional
