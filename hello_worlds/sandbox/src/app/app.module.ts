@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import {TabComponent, TabsComponent} from './tabs/tabs.component';
 import { WelcomeFormComponent } from './welcome-form/welcome-form.component';
+import { PatientFormComponent } from './patient-form/patient-form.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { WelcomeFormComponent } from './welcome-form/welcome-form.component';
     LoginFormComponent,
     TabsComponent,
     TabComponent,
-    WelcomeFormComponent
+    WelcomeFormComponent,
+    PatientFormComponent
   ],
   imports: [
     BrowserModule,

@@ -6,10 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome-form.component.css']
 })
 export class WelcomeFormComponent {
-  text: string = "Willkommen Benutzer!";
-
-  addWelcomeText(){
-    return this.text;
-  }
-
+  text: string = "Home";
 }

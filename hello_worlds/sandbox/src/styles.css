@@ -19,6 +19,31 @@ div{
   margin: 2px;
 }
 
+h1{
+  font-size: 6em;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+button{
+  background-color: #d6e5ff;
+  border: none;
+  color: black;
+  padding: 15px 15px;
+  padding-left: 75px;
+  padding-right: 75px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
 /*
 for changes on our Form Elements(Login,Register etc.)
 */
@@ -68,7 +93,7 @@ Use them for declaring <div> and making them responsive
 /*
 Use them for declaring <div> and making them responsive
 */
-.col-1 { width: 20%; }
+.col-1 { width: 10%; }
 .col-2 { width: 30%; }
 .col-3 { width: 40%; }
 .col-4 { width: 60%; }
