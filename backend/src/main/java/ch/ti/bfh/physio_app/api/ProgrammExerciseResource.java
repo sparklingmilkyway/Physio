@@ -58,7 +58,9 @@ public class ProgrammExerciseResource {
     public Response exercise(@PathParam("exerciseId") long exerciseId) {
         //get exercise from service
         Exercise exercise = exerciseManager.getExerciseById(exerciseId);
-        return ok(exercise).build();
+       // return ok(exercise).build();
+        return ok("EXercise 1").build();
+
     }
 
     @POST
