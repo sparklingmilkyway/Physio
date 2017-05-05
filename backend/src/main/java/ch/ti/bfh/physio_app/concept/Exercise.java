@@ -36,6 +36,7 @@ public class Exercise extends pEntityWithID {
         this.ex_name = name;
         this.ex_type = type;
         this.ex_notes = notes;
+        this.therapeut = therapeut;
     }
 
     public String getName() {
