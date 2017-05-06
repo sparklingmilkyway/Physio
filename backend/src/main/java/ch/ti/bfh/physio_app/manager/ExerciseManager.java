@@ -71,7 +71,7 @@ public class ExerciseManager {
         ex.setType(type);
         long ex_id = ex.getId();
         save(ex);
-        return getExerciseById(ex_id);
+        return ex;
     }
 
     @Transactional
