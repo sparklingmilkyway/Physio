@@ -11,10 +11,7 @@ import java.util.List;
 @Entity
 public class Exercise extends pEntityWithID {
 
-    @Column
     private String ex_name;
-
-    @Column
     private String ex_type;
 
     @OneToMany
