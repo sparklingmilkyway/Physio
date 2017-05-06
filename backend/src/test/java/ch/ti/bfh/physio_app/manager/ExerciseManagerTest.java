@@ -1,21 +1,50 @@
 package ch.ti.bfh.physio_app.manager;
 
 import ch.ti.bfh.physio_app.concept.ExerciseNote;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import ch.ti.bfh.physio_app.concept.Exercise;
 
+import javax.persistence.EntityManager;
+import java.lang.reflect.Field;
 import java.util.List;
 
 import static org.junit.Assert.*;
-/**
+import org.mockito.Mockito;
+
+/*
  * Created by Jonas on 03.05.2017.
  */
 public class ExerciseManagerTest {
+
+    private ExerciseManager cut;
+    private EntityManager mockedEntityMangager = Mockito.mock(EntityManager.class);
+
+    @Before
+    public void setup() throws Exception {
+        cut = new ExerciseManager();
+
+
+
+
+        // If entity manager would be public, cut.entityManager = mockedEntityManager would be possible
+        // Load field from class
+        Field entityManager = cut.getClass().getDeclaredField("entityManager");
+
+        // Allow access to private fields
+        entityManager.setAccessible(true);
+
+        // set entityManager Variable of cut to mocked EntityManager
+        entityManager.set(cut, mockedEntityMangager);
+    }
+
     @Test
     public void save() throws Exception {
         Exercise ex = new Exercise();
-        ExerciseManager exm = new ExerciseManager();
-        exm.save(ex);
+        cut.save(ex);
+        //Has implicit assert statement
+        Mockito.verify(mockedEntityMangager, Mockito.times(1)).persist(ex);
     }
 
     @Test
