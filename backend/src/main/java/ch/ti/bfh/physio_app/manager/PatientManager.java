@@ -33,7 +33,7 @@ public class PatientManager {
     }
 
     @Transactional
-    private void save(Patient patient) {
+    public void save(Patient patient) {
         entityManager.persist(patient);
     }
 
