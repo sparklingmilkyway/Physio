@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 import org.mockito.Mockito;
 
-/*
+/**
  * Created by Jonas on 03.05.2017.
  * Important! Since we use Junit on this level of testing, we can't actually check what will happen in the real programm later.
  * We can only check if the desired method of our EntityManger is called and how many times. Nevertheless it is a good way to test
