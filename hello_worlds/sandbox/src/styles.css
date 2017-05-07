@@ -16,7 +16,7 @@ header{
 }
 
 body{
-  background-color: azure;
+  background-color: white;
 }
 
 footer{
@@ -31,7 +31,7 @@ div{
 }
 
 h1{
-  font-size: 6em;
+  font-size: 3em;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
@@ -74,12 +74,60 @@ li {
   display: inline;
   margin-left:1%;
 }
+
+table{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th{
+  border: none;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){
+  background-color: #d6e5ff;
+}
+
+nav{
+  width: 100%;
+  background:#d6e5ff;
+}
+
+nav ul{
+  overflow: hidden;
+  margin: 0;
+  padding: 1em;
+}
+
+nav ul li{
+  list-style: none;
+  float: left;
+  text-align: center;
+  width: 16.6667%; /* fallback for non-calc() browsers */
+  width: calc(100% / 7);
+  box-sizing: border-box;
+}
+
+nav ul li:first-child {
+  border-left: none;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: #616161;
+  padding: 10px 0;
+}
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*
 Maybe these style configurations should be put into the components...
  */
 div.indexDiv{
-  border-style: solid;
+/*border-style: solid;*/
+  margin:2%;
 }
 
 div.footerDiv{
