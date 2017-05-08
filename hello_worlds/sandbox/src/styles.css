@@ -3,16 +3,21 @@ Global style settings done here. Specific style setting will be done inside the 
  */
 
 /* FONT */
-@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+@import url(style_navigation.css);
+
 
 html {
-  font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 1.5em;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+  font-color: #333333;
 }
 
 header{
-  border: 2px;
-  border-style: solid;
+  /*border: 2px;
+  border-style: solid;*/
 }
 
 body{
@@ -20,25 +25,33 @@ body{
 }
 
 footer{
+  font-size: 0.5em;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
   text-align: center;
-  margin: 100px;
-
 }
 
+
+
 div{
-  border: 2px;
-  margin: 2px;
+  /*border: 2px;*/
+ /* margin: 2px;*/
 }
 
 h1{
   font-size: 3em;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin-left: 2.5em;
 }
 
 button{
-  background-color: #d6e5ff;
+  background-color: #E2F0F5;
   border: none;
-  color: black;
+  color: #333333;
   padding: 15px 15px;
   padding-left: 75px;
   padding-right: 75px;
@@ -87,40 +100,11 @@ td, th{
   padding: 8px;
 }
 
-tr:nth-child(even){
-  background-color: #d6e5ff;
+tr:nth-child(even) {
+  background-color: #E2F0F5;
 }
 
-nav{
-  width: 100%;
-  background:#d6e5ff;
-}
 
-nav ul{
-  overflow: hidden;
-  margin: 0;
-  padding: 1em;
-}
-
-nav ul li{
-  list-style: none;
-  float: left;
-  text-align: center;
-  width: 16.6667%; /* fallback for non-calc() browsers */
-  width: calc(100% / 7);
-  box-sizing: border-box;
-}
-
-nav ul li:first-child {
-  border-left: none;
-}
-
-nav ul li a {
-  display: block;
-  text-decoration: none;
-  color: #616161;
-  padding: 10px 0;
-}
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*
 Maybe these style configurations should be put into the components...
@@ -134,18 +118,14 @@ div.footerDiv{
   border-style: dashed;
 }
 
-div.navigationDiv{
-  border-style: dotted;
-  background-color: lightgray;
-}
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*
 Use them for declaring <div> and making them responsive
 */
 .column{
-  margin-left: 3%;
-  margin-right:3%;
+  /*margin-left: 3%;
+  margin-right:3%;*/
   align-items: center;
 }
 
