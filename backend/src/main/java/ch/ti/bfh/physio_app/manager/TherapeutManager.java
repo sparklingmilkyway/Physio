@@ -12,7 +12,12 @@ import ch.ti.bfh.physio_app.concept.Therapeut;
 
 import java.util.List;
 import java.util.Set;
-
+/**
+ * All Operations including Database queries for the Therapeut class are created in here. We use an EntityManger for all
+ * Database modifications and queries.
+ * @Transactional: Used to make sure that the Methods are atomic.
+ * @ApplicationScoped: Makes sure that the instance of ExerciseManager will be created excactly once during runtime.
+ */
 
 @ApplicationScoped
 public class TherapeutManager {

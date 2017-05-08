@@ -8,7 +8,12 @@ import ch.ti.bfh.physio_app.concept.Exercise;
 import ch.ti.bfh.physio_app.concept.Programm;
 import ch.ti.bfh.physio_app.concept.ProgrammExponent;
 import java.util.List;
-
+/**
+ * All Operations including Database queries for the Programm class are created in here. We use an EntityManger for all
+ * Database modifications and queries.
+ * @Transactional: Used to make sure that the Methods are atomic.
+ * @ApplicationScoped: Makes sure that the instance of ExerciseManager will be created excactly once during runtime.
+ */
 @ApplicationScoped
 public class ProgrammManager {
 
