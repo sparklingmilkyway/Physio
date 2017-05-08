@@ -10,7 +10,6 @@ import { WelcomeFormComponent } from './welcome-form/welcome-form.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
 import { ExerciseFormComponent } from './exercise-form/exercise-form.component';
 import { ProgramFormComponent } from './program-form/program-form.component';
-import { ExerciseDetailsFormComponent } from './exercise-details-form/exercise-details-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,7 @@ import { ExerciseDetailsFormComponent } from './exercise-details-form/exercise-d
     PatientFormComponent,
     ExerciseFormComponent,
     ProgramFormComponent,
-    ExerciseDetailsFormComponent
+
   ],
   imports: [
     BrowserModule,
