@@ -12,4 +12,6 @@ export class PatientFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  text: string = "Patienten";
+
 }

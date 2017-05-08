@@ -11,5 +11,5 @@ export class ExerciseFormComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  text: string = "Übungen";
 }

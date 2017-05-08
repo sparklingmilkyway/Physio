@@ -14,4 +14,6 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  text: string = "Login";
+
 }
