@@ -1,7 +1,7 @@
 <nav>
   <ul>
-    <!--<img src="favicon.ico">-->
-    <li *ngFor="let tab of tabs" [class.active] = "tab.active" (click)="activate(tab)">
+    <li><img src="favicon.ico" height="40px"></li>
+    <li class="li-elem" *ngFor="let tab of tabs" [class.active] = "tab.active" (click)="activate(tab)">
       <a>{{tab.title}}</a>
     </li>
   </ul>
