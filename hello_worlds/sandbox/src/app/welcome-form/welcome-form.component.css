@@ -4,9 +4,9 @@ div.welcomeDiv{
 }
 
 div.welcomeDiv:first-child{
-  background-color: #d6e5ff;
+  background-color: #E2F0F5;
 }
 
 div.welcomeDiv:last-child{
-  background-color: #d6e5ff;
+  background-color: #E2F0F5;
 }
