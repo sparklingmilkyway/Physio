@@ -21,6 +21,8 @@
       <sourceFolder url="file://$MODULE_DIR$/srcBackend" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/physio-frontend/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/physio-frontend/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
