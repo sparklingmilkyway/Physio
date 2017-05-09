@@ -4,7 +4,8 @@ import ch.ti.bfh.physio_app.concept.Patient;
 import ch.ti.bfh.physio_app.concept.Praxis;
 import ch.ti.bfh.physio_app.concept.Therapeut;
 
-import javax.ws.rs.*; import javax.ws.rs.core.Response;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.ok;
 
@@ -13,22 +14,6 @@ import static javax.ws.rs.core.Response.ok;
 @Produces(APPLICATION_JSON)
 public class UserResource {
 
-    /** Praxis **/
-    @GET
-    @Path("/praxis/{praxisId}")
-    public Response praxis(@PathParam("praxisId") long praxisId) {
-        //get praxis from service
-        Praxis praxis = new Praxis();
-        praxis.setId(praxisId);
-        return ok("Praxis site").build();
-    }
-
-    @POST
-    @Path("/praxis/{praxisId}")
-    public Response praxis(@PathParam("praxisId") long praxisId, Praxis praxis) {
-        // give praxisId + praxis to service
-        return ok("Success/Faild").build();
-    }
 
     /** Patient **/
     @GET

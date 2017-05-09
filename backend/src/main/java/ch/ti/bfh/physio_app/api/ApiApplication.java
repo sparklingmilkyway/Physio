@@ -18,7 +18,9 @@ public class ApiApplication extends Application {
                 HelloWorldResource.class,
                 UserResource.class,
                 ProgrammExerciseResource.class,
-                ApiApplication.class
+                ApiApplication.class,
+                PraxisResource.class,
+                CorsFilter.class
         );
     }
 }
