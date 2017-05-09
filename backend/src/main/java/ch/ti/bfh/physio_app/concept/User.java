@@ -11,7 +11,6 @@ import javax.persistence.Entity;
  * only to the Therapeut class since the Patient class does not have a password at the moment. But if we make good progress,
  * we will add a login for patients too.
  */
-@Entity
 public class User extends pEntityWithID {
 
 
