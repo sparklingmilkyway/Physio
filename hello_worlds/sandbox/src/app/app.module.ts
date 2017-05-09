@@ -10,6 +10,7 @@ import { WelcomeFormComponent } from './welcome-form/welcome-form.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
 import { ExerciseFormComponent } from './exercise-form/exercise-form.component';
 import { ProgramFormComponent } from './program-form/program-form.component';
+import {PraxisService} from "./praxis.service";
 
 @NgModule({
   declarations: [
@@ -20,15 +21,15 @@ import { ProgramFormComponent } from './program-form/program-form.component';
     WelcomeFormComponent,
     PatientFormComponent,
     ExerciseFormComponent,
-    ProgramFormComponent,
-
+    ProgramFormComponent
+    //
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [PraxisService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
