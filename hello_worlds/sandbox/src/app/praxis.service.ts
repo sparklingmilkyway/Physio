@@ -16,7 +16,7 @@ export class PraxisService implements OnInit {
     /*return this.http.get(`http://127.0.0.1:8080/api/praxis/add`)
       .map((res:Response) => res.json());*/
 
-    return this.http.request(`http://127.0.0.1:8080/api/praxis/add`)
+    return this.http.request(`http://127.0.0.1:8080/api/praxis/add/`)
       .map((res:Response) => res.json());
   }
 
