@@ -26,7 +26,7 @@ public class PraxisTest {
         assertEquals(praxis.getName(),"Praxis2");
     }
 
-    @Test
+    /*@Test
     public void getTherapeuts() throws Exception {
         Praxis praxis = new Praxis("Praxis");
         assertNotNull(praxis.getTherapeuts());
@@ -46,6 +46,6 @@ public class PraxisTest {
         praxis.setTherapeuts(therapeutSet);
 
         assertEquals(praxis.getTherapeuts(),therapeutSet);
-    }
+    }*/
 
 }

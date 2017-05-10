@@ -4,18 +4,24 @@ package ch.ti.bfh.physio_app.concept;
  * Created by Jonas on 28.03.2017.
  */
 
-import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
 /**
  * This superclass is inherited by the Patient and the Therapeut classes. Right now, we could take the PasswordHash
  * only to the Therapeut class since the Patient class does not have a password at the moment. But if we make good progress,
  * we will add a login for patients too.
  */
+@MappedSuperclass
 public class User extends pEntityWithID {
 
-
+    @Column
     private String surname;
+    @Column
     private String firstname;
+    @Column
+    private String email;
+    @Column
     private String passwordHash;
 
     public String getSurname() {
@@ -30,6 +36,14 @@ public class User extends pEntityWithID {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPasswordHash() {

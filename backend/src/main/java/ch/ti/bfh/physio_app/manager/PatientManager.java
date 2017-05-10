@@ -55,10 +55,10 @@ public class PatientManager {
         return entityManager.find(Patient.class, id);
     }
 
-    @Transactional
+   /* @Transactional
     public List<Patient> getPatientsBySurname(String name){
         TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p WHERE p.surname = :name", Patient.class);
         return query.getResultList();
-    }
+    }*/
 
 }
