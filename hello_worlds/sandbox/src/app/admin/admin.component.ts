@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {PraxisService} from "app/praxis.service";
-import { FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,13 +9,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private praxisService: PraxisService, public fb: FormBuilder) {
-    doLogin(event)
-    {
-      console.log(event);
-      console.log(this.addTherapeutForm.value);
-    }
+  constructor(private praxisService: PraxisService) {
+
   }
+
   praxis = {};
 
   therapeutsAdd = {};
@@ -39,10 +35,7 @@ export class AdminComponent implements OnInit {
     this.praxisService.getTherapeuts().subscribe(data => this.therapeuts = data);
   }
 
+  loadAddTherapeutForm() {
 
-
-  public addTherapeutForm = this.fb.group({
-    email: ["", Validators.required],
-    password: ["", Validators.required]
-  });
+  }
 }

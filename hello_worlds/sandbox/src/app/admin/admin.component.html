@@ -1,21 +1,15 @@
-<form [formGroup]="addTherapeutForm" (ngSubmit)="addTherapeut($event)">
+<!-- <form [formGroup]="addTherapeutForm" (ngSubmit)="doAddTherapeut($event)">
   <input formControlName="prename" type="text" placeholder="Prename">
   <input formControlName="surname" type="text" placeholder="Surname">
   <input formControlName="mail" type="email" placeholder="E-Mail">
   <button type="submit">Save</button>
 </form>
-
-
-
-
-
+-->
 
 <div>
   <button (click)="loadPraxisAdd()">Add praxis</button>
   {{ praxis | json }}
 </div>
-
-
 
 <div>
   <button (click)="loadTherapeutsAdd()">Add Thearpeuts</button>
