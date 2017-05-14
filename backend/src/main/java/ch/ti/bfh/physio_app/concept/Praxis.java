@@ -21,9 +21,6 @@ public class Praxis extends pEntityWithID{
     @Column
     private String name;
 
-    /*@OneToMany
-    private Set<Therapeut> therapeuts = new HashSet<>(); */
-
     /** TO KEEP HIBERNATE HAPPY */
     public Praxis(){
 
@@ -31,7 +28,6 @@ public class Praxis extends pEntityWithID{
 
     public Praxis(String name){
         this.name = name;
-        //therapeuts = new HashSet<Therapeut>();
     }
 
     @XmlElement(name = "name")
@@ -43,13 +39,5 @@ public class Praxis extends pEntityWithID{
         this.name = name;
     }
 
-    /*@XmlElementWrapper(name = "therapeuts")
-    @XmlElement(name = "therapeut")
-    public Set<Therapeut> getTherapeuts() {
-        return therapeuts;
-    }
 
-    public void setTherapeuts(Set<Therapeut> therapeutSet){
-        this.therapeuts = therapeutSet;
-    }*/
 }

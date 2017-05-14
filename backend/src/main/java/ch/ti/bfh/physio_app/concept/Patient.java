@@ -17,17 +17,16 @@ public class Patient extends User{
     @ManyToOne
     private Therapeut therapeut;
 
+
     /** TO KEEP HIBERNATE HAPPY */
-    public Patient(){
+    public Patient(){ }
 
-    }
-
-    public Patient(String surname, String firstname, Therapeut therapeut){
+    public Patient(String surname, String firstname, String email, String passwordhash, Therapeut therapeut){
         this.setSurname(surname);
         this.setFirstname(firstname);
+        this.setEmail(email);
+        this.setPasswordHash(passwordhash);
         this.therapeut = therapeut;
-        //Programm placeholder = new Programm();
-        //this.programms.add(placeholder);
     }
 
     public Therapeut getTherapeut() {

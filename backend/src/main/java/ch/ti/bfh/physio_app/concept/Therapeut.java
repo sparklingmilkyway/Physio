@@ -18,10 +18,11 @@ public class Therapeut extends User{
 
     }
 
-    public Therapeut(Praxis praxis, String surname, String lastname, String passwordHash){
+    public Therapeut(Praxis praxis, String surname, String lastname, String email, String passwordHash){
         this.setSurname(surname);
         this.setFirstname(lastname);
         this.setPasswordHash(passwordHash);
+        this.setEmail(email);
         this.praxis = praxis;
     }
 

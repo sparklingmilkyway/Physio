@@ -1,38 +1,46 @@
 package ch.ti.bfh.physio_app.api;
 
-import ch.ti.bfh.physio_app.concept.Patient;
-import ch.ti.bfh.physio_app.concept.Therapeut;
-import ch.ti.bfh.physio_app.manager.PatientManager;
-
-import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
-
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.Response.ok;
+        import ch.ti.bfh.physio_app.concept.Patient;
+        import ch.ti.bfh.physio_app.concept.Praxis;
+        import ch.ti.bfh.physio_app.concept.Therapeut;
+        import ch.ti.bfh.physio_app.manager.PatientManager;
+        import ch.ti.bfh.physio_app.manager.PraxisManager;
+        import ch.ti.bfh.physio_app.manager.TherapeutManager;
 
 
-/**
- * Created by Jonas on 14.05.2017.
- */
+        import javax.inject.Inject;
+        import javax.ws.rs.*;
+        import javax.ws.rs.core.Response;
 
-@Path("")
+        import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+        import static javax.ws.rs.core.Response.ok;
+
+@Path("/patient")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
-public class PatientResource{
+public class PatientResource {
+
+    @Inject
+    private PraxisManager praxisManager;
+
+    @Inject
+    private TherapeutManager therapeutManager;
 
     @Inject
     private PatientManager patientManager;
 
     @GET
-    @Path("/patient/add/")
-    public Response addPatient(){
-        Therapeut t = new Therapeut();
-        Patient p = new Patient("Jonas","Nydegger",t);
-        patientManager.save(p);
-        return ok(p).build();
+    @Path("/add")
+    public Response addPatient() {
+        long id = 1;
+        Praxis praxis = praxisManager.getPraxisById(id);
+        Therapeut therapeut = therapeutManager.getTherapeutById(id);
+        Patient patient = new Patient("Jonas","Nydegger", "jonas@mail.ch", "pwhs", therapeut);
+        patientManager.save(patient);
+        return ok(patient).build();
+
     }
+
+
+
 }

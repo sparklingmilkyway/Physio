@@ -1,7 +1,9 @@
 package ch.ti.bfh.physio_app.api;
 
+import ch.ti.bfh.physio_app.concept.Patient;
 import ch.ti.bfh.physio_app.concept.Praxis;
 import ch.ti.bfh.physio_app.concept.Therapeut;
+import ch.ti.bfh.physio_app.manager.PatientManager;
 import ch.ti.bfh.physio_app.manager.PraxisManager;
 import ch.ti.bfh.physio_app.manager.TherapeutManager;
 
@@ -14,7 +16,7 @@ import java.util.List;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.ok;
 
-@Path("")
+@Path("/praxis")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
 public class PraxisResource {
@@ -25,29 +27,34 @@ public class PraxisResource {
     @Inject
     private TherapeutManager therapeutManager;
 
+    @Inject
+    private PatientManager patientManager;
+
+
     @GET
-    @Path("/praxis/add/")
+    @Path("/add")
     public Response addPraxis() {
         Praxis praxis = new Praxis("Praxisname");
         praxisManager.save(praxis);
         return ok(praxis).build();
     }
 
+
     @GET
-    @Path("/praxis/addTherapeuts/")
+    @Path("/addTherapeut")
     public Response addTherapeut() {
-        Praxis praxis = praxisManager.getPraxisById(1);
-        Therapeut therapeut1 = new Therapeut(praxis,"Prename1", "Surname1", "pwhash1");
-        Therapeut therapeut2 = new Therapeut(praxis,"Prename2", "Surname2", "pwhash2");
-        therapeutManager.save(therapeut1);
-        therapeutManager.save(therapeut2);
-        return ok("added 2 Therapeuts").build();
+        long id = 1;
+        Praxis praxis = praxisManager.getPraxisById(id);
+        Therapeut therapeut = new Therapeut(praxis,"Prename1", "Surname1", "email@mail", "pwhash1");
+        therapeutManager.save(therapeut);
+        return ok(therapeut).build();
     }
 
     @GET
-    @Path("/praxis/getTherapeuts/")
+    @Path("/getTherapeuts")
     public Response getTherapeuts() {
-        Praxis praxis = praxisManager.getPraxisById(1);
+        long id = 1;
+        Praxis praxis = praxisManager.getPraxisById(id);
         List<Therapeut> therapeuts = praxisManager.getTherapeuts(praxis);
         return ok(therapeuts).build();
     }
