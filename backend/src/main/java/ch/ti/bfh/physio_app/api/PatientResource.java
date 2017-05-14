@@ -22,7 +22,7 @@ import static javax.ws.rs.core.Response.ok;
 @Path("")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
-public class PatientRessource{
+public class PatientResource{
 
     @Inject
     private PatientManager patientManager;
