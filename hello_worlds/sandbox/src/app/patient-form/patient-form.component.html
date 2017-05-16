@@ -25,8 +25,12 @@
 </table>
 </div>
   <form>
-    First name: <input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br>
-    <button (click)="loadPatientAdd(fname,lname)">Patient hinzufügen</button>
+    First name: <input [(ngModel)]="this.value1" [ngModelOptions]="{standalone: true}"><br>
+    Last name: <input [(ngModel)]="this.value2" [ngModelOptions]="{standalone: true}"><br>
+    <button (click)="loadPatientAdd()">Patient hinzufügen</button>
+  </form>
+  <form>
+    ID: <input [(ngModel)]="this.id" [ngModelOptions]="{standalone: true}"><br>
+    <button (click)="findPatientGet()">Patient finden..</button>
   </form>
 </div>
