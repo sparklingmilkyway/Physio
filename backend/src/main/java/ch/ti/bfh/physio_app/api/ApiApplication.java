@@ -20,7 +20,8 @@ public class ApiApplication extends Application {
                 ProgrammExerciseResource.class,
                 ApiApplication.class,
                 PraxisResource.class,
-                CorsFilter.class
+                CorsFilter.class,
+                PatientResource.class
         );
     }
 }

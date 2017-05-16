@@ -57,13 +57,8 @@ public class PatientManagerTest {
         */
     }
 
-    @Test
-    public void createNewPatient() throws Exception {
-        Therapeut tp = new Therapeut();
-        Patient pt = cut.createNewPatient(tp, "JOHN", "DOE");
-        Mockito.verify(mockedEntityMangager, Mockito.times(1)).persist(pt);
-    }
 
+/*
     @Test
     public void removePatient() throws Exception {
         Patient pt = new Patient();
@@ -71,10 +66,12 @@ public class PatientManagerTest {
         /*
         The .remove() method from the EntityManager won't be called, since there will never be an object found
          */
-        Mockito.verify(mockedEntityMangager, Mockito.times(0)).remove(pt);
+ /*       Mockito.verify(mockedEntityMangager, Mockito.times(0)).remove(pt);
 
         assertFalse(cut.removePatient(pt));
-    }
+    }*/
+
+
 
     @Test
     public void getPatientById() throws Exception {

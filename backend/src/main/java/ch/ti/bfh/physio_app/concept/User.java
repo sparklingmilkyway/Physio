@@ -24,6 +24,17 @@ public class User extends pEntityWithID {
     @Column
     private String passwordHash;
 
+    public User() {
+
+    }
+
+    public User(String surname, String firstname, String email, String passwordHash){
+        this.surname = surname;
+        this.firstname = firstname;
+        this.email = email;
+        this.passwordHash = passwordHash;
+    }
+
     public String getSurname() {
         return surname;
     }

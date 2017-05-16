@@ -14,16 +14,16 @@ import static org.junit.Assert.*;
 public class PatientTest {
     @Test
     public void getTherapeut() throws Exception {
-        Therapeut therapeut = new Therapeut(new Praxis("praxis"),"Peter","Pan","12345");
-        Patient patient = new Patient("John","Doe",therapeut);
+        Therapeut therapeut = new Therapeut(new Praxis("praxis"),"Peter","Pan", "email@email.ch","12345");
+        Patient patient = new Patient("John","Doe", "email@email", "pwhash", therapeut);
         assertEquals(patient.getTherapeut(),therapeut);
     }
 
     @Test
     public void setTherapeut() throws Exception {
-        Therapeut therapeut = new Therapeut(new Praxis("praxis"),"Peter", "Pan", "12345");
-        Therapeut therapeut1 = new Therapeut(new Praxis("praxis"),"Elon", "Musk", "hackalbe");
-        Patient patient = new Patient("John", "Doe", therapeut);
+        Therapeut therapeut = new Therapeut(new Praxis("praxis"),"Peter", "Pan", "email@email.ch", "12345");
+        Therapeut therapeut1 = new Therapeut(new Praxis("praxis"),"Elon", "Musk", "email@email.ch", "hackalbe");
+        Patient patient = new Patient("John", "Doe", "email@email", "pwhash",  therapeut);
         assertEquals(patient.getTherapeut(), therapeut);
         patient.setTherapeut(therapeut1);
         assertEquals(patient.getTherapeut(), therapeut1);
@@ -35,7 +35,7 @@ public class PatientTest {
     public void getSurname(){
         Therapeut therapeut = new Therapeut();
 
-        Patient patient = new Patient("Doe","John",therapeut);
+        Patient patient = new Patient("Doe","John", "email@email", "pwhash",  therapeut);
 
         assertEquals(patient.getSurname(),"Doe");
     }
@@ -44,7 +44,7 @@ public class PatientTest {
     public void getLastName(){
         Therapeut therapeut = new Therapeut();
 
-        Patient patient = new Patient("Doe","John",therapeut);
+        Patient patient = new Patient("Doe","John", "email@email", "pwhash",  therapeut);
 
         assertEquals(patient.getFirstname(),"John");
     }
@@ -53,7 +53,7 @@ public class PatientTest {
     public void setSurname(){
         Therapeut therapeut = new Therapeut();
 
-        Patient patient = new Patient("Doe","John",therapeut);
+        Patient patient = new Patient("Doe","John", "email@email", "pwhash", therapeut);
         patient.setSurname("Peter");
 
         assertEquals(patient.getSurname(),"Peter");
@@ -63,7 +63,7 @@ public class PatientTest {
     public void setLastname(){
         Therapeut therapeut = new Therapeut();
 
-        Patient patient = new Patient("Doe","John",therapeut);
+        Patient patient = new Patient("Doe","John", "email@email", "pwhash",  therapeut);
         patient.setFirstname("Pan");
 
         assertEquals(patient.getFirstname(),"Pan");

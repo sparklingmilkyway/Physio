@@ -18,10 +18,8 @@ public class Therapeut extends User{
 
     }
 
-    public Therapeut(Praxis praxis, String surname, String lastname, String passwordHash){
-        this.setSurname(surname);
-        this.setFirstname(lastname);
-        this.setPasswordHash(passwordHash);
+    public Therapeut(Praxis praxis, String surname, String lastname, String email, String passwordHash){
+        super(surname, lastname, email,passwordHash);
         this.praxis = praxis;
     }
 

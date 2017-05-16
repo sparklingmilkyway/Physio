@@ -41,7 +41,7 @@ public class TherapeutManager {
     }
 
     @Transactional
-    private Therapeut getTherapeutById(long id){
+    public Therapeut getTherapeutById(long id){
         return entityManager.find(Therapeut.class, id);
     }
 
