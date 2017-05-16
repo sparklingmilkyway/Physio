@@ -18,11 +18,11 @@
     <td>Details/Bearbeiten</td>
   </tr>
   <tr>
-    <td>Hans Muster</td>
+    <td>{{patient | json}}</td>
     <td>04.03.1982</td>
     <td>Details/Bearbeiten</td>
   </tr>
 </table>
 </div>
-  <button>Patient hinzufügen</button>
+  <button (click)="loadPatientAdd()">Patient hinzufügen</button>
 </div>
