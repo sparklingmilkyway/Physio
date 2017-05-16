@@ -11,8 +11,8 @@ export class PatientService implements OnInit{
   constructor(private http: Http) {
   }
 
-  addPatient(){
-    return this.http.request(`http://127.0.0.1:8080/api/patient/add/`)
+  addPatient(surname : string, lastname : string){
+    return this.http.request(`http://127.0.0.1:8080/api/patient/add/sn="surname"/ls="lastname`)
       .map((res:Response) => res.json());
   }
 }
