@@ -22,10 +22,7 @@ public class Patient extends User{
     public Patient(){ }
 
     public Patient(String surname, String firstname, String email, String passwordhash, Therapeut therapeut){
-        this.setSurname(surname);
-        this.setFirstname(firstname);
-        this.setEmail(email);
-        this.setPasswordHash(passwordhash);
+        super(surname, firstname, email,passwordhash);
         this.therapeut = therapeut;
     }
 
