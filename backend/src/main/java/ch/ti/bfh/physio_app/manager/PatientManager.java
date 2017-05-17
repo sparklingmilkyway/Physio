@@ -47,27 +47,14 @@ public class PatientManager {
         return query.getSingleResult();
     }
 
-    @Transactional
-    public Patient getPatientBySurname(String surname){
-        TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p WHERE p.surname = :surname", Patient.class);
-        query.setParameter("surname", surname);
-        return query.getSingleResult();
-    }
-
-    @Transactional
-    public List<Programm> getProgramms(Patient patient){
-        TypedQuery<Programm> query = entityManager.createQuery("SELECT p FROM Programm p WHERE p.patient.id = :id", Programm.class);
-        query.setParameter("id", patient.getId());
+    public List<Patient> getPatientBySurname(String surname){
+        TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p WHERE p.surname =:surname", Patient.class);
         return query.getResultList();
     }
 
-
-    @Transactional
     public List<Patient> getAllPatients(){
         TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p", Patient.class);
         return query.getResultList();
     }
-
-
 }
 

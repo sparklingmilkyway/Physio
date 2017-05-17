@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -60,7 +61,7 @@ public class PatientResource {
                                @PathParam("param")String param) {
 
         Patient patient = patientManager.getPatientById(id);
-        patientManager.updatePatient(patient, paramtoUpdate, param);
+        //patientManager.updatePatient(patient, paramtoUpdate, param);
         return ok(patient).build();
     }
 
@@ -91,14 +92,18 @@ public class PatientResource {
         Patient patient = patientManager.getPatientBySurname(surname);
         return ok(patient).build();
     }
-
     @GET
-    @Path("/get/all")
-    public Response getPatient(){
-        List<Patient> patients = patientManager.getAllPatients();
-        return ok(patients).build();
+    @Path("/get/sn={surname}")
+    public Response getPatient(@PathParam("surname") String surname){
+        List<Patient> patientList = patientManager.getPatientBySurname(surname);
+        return ok(patientList).build();
     }
 
-
+    @GET
+    @Path("/get/")
+    public List<Patient> getPatients(){
+        List<Patient> patientList = patientManager.getAllPatients();
+        return patientList;
+    }
 
 }
