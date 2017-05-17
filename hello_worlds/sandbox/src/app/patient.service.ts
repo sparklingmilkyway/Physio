@@ -12,7 +12,7 @@ export class PatientService implements OnInit{
   }
 
   addPatient(surname : string, lastname : string){
-    return this.http.request(`http://127.0.0.1:8080/api/patient/add/sn=`+ surname + `/ls=` + lastname)
+    return this.http.request(`http://127.0.0.1:8080/api/patient/add/fn=`+ surname + `/sn=` + lastname)
       .map((res:Response) => res.json());
   }
 
