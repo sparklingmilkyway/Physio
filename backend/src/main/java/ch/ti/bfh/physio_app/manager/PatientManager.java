@@ -47,14 +47,27 @@ public class PatientManager {
         return query.getSingleResult();
     }
 
+    @Transactional
     public List<Patient> getPatientBySurname(String surname){
         TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p WHERE p.surname =:surname", Patient.class);
         return query.getResultList();
     }
 
+    @Transactional
     public List<Patient> getAllPatients(){
         TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p", Patient.class);
         return query.getResultList();
+    }
+
+    @Transactional
+    public Patient updatePatient(long patientID, String firstname, String surname, String email, Therapeut therapeut){
+        Patient patient = getPatientById(patientID);
+        patient.setFirstname(firstname);
+        patient.setSurname(surname);
+        patient.setEmail(email);
+        patient.setTherapeut(therapeut);
+        save(patient);
+        return  patient;
     }
 }
 

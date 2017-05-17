@@ -39,11 +39,11 @@ public class PatientResource {
     // CREATING A NEW PATIENT
     @GET
     @Path("/create/fn={firstname}-sn={surname}-email={email}-pw={password}-therapeut={theraId}")
-    public Response createNewPatient(@PathParam("firstname") String firstname,
-                               @PathParam("surname") String surname,
-                               @PathParam("email")String email,
-                               @PathParam("password")String password,
-                               @PathParam("theraId")long therapeutID) {
+    public Response createNewPatient( @PathParam("firstname") String firstname,
+                                      @PathParam("surname") String surname,
+                                      @PathParam("email")String email,
+                                      @PathParam("password")String password,
+                                      @PathParam("theraId")long therapeutID) {
         long id = 1;
         Praxis praxis = praxisManager.getPraxisById(id);
         Therapeut therapeut = therapeutManager.getTherapeutById(therapeutID);
@@ -53,20 +53,18 @@ public class PatientResource {
         return ok(patient).build();
     }
 
-    // CREATING A NEW PATIENT
+    // UPDATING A PATIENT
     @GET
-    @Path("/create/patient={patientID}-{paramtoUpdate}={param}")
-    public Response updatePatient(@PathParam("patientID") long id,
-                               @PathParam("paramtoUpdate") String paramtoUpdate,
-                               @PathParam("param")String param) {
-
-        Patient patient = patientManager.getPatientById(id);
-        //patientManager.updatePatient(patient, paramtoUpdate, param);
+    @Path("/update/id={patientId}-fn={firstname}-sn={surname}-email={email}-therapeut={theraId}")
+    public Response createNewPatient(@PathParam("patientId") long patientID,
+                                     @PathParam("firstname") String firstname,
+                                     @PathParam("surname") String surname,
+                                     @PathParam("email")String email,
+                                     @PathParam("theraId")long therapeutID) {
+        Therapeut therapeut = therapeutManager.getTherapeutById(therapeutID);
+        Patient patient = patientManager.updatePatient(patientID, firstname, surname, email, therapeut);
         return ok(patient).build();
     }
-
-
-
 
     @GET
     @Path("/add/fn={firstname}/sn={surname}")
@@ -86,12 +84,6 @@ public class PatientResource {
         return ok(patient).build();
     }
 
-    @GET
-    @Path("/get/surname={surname}")
-    public Response getPatient(@PathParam("surname") String surname){
-        Patient patient = patientManager.getPatientBySurname(surname);
-        return ok(patient).build();
-    }
     @GET
     @Path("/get/sn={surname}")
     public Response getPatient(@PathParam("surname") String surname){
