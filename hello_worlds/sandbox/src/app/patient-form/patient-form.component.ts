@@ -42,4 +42,9 @@ export class PatientFormComponent implements OnInit {
   findPatientBySurname(){
     this.patientService.getPatientbySurname(this.surname).subscribe(data => this.patient = data);
   }
+
+  removePatient(id){
+    this.patientService.removePatient(id).subscribe(data => this.patient = data);
+    this.getPatients();
+  }
 }
