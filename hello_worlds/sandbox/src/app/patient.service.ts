@@ -27,4 +27,8 @@ export class PatientService implements OnInit{
   getPatients(){
     return this.http.request(`http://127.0.0.1:8080/api/patient/get/`).map((res:Response) => res.json());
   }
+
+  removePatient(id){
+    return this.http.request(`http://127.0.0.1:8080/api/patient/remove/id=`+id).map((res:Response) => res.json());
+  }
 }
