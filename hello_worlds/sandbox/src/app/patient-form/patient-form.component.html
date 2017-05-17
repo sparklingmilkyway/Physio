@@ -46,13 +46,13 @@
   </tr>
 </table>
 </div>-->
-  <div class="formDiv">
+  <br>
   <form>
     First name: <input [(ngModel)]="this.value1" [ngModelOptions]="{standalone: true}"><br>
     Last name: <input [(ngModel)]="this.value2" [ngModelOptions]="{standalone: true}"><br>
     <button (click)="loadPatientAdd()">Patient hinzufügen</button>
   </form>
-  </div>
+  <br>
   <form>
     ID: <input [(ngModel)]="this.id" [ngModelOptions]="{standalone: true}"><br>
     <button (click)="findPatientGet()">Patient finden..</button>
@@ -61,4 +61,5 @@
     Vorname: <input [(ngModel)]="this.surname" [ngModelOptions]="{standalone: true}"><br>
     <button (click)="findPatientBySurname()">Patient finden..</button>
   </form>
+</div>
 </div>
