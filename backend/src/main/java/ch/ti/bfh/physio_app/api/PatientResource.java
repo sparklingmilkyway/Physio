@@ -3,6 +3,7 @@ package ch.ti.bfh.physio_app.api;
 import ch.ti.bfh.physio_app.concept.Patient;
 import ch.ti.bfh.physio_app.concept.Praxis;
 import ch.ti.bfh.physio_app.concept.Therapeut;
+import ch.ti.bfh.physio_app.manager.LoginManager;
 import ch.ti.bfh.physio_app.manager.PatientManager;
 import ch.ti.bfh.physio_app.manager.PraxisManager;
 import ch.ti.bfh.physio_app.manager.TherapeutManager;
@@ -11,6 +12,8 @@ import ch.ti.bfh.physio_app.manager.TherapeutManager;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+
+import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.ok;
@@ -29,13 +32,48 @@ public class PatientResource {
     @Inject
     private PatientManager patientManager;
 
+    @Inject
+    private LoginManager loginManager;
+
+    // CREATING A NEW PATIENT
     @GET
-    @Path("/add/sn={surname}/ls={lastname}")
-    public Response addPatient(@PathParam("surname") String surname, @PathParam("lastname") String lastname) {
+    @Path("/create/fn={firstname}-sn={surname}-email={email}-pw={password}-therapeut={theraId}")
+    public Response createNewPatient(@PathParam("firstname") String firstname,
+                               @PathParam("surname") String surname,
+                               @PathParam("email")String email,
+                               @PathParam("password")String password,
+                               @PathParam("theraId")long therapeutID) {
+        long id = 1;
+        Praxis praxis = praxisManager.getPraxisById(id);
+        Therapeut therapeut = therapeutManager.getTherapeutById(therapeutID);
+        String passwordHash = loginManager.doHash(password);
+        Patient patient = new Patient(firstname, surname, email, passwordHash, therapeut);
+        patientManager.save(patient);
+        return ok(patient).build();
+    }
+
+    // CREATING A NEW PATIENT
+    @GET
+    @Path("/create/patient={patientID}-{paramtoUpdate}={param}")
+    public Response updatePatient(@PathParam("patientID") long id,
+                               @PathParam("paramtoUpdate") String paramtoUpdate,
+                               @PathParam("param")String param) {
+
+        Patient patient = patientManager.getPatientById(id);
+        patientManager.updatePatient(patient, paramtoUpdate, param);
+        return ok(patient).build();
+    }
+
+
+
+
+    @GET
+    @Path("/add/fn={firstname}/sn={surname}")
+    public Response addPatient(@PathParam("firstname") String firstname, @PathParam("surname") String surname) {
         long id = 1;
         Praxis praxis = praxisManager.getPraxisById(id);
         Therapeut therapeut = therapeutManager.getTherapeutById(id);
-        Patient patient = new Patient(surname,lastname, "jonas@mail.ch", "pwhs", therapeut);
+        Patient patient = new Patient(firstname, surname, "jonas@mail.ch", "pwhs", therapeut);
         patientManager.save(patient);
         return ok(patient).build();
     }
@@ -46,6 +84,21 @@ public class PatientResource {
         Patient patient = patientManager.getPatientById(id);
         return ok(patient).build();
     }
+
+    @GET
+    @Path("/get/surname={surname}")
+    public Response getPatient(@PathParam("surname") String surname){
+        Patient patient = patientManager.getPatientBySurname(surname);
+        return ok(patient).build();
+    }
+
+    @GET
+    @Path("/get/all")
+    public Response getPatient(){
+        List<Patient> patients = patientManager.getAllPatients();
+        return ok(patients).build();
+    }
+
 
 
 }

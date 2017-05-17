@@ -39,5 +39,4 @@ public class PraxisManager {
         return query.getResultList();
     }
 
-
 }
