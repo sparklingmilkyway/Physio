@@ -38,7 +38,7 @@ public class PatientResource {
 
     // CREATING A NEW PATIENT
     @GET
-    @Path("/create/fn={firstname}-sn={surname}-email={email}-pw={password}-therapeut={theraId}")
+    @Path("/create/fn={firstname}/sn={surname}/email={email}/pw={password}/therapeut={theraId}")
     public Response createNewPatient( @PathParam("firstname") String firstname,
                                       @PathParam("surname") String surname,
                                       @PathParam("email")String email,
@@ -55,7 +55,7 @@ public class PatientResource {
 
     // UPDATING A PATIENT
     @GET
-    @Path("/update/id={patientId}-fn={firstname}-sn={surname}-email={email}-therapeut={theraId}")
+    @Path("/update/id={patientId}/fn={firstname}/sn={surname}/email={email}/therapeut={theraId}")
     public Response createNewPatient(@PathParam("patientId") long patientID,
                                      @PathParam("firstname") String firstname,
                                      @PathParam("surname") String surname,
