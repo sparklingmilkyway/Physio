@@ -19,4 +19,12 @@ export class PatientService implements OnInit{
   getPatient(id){
     return this.http.request(`http://127.0.0.1:8080/api/patient/get/id=`+id).map((res:Response) => res.json());
   }
+
+  getPatientbySurname(surname: string){
+    return this.http.request(`http://127.0.0.1:8080/api/patient/get/sn=`+surname).map((res:Response) => res.json());
+  }
+
+  getPatients(){
+    return this.http.request(`http://127.0.0.1:8080/api/patient/get/`).map((res:Response) => res.json());
+  }
 }

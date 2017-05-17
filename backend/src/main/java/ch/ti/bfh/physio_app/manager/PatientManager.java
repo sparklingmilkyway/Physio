@@ -40,6 +40,14 @@ public class PatientManager {
         return query.getSingleResult();
     }
 
+    public List<Patient> getPatientBySurname(String surname){
+        TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p WHERE p.surname =:surname", Patient.class);
+        return query.getResultList();
+    }
 
+    public List<Patient> getAllPatients(){
+        TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p", Patient.class);
+        return query.getResultList();
+    }
 }
 
