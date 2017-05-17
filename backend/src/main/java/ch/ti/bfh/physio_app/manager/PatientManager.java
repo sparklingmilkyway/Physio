@@ -68,6 +68,19 @@ public class PatientManager {
         patient.setTherapeut(therapeut);
         save(patient);
         return  patient;
+   }
+
+    @Transactional
+    public boolean removePatient(long id){
+        List<Patient> patients = getAllPatients();
+        for(Patient p : patients){
+            if(p.getId() == id){
+                entityManager.remove(p);
+                return true;
+            }
+        }
+        return false;
     }
+
 }
 
