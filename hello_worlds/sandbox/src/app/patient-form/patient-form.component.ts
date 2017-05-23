@@ -29,13 +29,13 @@ export class PatientFormComponent implements OnInit {
   getPatients(){
     this.patientService.getPatients().subscribe(data => this.patients = data);
   }
-
+/*
   loadPatientAdd(){
     this.patientService.addPatient(this.value1, this.value2).subscribe(data => this.patient = data);
     this.getPatients();
     location.reload();
   }
-
+*/
   findPatientGet(){
     this.patientService.getPatient(this.id).subscribe(data => this.patient = data);
   }

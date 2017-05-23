@@ -15,6 +15,7 @@ import { ExerciseFormComponent } from './exercise-form/exercise-form.component';
 import { ProgramFormComponent } from './program-form/program-form.component';
 import {PraxisService} from "./praxis.service";
 import { AdminComponent } from './admin/admin.component';
+import { PatientAddFormComponent } from './patient-add-form/patient-add-form.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AdminComponent } from './admin/admin.component';
     ExerciseFormComponent,
     ProgramFormComponent,
     AdminComponent,
-    routingComponents
+    routingComponents,
+    PatientAddFormComponent
     //
   ],
   imports: [
