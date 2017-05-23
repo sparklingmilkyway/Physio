@@ -2,11 +2,13 @@
   <ul>
     <li><img src="favicon.ico" height="40px"></li>
     <li class="li-elem" *ngFor="let tab of tabs" [class.active] = "tab.active" (click)="activate(tab)">
-      <a>{{tab.title}}</a>
+      <a routerLink='{{tab.title}}' class="link">{{tab.title}}</a>
     </li>
   </ul>
 </nav>
   <div class="indexDiv">
-    <ng-content></ng-content>
+    <router-outlet>
+
+    </router-outlet>
   </div>
 

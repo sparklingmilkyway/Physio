@@ -1,3 +1,4 @@
+import {routingComponents, appRouting} from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,14 +27,16 @@ import { AdminComponent } from './admin/admin.component';
     PatientFormComponent,
     ExerciseFormComponent,
     ProgramFormComponent,
-    AdminComponent
+    AdminComponent,
+    routingComponents
     //
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    appRouting
   ],
   providers: [PraxisService],
   bootstrap: [AppComponent]

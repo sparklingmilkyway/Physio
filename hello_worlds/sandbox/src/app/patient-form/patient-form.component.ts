@@ -33,6 +33,7 @@ export class PatientFormComponent implements OnInit {
   loadPatientAdd(){
     this.patientService.addPatient(this.value1, this.value2).subscribe(data => this.patient = data);
     this.getPatients();
+    location.reload();
   }
 
   findPatientGet(){
@@ -46,5 +47,6 @@ export class PatientFormComponent implements OnInit {
   removePatient(id){
     this.patientService.removePatient(id).subscribe(data => this.patient = data);
     this.getPatients();
+    location.reload();
   }
 }
