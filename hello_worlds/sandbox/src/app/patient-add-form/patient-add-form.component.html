@@ -1,6 +1,9 @@
-<p>
+<p>Patient hinzufügen:</p>
 <form>
-  First name: <input [(ngModel)]="this.surname" [ngModelOptions]="{standalone: true}"><br>
-  Last name: <input [(ngModel)]="this.lastname" [ngModelOptions]="{standalone: true}"><br>
+  <br>
+  Vorname:  <input [(ngModel)]="this.surname" [ngModelOptions]="{standalone: true}"><br><br>
+  Nachname: <input [(ngModel)]="this.lastname" [ngModelOptions]="{standalone: true}"><br><br>
+  Email:  <input [(ngModel)]="this.email" [ngModelOptions]="{standalone: true}"><br><br>
+  Therapeut(Optional): <input [(ngModel)]="this.therapeut" [ngModelOptions]="{standalone: true}"><br><br>
   <button (click)="loadPatientAdd()">Patient hinzufügen</button>
 </form>

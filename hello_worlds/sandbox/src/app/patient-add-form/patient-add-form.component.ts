@@ -11,6 +11,7 @@ export class PatientAddFormComponent implements OnInit {
 
   surname : string;
   lastname : string;
+  email : string;
   patient = {};
   patients: Patient[];
 
@@ -20,7 +21,7 @@ export class PatientAddFormComponent implements OnInit {
   }
 
   loadPatientAdd(){
-    this.patientService.addPatient(this.surname, this.lastname).subscribe(data => this.patient = data);
+    this.patientService.addPatientNew(this.surname, this.lastname,this.email).subscribe(data => this.patient = data);
     this.getPatients();
     location.reload();
   }

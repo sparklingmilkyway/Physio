@@ -11,11 +11,13 @@
     <tr>
       <th>Name</th>
       <th>Jahrgang</th>
-      <th></th>
+      <th>email</th>
+      <th>ID</th>
     </tr>
     <tr *ngFor="let patient of patients">
     <td>{{patient.surname}}</td>
     <td>{{patient.firstname}}</td>
+      <td>{{patient.email}}</td>
     <td>{{patient.id}}</td>
 
       <td><button class="standartButton" (click)="removePatient(patient.id)">löschen</button></td>
