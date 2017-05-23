@@ -23,5 +23,6 @@ export class PatientDetailsFormComponent implements OnInit {
 
   changePatient(){
     this.patientService.changePatient(this.patient.id,this.patient.therapeut,this.patient.surname,this.patient.lastname,this.patient.email).subscribe(data => this.patients = data);
+    location.reload();
   }
 }
