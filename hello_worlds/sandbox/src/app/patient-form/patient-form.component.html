@@ -25,15 +25,13 @@
   </div>
   <div class="indexDiv column col-4" align="center" style="display: inline-block;">
   <br>
-  <nav>
-    <app-tabs>
-      <app-tab title="Hinzufügen">
-      </app-tab>
-      <app-tab title="Suchen">
-      </app-tab>
-    </app-tabs>
-  </nav>
+    <div class="indexDiv">
+    <ul>
+      <li><a routerLink="Hinzufügen">Hinzufügen</a></li>
+      <li><a routerLink="Suchen">Suchen</a></li>
+    </ul>
        <router-outlet></router-outlet>
+    </div>
   <br>
   </div>
   <div class="column col-2" style="display: inline-block;">
