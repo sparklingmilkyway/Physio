@@ -1,0 +1,37 @@
+
+<div *ngIf="patient">
+  <p>Details von {{patient.firstname}} {{patient.surname}}</p>
+  <!--
+  <p>Vorname:{{patient.surname}}</p>
+  <p>Nachname:{{patient.firstname}}</p>
+  <p>Email:{{patient.email}}</p>
+-->
+  <label>Vorname:</label>
+  <input [(ngModel)]="patient.surname"><br>
+  <label>Nachname:</label>
+  <input [(ngModel)]="patient.firstname"><br>
+  <label>Email:</label>
+  <input [(ngModel)]="patient.email"><br>
+  <label>Therapeut</label>
+  <input [(ngModel)]="patient.therapeut"><br>
+  <label>Eindeutige Id: {{patient.id}}</label><br>
+  <button (click)="changePatient()">Änderungen speichern</button>
+</div>
+<!--
+  <form>
+    <br>
+    ID:  <input [(ngModel)]="this.ID" [ngModelOptions]="{standalone: true}"><br><br>
+    <button (click)="findPatient()">Patient finden...</button>
+  </form>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Jahrgang</th>
+    <th>email</th>
+    <th>ID</th>
+    <th>Details</th>
+  </tr>
+  <td>{{patient.surname}}</td>
+</table>
+-->
+

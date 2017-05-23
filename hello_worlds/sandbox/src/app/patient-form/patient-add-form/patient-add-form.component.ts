@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {PatientService} from "../patient.service";
-import {Patient} from "../patient-form/Patient";
+import {Patient} from "../Patient";
+import {PatientService} from "../../patient.service";
+
 
 @Component({
   selector: 'app-patient-add-form',
-  templateUrl: './patient-add-form.component.html',
-  styleUrls: ['./patient-add-form.component.css']
+  templateUrl: './patient-add-form.component.html'
 })
 export class PatientAddFormComponent implements OnInit {
 

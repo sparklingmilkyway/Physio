@@ -19,6 +19,7 @@ export class PatientFormComponent implements OnInit {
   patient = {};
 
   patients: Patient[];
+  private selectedPatient: Patient;
 
   constructor(private patientService: PatientService) { }
 
@@ -48,5 +49,9 @@ export class PatientFormComponent implements OnInit {
     this.patientService.removePatient(id).subscribe(data => this.patient = data);
     this.getPatients();
     location.reload();
+  }
+
+  onSelect(patient: Patient){
+    this.selectedPatient = patient;
   }
 }
