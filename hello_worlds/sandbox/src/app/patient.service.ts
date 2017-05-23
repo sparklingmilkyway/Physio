@@ -35,4 +35,8 @@ export class PatientService implements OnInit{
   removePatient(id){
     return this.http.request(`http://127.0.0.1:8080/api/patient/remove/id=`+id).map((res:Response) => res.json());
   }
+
+  changePatient(id, theraId, surname: string, lastname: string, email: string){
+    return this.http.request(`http://127.0.0.1:8080/api/patient/update/id=`+ id +`/fn=`+lastname+`/sn=`+surname+`/email=`+email+`/therapeut=`+ theraId)
+  }
 }
