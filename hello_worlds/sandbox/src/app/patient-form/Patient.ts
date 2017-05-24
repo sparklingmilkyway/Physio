@@ -6,5 +6,6 @@ export class Patient{
   id: number;
   surname: string;
   lastname: string;
+  email: string;
   therapeut: string;
 }

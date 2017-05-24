@@ -19,6 +19,7 @@ export class PatientFormComponent implements OnInit {
   patient = {};
 
   patients: Patient[];
+  private selectedPatient: Patient;
 
   constructor(private patientService: PatientService) { }
 
@@ -29,12 +30,13 @@ export class PatientFormComponent implements OnInit {
   getPatients(){
     this.patientService.getPatients().subscribe(data => this.patients = data);
   }
-
+/*
   loadPatientAdd(){
     this.patientService.addPatient(this.value1, this.value2).subscribe(data => this.patient = data);
     this.getPatients();
+    location.reload();
   }
-
+*/
   findPatientGet(){
     this.patientService.getPatient(this.id).subscribe(data => this.patient = data);
   }
@@ -46,5 +48,10 @@ export class PatientFormComponent implements OnInit {
   removePatient(id){
     this.patientService.removePatient(id).subscribe(data => this.patient = data);
     this.getPatients();
+    location.reload();
+  }
+
+  onSelect(patient: Patient){
+    this.selectedPatient = patient;
   }
 }

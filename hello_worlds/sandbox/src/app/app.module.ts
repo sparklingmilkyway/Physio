@@ -1,3 +1,4 @@
+import {routingComponents, appRouting} from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +15,10 @@ import { ExerciseFormComponent } from './exercise-form/exercise-form.component';
 import { ProgramFormComponent } from './program-form/program-form.component';
 import {PraxisService} from "./praxis.service";
 import { AdminComponent } from './admin/admin.component';
+import { PatientAddFormComponent } from './patient-form/patient-add-form/patient-add-form.component';
+import { PatientManipulateFormComponent } from './patient-form/patient-manipulate-form/patient-manipulate-form.component';
+import {SubTabComponent, SubTabsComponent} from './sub-tabs/sub-tabs.component';
+import { PatientDetailsFormComponent } from './patient-form/patient-details-form/patient-details-form.component';
 
 
 @NgModule({
@@ -26,14 +31,21 @@ import { AdminComponent } from './admin/admin.component';
     PatientFormComponent,
     ExerciseFormComponent,
     ProgramFormComponent,
-    AdminComponent
+    AdminComponent,
+    routingComponents,
+    PatientAddFormComponent,
+    PatientManipulateFormComponent,
+    SubTabsComponent,
+    SubTabComponent,
+    PatientDetailsFormComponent
     //
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    appRouting
   ],
   providers: [PraxisService],
   bootstrap: [AppComponent]
