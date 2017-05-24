@@ -15,114 +15,117 @@
     <table id="7" parent="4" name="EXERCISE_EXERCISENOTE"/>
     <table id="8" parent="4" name="PATIENT"/>
     <table id="9" parent="4" name="PRAXIS"/>
-    <table id="10" parent="4" name="PRAXIS_THERAPEUT"/>
-    <table id="11" parent="4" name="PROGRAMM"/>
-    <table id="12" parent="4" name="PROGRAMMEXPONENT"/>
-    <table id="13" parent="4" name="PROGRAMM_PROGRAMMEXPONENT"/>
-    <table id="14" parent="4" name="THERAPEUT"/>
-    <column id="15" parent="5" name="ID">
+    <table id="10" parent="4" name="PROGRAMM"/>
+    <table id="11" parent="4" name="PROGRAMMEXPONENT"/>
+    <table id="12" parent="4" name="PROGRAMM_PROGRAMMEXPONENT"/>
+    <table id="13" parent="4" name="THERAPEUT"/>
+    <column id="14" parent="5" name="ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
-      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_ADF92662_9947_40D5_86B2_E3B3F2699555)</DefaultExpression>
+      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_306668CE_CD1F_4871_A6B3_C0B042B0DD8C)</DefaultExpression>
     </column>
-    <column id="16" parent="5" name="EX_NAME">
+    <column id="15" parent="5" name="EX_NAME">
       <Position>2</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="17" parent="5" name="EX_TYPE">
+    <column id="16" parent="5" name="EX_TYPE">
       <Position>3</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="18" parent="5" name="THERAPEUT_ID">
+    <column id="17" parent="5" name="THERAPEUT_ID">
       <Position>4</Position>
       <DataType>BIGINT(19)|-5</DataType>
     </column>
-    <key id="19" parent="5" name="CONSTRAINT_A">
+    <key id="18" parent="5" name="CONSTRAINT_A">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="20" parent="5" name="FKNYBMKIYRTY2Y3SK4YMO375JFU">
+    <foreign-key id="19" parent="5" name="FKNYBMKIYRTY2Y3SK4YMO375JFU">
       <ColNames>THERAPEUT_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>THERAPEUT</RefTableName>
       <RefKeyName>CONSTRAINT_AF</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <column id="21" parent="6" name="ID">
+    <column id="20" parent="6" name="ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
-      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_3DCEE19C_0A5C_4187_B38B_9F0B1C9909EB)</DefaultExpression>
+      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_AEF7EA01_E72C_4832_A379_BEA989148237)</DefaultExpression>
     </column>
-    <column id="22" parent="6" name="EXERCISENOTE">
+    <column id="21" parent="6" name="EXERCISENOTE">
       <Position>2</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="23" parent="6" name="EXERCISE_ID">
+    <column id="22" parent="6" name="EXERCISE_ID">
       <Position>3</Position>
       <DataType>BIGINT(19)|-5</DataType>
     </column>
-    <key id="24" parent="6" name="CONSTRAINT_6">
+    <key id="23" parent="6" name="CONSTRAINT_6">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="25" parent="6" name="FKDJL1IG2LIIGPRFEQ5U583QAD5">
+    <foreign-key id="24" parent="6" name="FKDJL1IG2LIIGPRFEQ5U583QAD5">
       <ColNames>EXERCISE_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>EXERCISE</RefTableName>
       <RefKeyName>CONSTRAINT_A</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <column id="26" parent="7" name="EXERCISE_ID">
+    <column id="25" parent="7" name="EXERCISE_ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="27" parent="7" name="EX_NOTES_ID">
+    <column id="26" parent="7" name="EX_NOTES_ID">
       <Position>2</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <foreign-key id="28" parent="7" name="FKBILT4GS1E7NTLB71DQ6J6PVBK">
+    <foreign-key id="27" parent="7" name="FKBILT4GS1E7NTLB71DQ6J6PVBK">
       <ColNames>EXERCISE_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>EXERCISE</RefTableName>
       <RefKeyName>CONSTRAINT_A</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <foreign-key id="29" parent="7" name="FK85HV2HIOIM11DQAF0WXMNGXKA">
+    <foreign-key id="28" parent="7" name="FK85HV2HIOIM11DQAF0WXMNGXKA">
       <ColNames>EX_NOTES_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>EXERCISENOTE</RefTableName>
       <RefKeyName>CONSTRAINT_6</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <column id="30" parent="8" name="ID">
+    <column id="29" parent="8" name="ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
-      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_16971E06_BC50_4F20_B009_6F45BDF92FFC)</DefaultExpression>
+      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_05069DCD_2E39_4120_8CA0_9B9EA60480D6)</DefaultExpression>
     </column>
-    <column id="31" parent="8" name="FIRSTNAME">
+    <column id="30" parent="8" name="EMAIL">
       <Position>2</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="32" parent="8" name="PASSWORDHASH">
+    <column id="31" parent="8" name="FIRSTNAME">
       <Position>3</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="33" parent="8" name="SURNAME">
+    <column id="32" parent="8" name="PASSWORDHASH">
       <Position>4</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="34" parent="8" name="THERAPEUT_ID">
+    <column id="33" parent="8" name="SURNAME">
       <Position>5</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <column id="34" parent="8" name="THERAPEUT_ID">
+      <Position>6</Position>
       <DataType>BIGINT(19)|-5</DataType>
     </column>
     <key id="35" parent="8" name="CONSTRAINT_F">
@@ -142,7 +145,7 @@
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
-      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_1E353E7C_ECF1_4496_8731_ABB774B8C8B4)</DefaultExpression>
+      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_45AED1DC_1A0A_4963_856C_19AB0B8078D7)</DefaultExpression>
     </column>
     <column id="38" parent="9" name="NAME">
       <Position>2</Position>
@@ -153,170 +156,154 @@
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="40" parent="10" name="PRAXIS_ID">
-      <Position>1</Position>
-      <DataType>BIGINT(19)|-5</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="41" parent="10" name="THERAPEUTS_ID">
-      <Position>2</Position>
-      <DataType>BIGINT(19)|-5</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="42" parent="10" name="UK_NKNSEB0NL70VL4XOQMN6A22Q0_INDEX_6">
-      <ColNames>THERAPEUTS_ID</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="43" parent="10" name="CONSTRAINT_6A">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>PRAXIS_ID
-THERAPEUTS_ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="44" parent="11" name="ID">
+    <column id="40" parent="10" name="ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
-      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_07AA5F0C_B92E_4785_9378_8C8E1A8BF115)</DefaultExpression>
+      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_B37E864B_C744_4D5D_90C0_8602FD80D39C)</DefaultExpression>
     </column>
-    <column id="45" parent="11" name="PROGRAMM_NAME">
+    <column id="41" parent="10" name="PROGRAMM_NAME">
       <Position>2</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="46" parent="11" name="PATIENT_ID">
+    <column id="42" parent="10" name="PATIENT_ID">
       <Position>3</Position>
       <DataType>BIGINT(19)|-5</DataType>
     </column>
-    <key id="47" parent="11" name="CONSTRAINT_F2">
+    <key id="43" parent="10" name="CONSTRAINT_F2">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="48" parent="11" name="FKM79HI8NS0FGDPNT1PVW4DSMJQ">
+    <foreign-key id="44" parent="10" name="FKM79HI8NS0FGDPNT1PVW4DSMJQ">
       <ColNames>PATIENT_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>PATIENT</RefTableName>
       <RefKeyName>CONSTRAINT_F</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <column id="49" parent="12" name="ID">
+    <column id="45" parent="11" name="ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
-      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_998AEDAD_1869_4AFD_9726_6AC9D0B432C1)</DefaultExpression>
+      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_1C962BFF_E83E_409D_9B1B_5F806E5F6FB6)</DefaultExpression>
     </column>
-    <column id="50" parent="12" name="REPS">
+    <column id="46" parent="11" name="REPS">
       <Position>2</Position>
       <DataType>INTEGER(10)|4</DataType>
     </column>
-    <column id="51" parent="12" name="SETS">
+    <column id="47" parent="11" name="SETS">
       <Position>3</Position>
       <DataType>INTEGER(10)|4</DataType>
     </column>
-    <column id="52" parent="12" name="EXERCISE_ID">
+    <column id="48" parent="11" name="EXERCISE_ID">
       <Position>4</Position>
       <DataType>BIGINT(19)|-5</DataType>
     </column>
-    <column id="53" parent="12" name="PATIENT_ID">
+    <column id="49" parent="11" name="PATIENT_ID">
       <Position>5</Position>
       <DataType>BIGINT(19)|-5</DataType>
     </column>
-    <column id="54" parent="12" name="PROGRAMM_ID">
+    <column id="50" parent="11" name="PROGRAMM_ID">
       <Position>6</Position>
       <DataType>BIGINT(19)|-5</DataType>
     </column>
-    <column id="55" parent="12" name="THERAPEUT_ID">
+    <column id="51" parent="11" name="THERAPEUT_ID">
       <Position>7</Position>
       <DataType>BIGINT(19)|-5</DataType>
     </column>
-    <key id="56" parent="12" name="CONSTRAINT_3">
+    <key id="52" parent="11" name="CONSTRAINT_3">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="57" parent="12" name="FK36DLI52TAOTXP7PE8R6J89NN2">
+    <foreign-key id="53" parent="11" name="FK36DLI52TAOTXP7PE8R6J89NN2">
       <ColNames>EXERCISE_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>EXERCISE</RefTableName>
       <RefKeyName>CONSTRAINT_A</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <foreign-key id="58" parent="12" name="FKE7DEIDC45C8KAC122LATRJH98">
+    <foreign-key id="54" parent="11" name="FKE7DEIDC45C8KAC122LATRJH98">
       <ColNames>PATIENT_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>PATIENT</RefTableName>
       <RefKeyName>CONSTRAINT_F</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <foreign-key id="59" parent="12" name="FKTG1BACSARQU4XMV9YIAK4SUKQ">
+    <foreign-key id="55" parent="11" name="FKTG1BACSARQU4XMV9YIAK4SUKQ">
       <ColNames>PROGRAMM_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>PROGRAMM</RefTableName>
       <RefKeyName>CONSTRAINT_F2</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <foreign-key id="60" parent="12" name="FKBAR4AUBX7JC44QTC7NTJ7GIFA">
+    <foreign-key id="56" parent="11" name="FKBAR4AUBX7JC44QTC7NTJ7GIFA">
       <ColNames>THERAPEUT_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>THERAPEUT</RefTableName>
       <RefKeyName>CONSTRAINT_AF</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <column id="61" parent="13" name="PROGRAMM_ID">
+    <column id="57" parent="12" name="PROGRAMM_ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="62" parent="13" name="PROGRAMMEXPONENTS_ID">
+    <column id="58" parent="12" name="PROGRAMMEXPONENTS_ID">
       <Position>2</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <foreign-key id="63" parent="13" name="FK5GLBCCY74OJ2IV8850O08AOF3">
+    <foreign-key id="59" parent="12" name="FK5GLBCCY74OJ2IV8850O08AOF3">
       <ColNames>PROGRAMM_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>PROGRAMM</RefTableName>
       <RefKeyName>CONSTRAINT_F2</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <foreign-key id="64" parent="13" name="FK1A2SAR9U04QXNX98YOA7P3QJC">
+    <foreign-key id="60" parent="12" name="FK1A2SAR9U04QXNX98YOA7P3QJC">
       <ColNames>PROGRAMMEXPONENTS_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>PROGRAMMEXPONENT</RefTableName>
       <RefKeyName>CONSTRAINT_3</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <column id="65" parent="14" name="ID">
+    <column id="61" parent="13" name="ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
-      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_3F176F22_06DB_4FC7_AD30_A9A40E5D5ED0)</DefaultExpression>
+      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_D79CD684_D297_4E6A_8737_847EAD68A7CA)</DefaultExpression>
     </column>
-    <column id="66" parent="14" name="FIRSTNAME">
+    <column id="62" parent="13" name="EMAIL">
       <Position>2</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="67" parent="14" name="PASSWORDHASH">
+    <column id="63" parent="13" name="FIRSTNAME">
       <Position>3</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="68" parent="14" name="SURNAME">
+    <column id="64" parent="13" name="PASSWORDHASH">
       <Position>4</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="69" parent="14" name="PRAXIS_ID">
+    <column id="65" parent="13" name="SURNAME">
       <Position>5</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <column id="66" parent="13" name="PRAXIS_ID">
+      <Position>6</Position>
       <DataType>BIGINT(19)|-5</DataType>
     </column>
-    <key id="70" parent="14" name="CONSTRAINT_AF">
+    <key id="67" parent="13" name="CONSTRAINT_AF">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="71" parent="14" name="FKPMM0JWL1UGFGO84XIGNKWYFTR">
+    <foreign-key id="68" parent="13" name="FKPMM0JWL1UGFGO84XIGNKWYFTR">
       <ColNames>PRAXIS_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>PRAXIS</RefTableName>
