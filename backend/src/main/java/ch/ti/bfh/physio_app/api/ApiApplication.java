@@ -15,14 +15,13 @@ public class ApiApplication extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         return newHashSet(
-                HelloWorldResource.class,
                 UserResource.class,
                 ProgrammExerciseResource.class,
                 ApiApplication.class,
                 PraxisResource.class,
                 CorsFilter.class,
                 PatientResource.class,
-                ExerciseRessource.class
+                ExerciseResource.class
         );
     }
 }

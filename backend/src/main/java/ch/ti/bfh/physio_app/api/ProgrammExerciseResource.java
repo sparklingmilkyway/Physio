@@ -46,6 +46,7 @@ public class ProgrammExerciseResource {
 
     /** Exercise **/
 
+    /*
     @GET
     @Path("/exercise")
     public Response exercise() {

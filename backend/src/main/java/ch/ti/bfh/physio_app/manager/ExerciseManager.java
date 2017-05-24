@@ -1,14 +1,17 @@
 package ch.ti.bfh.physio_app.manager;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.persistence.*;
 import javax.inject.Inject;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 
+import ch.ti.bfh.physio_app.concept.*;
 import ch.ti.bfh.physio_app.concept.Exercise;
 import ch.ti.bfh.physio_app.concept.ExerciseNote;
 import ch.ti.bfh.physio_app.concept.Patient;
 
+import java.io.*;
 import java.util.List;
 
 /**
@@ -93,9 +96,109 @@ public class ExerciseManager {
     }
 
     @Transactional
+    public Exercise updateExercise(long exerciseID, String name, String type, Therapeut therapeut){
+        Exercise exercise = getExerciseById(exerciseID);
+        exercise.setName(name);
+        exercise.setType(type);
+        exercise.setTherapeut(therapeut);
+        save(exercise);
+        return exercise;
+    }
+    @Transactional
     public List<Exercise> getAllExercises(){
         TypedQuery<Exercise> query = entityManager.createQuery("SELECT e FROM Exercise e", Exercise.class);
         return query.getResultList();
     }
 
 }
+
+    @Transactional
+    public List<Exercise> getAllExercises(){
+        TypedQuery<Exercise> query = entityManager.createQuery("SELECT e FROM Exercise e", Exercise.class);
+        return query.getResultList();
+    }
+
+
+    // PICTURE STUFF
+
+    @Transactional
+    public List<Picture> getAllPicturesOfExercise(Exercise exercise){
+        long exerciseId = exercise.getId();
+        TypedQuery<Picture> query = entityManager.createQuery("SELECT p FROM Picture p Where p.exercise.id = :id", Picture.class);
+        query.setParameter("id", exerciseId);
+        return query.getResultList();
+    }
+
+
+    @Transactional
+    public void save(Picture picture) {
+        entityManager.persist(picture);
+    }
+
+
+    @Transactional
+    public Picture getPictureById(long id){
+        TypedQuery<Picture> query = entityManager.createQuery("SELECT p FROM Picture p where p.id = :id", Picture.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+    }
+
+    @Transactional
+    public File getPictureFileById(long id){
+        //Picture picture = getPictureById(id);
+        File pictureFile = new File("c:\\data\\exImages\\"+id+".jpg");
+        return pictureFile;
+    }
+
+    @Transactional
+    public String addPictureFileToExercise(Exercise exercise, InputStream uploadedInputStream){
+
+        // Create Picture in DB and get unique ID
+        Picture picture = new Picture(exercise);
+        long id = picture.getId();
+        save(picture);
+
+        //Server
+        //String uploadedFileLocation = "/data/exImages/" + fileDetail.getFileName();
+        //local Vanessa
+        String uploadedFileLocation = "/Users/Vanessa/Desktop/" + id + ".jpg";
+
+        System.out.println(uploadedFileLocation);
+
+        // save it
+        File  objFile=new File(uploadedFileLocation);
+        if(objFile.exists())
+            objFile.delete();
+
+        saveToFile(uploadedInputStream, uploadedFileLocation);
+
+        String output = "File uploaded via Jersey based RESTFul Webservice to: " + uploadedFileLocation;
+
+        return output;
+    }
+
+
+    private void saveToFile(InputStream uploadedInputStream, String uploadedFileLocation) {
+
+        try {
+            OutputStream outputStream = null;
+            int read = 0;
+            byte[] bytes = new byte[1024];
+
+            outputStream = new FileOutputStream(new File(uploadedFileLocation));
+            while ((read = uploadedInputStream.read(bytes)) != -1) {
+                outputStream.write(bytes, 0, read);
+            }
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+}
+

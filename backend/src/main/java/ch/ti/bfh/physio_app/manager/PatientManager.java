@@ -72,6 +72,13 @@ public class PatientManager {
 
     @Transactional
     public boolean removePatient(long id){
+        //isch es query nid schneuer?
+        // TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p WHERE p.id =:id)", Patient.class);
+        // query.setParameter("id", id);
+        // Patient patient = query.getSingleResult();
+
+
+
         List<Patient> patients = getAllPatients();
         for(Patient p : patients){
             if(p.getId() == id){
