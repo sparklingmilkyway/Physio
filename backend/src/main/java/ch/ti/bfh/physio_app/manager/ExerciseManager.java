@@ -2,14 +2,12 @@ package ch.ti.bfh.physio_app.manager;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
+import javax.persistence.*;
 import javax.transaction.Transactional;
 
 import ch.ti.bfh.physio_app.concept.Exercise;
 import ch.ti.bfh.physio_app.concept.ExerciseNote;
+import ch.ti.bfh.physio_app.concept.Patient;
 
 import java.util.List;
 
@@ -92,6 +90,12 @@ public class ExerciseManager {
             return true;
         }
         else return false;
+    }
+
+    @Transactional
+    public List<Exercise> getAllExercises(){
+        TypedQuery<Exercise> query = entityManager.createQuery("SELECT e FROM Exercise e", Exercise.class);
+        return query.getResultList();
     }
 
 }
