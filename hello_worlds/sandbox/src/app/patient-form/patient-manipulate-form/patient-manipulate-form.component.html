@@ -1,3 +1,34 @@
-<p>
-  patient-manipulate-form works!
-</p>
+<p>Patient suchen:</p>
+<!--<form (ngSubmit)="loadPatientAdd()">
+  <br>
+  Vorname:  <input required="required" pattern="[A-Za-z0-9]{1,20}" [(ngModel)]="this.surname" [ngModelOptions]="{standalone: true}"><br><br>
+  Nachname: <input required="required"  [(ngModel)]="this.lastname" [ngModelOptions]="{standalone: true}"><br><br>
+  Email:  <input required="required" type="email" [(ngModel)]="this.email" [ngModelOptions]="{standalone: true}"><br><br>
+  Therapeut(Optional): <input [(ngModel)]="this.therapeut" [ngModelOptions]="{standalone: true}"><br><br>
+  <button type="submit">Patient hinzufügen</button>
+</form>-->
+<form (ngSubmit)="getPatientById()">
+  <p>Nach folgdenem Kriterium suchen...</p>
+  <select>
+    <option value="id">ID</option>
+    <option value="Nachname">ID</option>
+    <option vlaue="ID">ID</option>
+  </select>
+  <input [(ngModel)]="this.searchValue"  [ngModelOptions]="{standalone: true}">
+  <input type="submit">
+</form>
+<div *ngIf="patient">
+<table>
+  <tr>
+    <th>Vorname</th>
+    <th>Nachname</th>
+    <th>Details</th>
+  </tr>
+  <tr (click)="onSelect(patient)">
+    <td>{{patient.surname}}</td>
+    <td>{{patient.firstname}}</td>
+    <td><a router-link='Details'>Details</a></td>
+    <!--<td><button class="standartButton" (click)="removePatient(patient.id)">löschen</button></td>-->
+  </tr>
+</table>
+</div>

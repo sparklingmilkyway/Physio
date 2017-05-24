@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PatientService} from "../../patient.service";
+import {Patient} from "../Patient";
 
 @Component({
   selector: 'app-patient-manipulate-form',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientManipulateFormComponent implements OnInit {
 
-  constructor() { }
+  searchValue;
+  patient: {};
+  selectedPatient: Patient;
+
+  constructor(private patientService: PatientService) { }
+
+  getPatientById(){
+    this.patientService.getPatient(this.searchValue).subscribe(data => this.patient = data);
+  }
 
   ngOnInit() {
+  }
+
+  onSelect(patient: Patient){
+    this.selectedPatient = patient;
   }
 
 }
