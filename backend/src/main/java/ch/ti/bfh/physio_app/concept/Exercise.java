@@ -60,4 +60,11 @@ public class Exercise extends pEntityWithID {
         this.ex_notes = notes;
     }
 
+    public Therapeut getTherapeut() {
+        return therapeut;
+    }
+
+    public void setTherapeut(Therapeut therapeut) {
+        this.therapeut = therapeut;
+    }
 }
