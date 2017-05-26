@@ -18,4 +18,8 @@ export class ExerciseService implements OnInit{
  getExercises(){
     return this.http.request(`http://127.0.0.1:8080/api/exercise/get/`).map((res:Response) => res.json());
  }
+
+ changeExercise(id: number,name: string,type: string){
+   return this.http.request(`http://127.0.0.1:8080/api/exercise/update/id=`+id+`/name=`+name+`/type=`+type+`/therapeut=`+1);
+ }
 }
