@@ -65,6 +65,18 @@ public class ExerciseManager {
         return false;
     }
 
+    @Transactional
+    public boolean removeExercise(long id){
+        List<Exercise> exercises = getAllExercises();
+        for(Exercise e : exercises){
+            if(e.getId() == id){
+                entityManager.remove(e);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ExerciseNote getNote(Exercise exercise, ExerciseNote exerciseNote){
         List<ExerciseNote> exerciseList = exercise.getNotes();
         if(exerciseList.contains(exerciseNote)){

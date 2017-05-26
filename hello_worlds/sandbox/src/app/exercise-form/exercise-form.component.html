@@ -12,7 +12,7 @@
         <td>{{exercise.type}}</td>
         <td>{{exercise.therapeut}}</td>
         <td><a router-link='Details'>Details</a></td>
-        <td><button class="standartButton" >löschen</button> </td>
+        <td><button class="standartButton" (click)="removeExercise(exercise.id)" >löschen</button> </td>
       </tr>
     </table>
   </div>

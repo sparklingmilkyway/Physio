@@ -28,6 +28,12 @@ export class ExerciseFormComponent implements OnInit {
     this.exerciseService.getExercises().subscribe( data => this.exercises = data);
   }
 
+  removeExercise(id: number){
+    this.exerciseService.removeExercise(id).subscribe(data => this.exercise = data);
+    this.getExercises();
+    location.reload();
+  }
+
   onSelect(exercise: Exercise){
       this.selectedExercise = exercise;
   }

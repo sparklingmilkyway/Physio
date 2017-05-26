@@ -80,6 +80,11 @@ public class ExerciseResource {
         return exerciseList;
     }
 
+    @GET
+    @Path("/remove/id={id}")
+    public boolean removePatient(@PathParam("id") long id){
+        return exerciseManager.removeExercise(id);
+    }
 
     @Path("/image/{id}")
     public Response getImage(@PathParam("id") long id) {
@@ -111,7 +116,5 @@ public class ExerciseResource {
         String result = exerciseManager.addPictureFileToExercise(exerciseManager.getExerciseById(exerciseID), uploadedInputStream);
 
         return Response.status(200).entity(result).build();
-
     }
-
 }

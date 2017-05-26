@@ -22,4 +22,9 @@ export class ExerciseService implements OnInit{
  changeExercise(id: number,name: string,type: string){
    return this.http.request(`http://127.0.0.1:8080/api/exercise/update/id=`+id+`/name=`+name+`/type=`+type+`/therapeut=`+1);
  }
+
+ removeExercise(id: number){
+    return this.http.request(`http://127.0.0.1:8080/api/exercise/remove/id=`+id)
+      .map((res:Response) => res.json());
+ }
 }
