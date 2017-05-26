@@ -16,6 +16,7 @@ export class ExerciseFormComponent implements OnInit {
   text: string = "Übungen";
   exercise = {};
   exercises: Exercise[];
+  private selectedExercise: Exercise;
 
   constructor(private exerciseService: ExerciseService) { }
 
@@ -27,4 +28,7 @@ export class ExerciseFormComponent implements OnInit {
     this.exerciseService.getExercises().subscribe( data => this.exercises = data);
   }
 
+  onSelect(exercise: Exercise){
+      this.selectedExercise = exercise;
+  }
 }

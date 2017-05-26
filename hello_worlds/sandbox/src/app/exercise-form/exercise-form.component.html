@@ -7,12 +7,17 @@
         <th>Gruppe</th>
         <th>Therapeut</th>
       </tr>
-      <tr *ngFor="let exercise of exercises">
+      <tr *ngFor="let exercise of exercises" (click)="onSelect(exercise)">
         <td>{{exercise.name}}</td>
-        <td>{{exercise.gruppe}}</td>
+        <td>{{exercise.type}}</td>
         <td>{{exercise.therapeut}}</td>
+        <td><a router-link='Details'>Details</a></td>
+        <td><button class="standartButton" >löschen</button> </td>
       </tr>
     </table>
+  </div>
+  <div class="col-2">
+    <app-exercise-detail-form [exercise]="selectedExercise">Loading...</app-exercise-detail-form>
   </div>
 </div>
 <div class="indexDiv column col-4" align="center">
