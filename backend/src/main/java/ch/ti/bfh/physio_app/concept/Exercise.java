@@ -14,7 +14,7 @@ public class Exercise extends pEntityWithID {
     private String ex_name;
     private String ex_type;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "exercise", cascade = CascadeType.ALL)
     private List<ExerciseNote> ex_notes = new ArrayList<>();
 
     @ManyToOne
