@@ -19,6 +19,7 @@ import { PatientAddFormComponent } from './patient-form/patient-add-form/patient
 import { PatientManipulateFormComponent } from './patient-form/patient-manipulate-form/patient-manipulate-form.component';
 import {SubTabComponent, SubTabsComponent} from './sub-tabs/sub-tabs.component';
 import { PatientDetailsFormComponent } from './patient-form/patient-details-form/patient-details-form.component';
+import { ExerciseAddFormComponent } from './exercise-form/exercise-add-form/exercise-add-form.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { PatientDetailsFormComponent } from './patient-form/patient-details-form
     PatientManipulateFormComponent,
     SubTabsComponent,
     SubTabComponent,
-    PatientDetailsFormComponent
+    PatientDetailsFormComponent,
+    ExerciseAddFormComponent
     //
   ],
   imports: [

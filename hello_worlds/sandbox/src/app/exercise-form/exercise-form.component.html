@@ -5,24 +5,22 @@
       <tr>
         <th>Name</th>
         <th>Gruppe</th>
-        <th></th>
+        <th>Therapeut</th>
       </tr>
-      <tr>
-        <td>Kniebeugen</td>
-        <td>Beinübungne</td>
-        <td>Details/Bearbeiten</td>
-      </tr>
-      <tr>
-        <td>Bankdrücken</td>
-        <td>Brust</td>
-        <td>Details/Bearbeiten</td>
-      </tr>
-      <tr>
-        <td>BizepsCurls</td>
-        <td>Arme</td>
-        <td>Details/Bearbeiten</td>
+      <tr *ngFor="let exercise of exercises">
+        <td>{{exercise.name}}</td>
+        <td>{{exercise.gruppe}}</td>
+        <td>{{exercise.therapeut}}</td>
       </tr>
     </table>
   </div>
-  <button>Übung hinzufügen</button>
+</div>
+<div class="indexDiv column col-4" align="center">
+  <br>
+  <div class="indexDiv">
+    <ul>
+      <li><a routerLink="Hinzufügen">Hinzufügen</a></li>
+      <li><a routerLink="Suchen">Suchen</a></li>
+    </ul>
+  </div>
 </div>

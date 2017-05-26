@@ -1,15 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import {Patient} from "../patient-form/Patient";
+import {PatientService} from "../patient.service";
+import {Exercise} from "app/exercise-form/Exercise";
+import {ExerciseService} from "./exercise.service";
 
 @Component({
   selector: 'app-exercise-form',
   templateUrl: './exercise-form.component.html',
-  styleUrls: ['./exercise-form.component.css']
+  styleUrls: ['./exercise-form.component.css'],
+  providers: [ExerciseService]
 })
+
 export class ExerciseFormComponent implements OnInit {
 
-  constructor() { }
+  text: string = "Übungen";
+  exercise = {};
+  exercises: Exercise[];
+
+  constructor(private exerciseService: ExerciseService) { }
 
   ngOnInit() {
+    this.getExercises();
   }
-  text: string = "Übungen";
+
+  getExercises(){
+    this.exerciseService.getExercises().subscribe( data => this.exercises = data);
+  }
+
 }
