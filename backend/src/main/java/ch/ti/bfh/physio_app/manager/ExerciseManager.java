@@ -110,13 +110,6 @@ public class ExerciseManager {
         return query.getResultList();
     }
 
-}
-
-    @Transactional
-    public List<Exercise> getAllExercises(){
-        TypedQuery<Exercise> query = entityManager.createQuery("SELECT e FROM Exercise e", Exercise.class);
-        return query.getResultList();
-    }
 
 
     // PICTURE STUFF
@@ -177,7 +170,6 @@ public class ExerciseManager {
         return output;
     }
 
-
     private void saveToFile(InputStream uploadedInputStream, String uploadedFileLocation) {
 
         try {
@@ -195,10 +187,5 @@ public class ExerciseManager {
             e.printStackTrace();
         }
     }
-
-
-
-
-
 }
 
