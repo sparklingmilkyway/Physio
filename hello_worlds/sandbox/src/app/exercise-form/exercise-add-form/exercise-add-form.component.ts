@@ -20,12 +20,14 @@ export class ExerciseAddFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  loadPatientAdd(){
+  loadExerciseAdd(){
     this.exerciseService.addExercise(this.name,this.gruppe,this.therapeut).subscribe(data => this.exercise = data );
+    this.getExercises();
+    location.reload();
   }
-/*
+
   getExercises(){
     this.exerciseService.getExercises().subscribe( data => this.exercises = data);
-  }*/
+  }
 
 }
