@@ -13,6 +13,12 @@ import {PatientAddFormComponent} from "./patient-form/patient-add-form/patient-a
 import {patientRouting, patientRoutingComponents} from "./patient-form/patient.routing";
 import {exerciseRouting, exerciseRoutingComponents} from "./exercise-form/exercise.routing";
 
+/**
+ *
+ * @type {[{path: string; component: WelcomeFormComponent},{path: string; component: ExerciseFormComponent},{path: string; component: ProgramFormComponent},{path: string; component: AdminComponent},any,any]}
+ *
+ * this is the very root component of our angular Routes. Tese are necessary to properly navigate through our application.
+ */
 export const appRoutes: Routes = [
   {path: 'Home', component: WelcomeFormComponent},
   {path:'Übungen', component: ExerciseFormComponent},

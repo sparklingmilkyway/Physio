@@ -2,7 +2,13 @@ import {Injectable, OnInit} from '@angular/core';
 import {Http, Response} from "@angular/http";
 import 'rxjs/add/operator/map';
 
-@Injectable()
+/**
+ * this is a so called service from the Angular framework. the goal is ti have exactly one injectable instance who makes
+ * calls to our server. these uri calls are static. If we have enough time, we will change the directory of this file directly into the patient
+ * form component.
+ **/
+
+ @Injectable()
 export class PatientService implements OnInit{
 
   ngOnInit(){
