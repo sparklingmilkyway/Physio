@@ -24,6 +24,10 @@ import java.util.List;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.ok;
 
+/**
+ * This is the REST ressource for all patient calls from the angular frontend which go to our jboss server.
+ *
+ */
 @Path("/patient")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)

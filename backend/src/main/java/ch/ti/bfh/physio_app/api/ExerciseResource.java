@@ -21,6 +21,12 @@ import java.util.List;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.ok;
 
+
+/**
+* This is the REST ressource for all exercise calls from the angular frontend which go to our jboss server inlcuding
+ * all queries for our images
+*
+ */
 @Path("/exercise")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
