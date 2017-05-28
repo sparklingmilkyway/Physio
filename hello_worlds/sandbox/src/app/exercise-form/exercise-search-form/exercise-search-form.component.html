@@ -1,0 +1,27 @@
+<p>
+  Übung suchen:
+</p>
+
+<form (ngSubmit)="getExerciseById()">
+  <p>Nach folgendem Kriterium suchen...</p>
+  <select>
+    <option>ID</option>
+    <option>ID</option>
+    <option>ID</option>
+  </select>
+  <input [(ngModel)]="this.searchValue" [ngModelOptions]="{standalone: true}">
+  <input type="submit">
+</form>
+<div *ngIf="exercise">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Gruppe</th>
+      <th>Details</th>
+    </tr>
+    <tr (click)="onSelect(exercise)">
+      <td>{{exercise.name}}</td>
+      <td>{{exercise.type}}</td>
+    </tr>
+  </table>
+</div>

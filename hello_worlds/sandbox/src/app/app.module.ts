@@ -21,6 +21,8 @@ import {SubTabComponent, SubTabsComponent} from './sub-tabs/sub-tabs.component';
 import { PatientDetailsFormComponent } from './patient-form/patient-details-form/patient-details-form.component';
 import { ExerciseAddFormComponent } from './exercise-form/exercise-add-form/exercise-add-form.component';
 import { ExerciseDetailFormComponent } from './exercise-form/exercise-detail-form/exercise-detail-form.component';
+import { ExerciseDetailsFormComponent } from './exercise-form/exercise-details-form/exercise-details-form.component';
+import { ExerciseSearchFormComponent } from './exercise-form/exercise-search-form/exercise-search-form.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { ExerciseDetailFormComponent } from './exercise-form/exercise-detail-for
     SubTabComponent,
     PatientDetailsFormComponent,
     ExerciseAddFormComponent,
-    ExerciseDetailFormComponent
+    ExerciseDetailFormComponent,
+    ExerciseDetailsFormComponent,
+    ExerciseSearchFormComponent
     //
   ],
   imports: [
