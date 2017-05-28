@@ -7,11 +7,16 @@ import ch.ti.bfh.physio_app.manager.LoginManager;
 import ch.ti.bfh.physio_app.manager.PatientManager;
 import ch.ti.bfh.physio_app.manager.PraxisManager;
 import ch.ti.bfh.physio_app.manager.TherapeutManager;
+import com.sun.org.apache.regexp.internal.RE;
 
 
+import javax.ejb.EJBException;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.interceptor.Interceptor;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +27,7 @@ import static javax.ws.rs.core.Response.ok;
 @Path("/patient")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
-public class PatientResource {
+public class PatientResource{
 
     @Inject
     private PraxisManager praxisManager;
@@ -80,8 +85,17 @@ public class PatientResource {
     @GET
     @Path("/get/id={id}")
     public Response getPatient(@PathParam("id") long id){
-        Patient patient = patientManager.getPatientById(id);
-        return ok(patient).build();
+        try {
+            Patient patient = patientManager.getPatientById(id);
+            return ok(patient).build();
+        } catch(Exception ex){
+            /*Response error = Response.serverError().entity(ex.getMessage()).build();
+            String x = error.toString();*/
+            Patient patient = new Patient();
+            patient.setSurname("Kein Patient mit dieser ID gefunden...");
+            patient.setFirstname("");
+            return ok(patient).build();
+        }
     }
 
     @GET
@@ -103,7 +117,4 @@ public class PatientResource {
     public boolean removePatient(@PathParam("id") long id){
         return patientManager.removePatient(id);
     }
-
-
-
 }
