@@ -5,7 +5,7 @@
 export class Patient{
   id: number;
   surname: string;
-  lastname: string;
+  firstname: string;
   email: string;
   therapeut: string;
 }
