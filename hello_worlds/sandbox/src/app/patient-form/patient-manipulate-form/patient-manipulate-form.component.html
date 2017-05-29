@@ -1,12 +1,4 @@
 <p>Patient suchen:</p>
-<!--<form (ngSubmit)="loadPatientAdd()">
-  <br>
-  Vorname:  <input required="required" pattern="[A-Za-z0-9]{1,20}" [(ngModel)]="this.surname" [ngModelOptions]="{standalone: true}"><br><br>
-  Nachname: <input required="required"  [(ngModel)]="this.lastname" [ngModelOptions]="{standalone: true}"><br><br>
-  Email:  <input required="required" type="email" [(ngModel)]="this.email" [ngModelOptions]="{standalone: true}"><br><br>
-  Therapeut(Optional): <input [(ngModel)]="this.therapeut" [ngModelOptions]="{standalone: true}"><br><br>
-  <button type="submit">Patient hinzufügen</button>
-</form>-->
 <form (ngSubmit)="getPatientById()">
   <p>Nach folgdenem Kriterium suchen...</p>
   <select>

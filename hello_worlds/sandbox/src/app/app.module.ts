@@ -21,8 +21,8 @@ import {SubTabComponent, SubTabsComponent} from './sub-tabs/sub-tabs.component';
 import { PatientDetailsFormComponent } from './patient-form/patient-details-form/patient-details-form.component';
 import { ExerciseAddFormComponent } from './exercise-form/exercise-add-form/exercise-add-form.component';
 import { ExerciseDetailFormComponent } from './exercise-form/exercise-detail-form/exercise-detail-form.component';
-import { ExerciseDetailsFormComponent } from './exercise-form/exercise-details-form/exercise-details-form.component';
 import { ExerciseSearchFormComponent } from './exercise-form/exercise-search-form/exercise-search-form.component';
+import { PopupModule } from 'ng2-opd-popup';
 
 
 @NgModule({
@@ -44,7 +44,6 @@ import { ExerciseSearchFormComponent } from './exercise-form/exercise-search-for
     PatientDetailsFormComponent,
     ExerciseAddFormComponent,
     ExerciseDetailFormComponent,
-    ExerciseDetailsFormComponent,
     ExerciseSearchFormComponent
     //
   ],
@@ -53,7 +52,8 @@ import { ExerciseSearchFormComponent } from './exercise-form/exercise-search-for
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    appRouting
+    appRouting,
+    PopupModule.forRoot()
   ],
   providers: [PraxisService],
   bootstrap: [AppComponent]
