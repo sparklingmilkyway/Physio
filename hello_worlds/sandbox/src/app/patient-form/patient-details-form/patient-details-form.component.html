@@ -6,6 +6,7 @@
   <p>Nachname:{{patient.firstname}}</p>
   <p>Email:{{patient.email}}</p>
 -->
+  <div style="text-align: left;">
   <label>Vorname:</label>
   <input [(ngModel)]="patient.surname"><br>
   <label>Nachname:</label>
@@ -14,8 +15,9 @@
   <input [(ngModel)]="patient.email"><br>
   <label>Therapeut</label>
   <input [(ngModel)]="patient.therapeut"><br>
-  <label>Eindeutige Id: {{patient.id}}</label><br>
-  <button (click)="changePatient()">Änderungen speichern</button>
+  <label>Eindeutige Id: {{patient.id}}</label><br><br><br>
+  <!--<button (click)="changePatient()">Änderungen speichern</button>-->
+</div>
 </div>
 <!--
   <form>

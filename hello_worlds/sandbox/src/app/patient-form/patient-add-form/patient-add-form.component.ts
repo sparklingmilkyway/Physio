@@ -15,7 +15,8 @@ export class PatientAddFormComponent implements OnInit {
   patient = {};
   patients: Patient[];
 
-  constructor(private patientService: PatientService) { }
+  constructor(private patientService: PatientService) {
+  }
 
   ngOnInit() {
   }
