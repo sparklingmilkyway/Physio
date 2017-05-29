@@ -1,4 +1,7 @@
 <div class="column col-6" align="center">
+  <popup (confirmClick)="changePatient()" #popup1>
+    <app-patient-details-form [patient]="selectedPatient">loading..</app-patient-details-form>
+  </popup>
 <div class="indexDiv column col-4" align="center" style="display: inline-block;">
   <!--
   <li *ngFor="let patient of patients">
@@ -6,9 +9,6 @@
     <span>{{patient.id}}</span>
     <br>
   </li>-->
-  <popup #popup1>
-    <app-patient-details-form [patient]="selectedPatient">loading..</app-patient-details-form>
-  </popup>
   <table>
     <tr>
       <th>Vorname</th>
