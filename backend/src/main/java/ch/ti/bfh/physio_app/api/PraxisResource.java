@@ -27,9 +27,6 @@ public class PraxisResource {
     @Inject
     private TherapeutManager therapeutManager;
 
-    @Inject
-    private PatientManager patientManager;
-
 
     @POST
     @Path("")
@@ -70,6 +67,5 @@ public class PraxisResource {
         Therapeut therapeut = therapeutManager.getTherapeutById(id);
         return ok(therapeut).build();
     }
-
 
 }
