@@ -45,49 +45,27 @@ public class PatientResource{
     @Inject
     private LoginManager loginManager;
 
+
     // CREATING A NEW PATIENT
-    @GET
-    @Path("/create/fn={firstname}/sn={surname}/email={email}/pw={password}/therapeut={theraId}")
-    public Response createNewPatient( @PathParam("firstname") String firstname,
-                                      @PathParam("surname") String surname,
-                                      @PathParam("email")String email,
-                                      @PathParam("password")String password,
-                                      @PathParam("theraId")long therapeutID) {
-        long id = 1;
-        Praxis praxis = praxisManager.getPraxisById(id);
-        Therapeut therapeut = therapeutManager.getTherapeutById(therapeutID);
-        String passwordHash = loginManager.doHash(password);
-        Patient patient = new Patient(firstname, surname, email, passwordHash, therapeut);
+    @POST
+    @Path("")
+    public Response createNewPatient(Patient patient) {
         patientManager.save(patient);
         return ok(patient).build();
     }
 
-    // UPDATING A PATIENT
-    @GET
-    @Path("/update/id={patientId}/fn={firstname}/sn={surname}/email={email}/therapeut={theraId}")
-    public Response createNewPatient(@PathParam("patientId") long patientID,
-                                     @PathParam("firstname") String firstname,
-                                     @PathParam("surname") String surname,
-                                     @PathParam("email")String email,
-                                     @PathParam("theraId")long therapeutID) {
-        Therapeut therapeut = therapeutManager.getTherapeutById(therapeutID);
-        Patient patient = patientManager.updatePatient(patientID, firstname, surname, email, therapeut);
+    // UPDATING A NEW PATIENT
+    @POST
+    @Path("/update")
+    public Response updatePatient(Patient patient) {
+       // patientManager.updatePatient(patient);
         return ok(patient).build();
     }
 
-    @GET
-    @Path("/add/fn={firstname}/sn={surname}")
-    public Response addPatient(@PathParam("firstname") String firstname, @PathParam("surname") String surname) {
-        long id = 1;
-        Praxis praxis = praxisManager.getPraxisById(id);
-        Therapeut therapeut = therapeutManager.getTherapeutById(id);
-        Patient patient = new Patient(firstname, surname, "jonas@mail.ch", "pwhs", therapeut);
-        patientManager.save(patient);
-        return ok(patient).build();
-    }
 
+    // get a patient by ID
     @GET
-    @Path("/get/id={id}")
+    @Path("/{id}")
     public Response getPatient(@PathParam("id") long id){
         try {
             Patient patient = patientManager.getPatientById(id);
@@ -102,22 +80,33 @@ public class PatientResource{
         }
     }
 
+    // get a patient by surname
     @GET
-    @Path("/get/sn={surname}")
+    @Path("/sn={surname}")
     public Response getPatient(@PathParam("surname") String surname){
         List<Patient> patientList = patientManager.getPatientBySurname(surname);
         return ok(patientList).build();
     }
 
+    // get all patients
     @GET
-    @Path("/get/")
+    @Path("/all")
     public List<Patient> getPatients(){
         List<Patient> patientList = patientManager.getAllPatients();
         return patientList;
     }
 
+    // get all patients
     @GET
-    @Path("/remove/id={id}")
+    @Path("/all/{therapeutID}")
+    public List<Patient> getPatients(@PathParam("therapeutID") long therapeutID){
+        List<Patient> patientList = patientManager.getAllPatientsOfTherapeut(therapeutID);
+        return patientList;
+    }
+
+    // remove patient
+    @GET
+    @Path("/remove/{id}")
     public boolean removePatient(@PathParam("id") long id){
         return patientManager.removePatient(id);
     }

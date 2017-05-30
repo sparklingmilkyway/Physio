@@ -48,6 +48,13 @@ public class PatientManager {
     }
 
     @Transactional
+    public List<Patient> getAllPatientsOfTherapeut(long therapeutID){
+        TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p where p.therapeut.id = :id", Patient.class);
+        query.setParameter("id", therapeutID);
+        return query.getResultList();
+    }
+
+    @Transactional
     public List<Patient> getPatientBySurname(String surname){
         TypedQuery<Patient> query = entityManager.createQuery("SELECT p FROM Patient p WHERE p.surname =:surname", Patient.class);
         return query.getResultList();
