@@ -14,7 +14,6 @@ import java.util.Set;
 /**
  * This class describes the attributes and function of a Praxis.
  */
-@XmlRootElement(name = "Praxis")
 @Entity
 public class Praxis extends pEntityWithID{
 
