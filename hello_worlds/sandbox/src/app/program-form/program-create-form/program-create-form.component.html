@@ -1,5 +1,5 @@
 <div class="column col-6" align="center">
-  <div class="indexDiv column col-4" align="center" style="display: inline-block;">
+  <div class="indexDiv column col-5" align="center" style="display: inline-block;">
     <button (click)="getExercises()">Übungen laden..</button>
     <table>
       <tr>
@@ -15,6 +15,19 @@
         <td><button class="standartButton" (click)="addToProgramm(exercise)" >hinzufügen</button> </td>
       </tr>
     </table>
+  </div>
+      <div class="indexDiv column col-4" style="display: inline-block;">
+        <img src="Placeholder" alt="Placeholder">
+      </div>
+      <div class="indexDiv column col-2" style="display: inline-block;">
+        <form>
+        <p>Notizen</p><br>
+        <textarea rowa="4" cols="25"></textarea>
+        <p>Wiederholungen</p><input>
+        <p>Sätze</p><input>
+        <button type="submit">Hinzufügen</button>
+        </form>
+      </div>
       <p>Hinzugefügte Übungen</p>
     <table>
       <th>Name</th>
@@ -25,4 +38,3 @@
     </tr>
     </table>
   </div>
-</div>
