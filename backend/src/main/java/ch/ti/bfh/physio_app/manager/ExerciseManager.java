@@ -32,81 +32,84 @@ public class ExerciseManager {
     private EntityManager entityManager;
 
     @Transactional
-    public void save(Exercise ex) {
-        entityManager.persist(ex);
+    public void save(Exercise exercise) {
+        entityManager.persist(exercise);
     }
+
+    @Transactional
+    public void save(ExerciseNote exerciseNote) {
+        entityManager.persist(exerciseNote);
+    }
+
+    @Transactional
+    public void save(ExerciseImage exerciseImage) {
+        entityManager.persist(exerciseImage);
+    }
+
 
     @Transactional
     public Exercise getExerciseById(long id){
             return entityManager.find(Exercise.class, id);
     }
 
+
+    // add a note
     @Transactional
-    public Exercise addNote(String note, Exercise exercise){
-        exercise.getNotes().add(new ExerciseNote(note, exercise));
-        save(exercise);
-        return getExerciseById(exercise.getId());
+    public ExerciseNote addNote(String note, Exercise exercise){
+        ExerciseNote exerciseNote = new ExerciseNote(note, exercise);
+        save(exerciseNote);
+        return exerciseNote;
     }
 
+    // add an image
     @Transactional
-    public Exercise addNote(ExerciseNote note, Exercise exercise){
-        exercise.getNotes().add(note);
-        save(exercise);
-        return getExerciseById(exercise.getId());
+    public ExerciseImage addImage(String imageUniqueName, Exercise exercise){
+        ExerciseImage exerciseImage = new ExerciseImage(imageUniqueName, exercise);
+        save(exerciseImage);
+        return exerciseImage;
     }
 
+    // remove a note
     @Transactional
-    public boolean removeNote(ExerciseNote note, Exercise exercise){
-        if (exercise.getNotes().contains(note)) {
-            exercise.getNotes().remove(note);
-            save(exercise);
+    public boolean removeNote(ExerciseNote note){
+        if (entityManager.contains(note)) {
+            entityManager.remove(note);
             return true;
         }
         return false;
     }
 
+    // remove an image
     @Transactional
-    public boolean removeExercise(long id){
-        List<Exercise> exercises = getAllExercises();
-        for(Exercise e : exercises){
-            if(e.getId() == id){
-                entityManager.remove(e);
-                return true;
-            }
+    public boolean removeImage(ExerciseImage image){
+        if (entityManager.contains(image)) {
+            entityManager.remove(image);
+            return true;
         }
         return false;
     }
 
-    public ExerciseNote getNote(Exercise exercise, ExerciseNote exerciseNote){
-        List<ExerciseNote> exerciseList = exercise.getNotes();
-        if(exerciseList.contains(exerciseNote)){
-            return exerciseNote;
-        }
-        else{
-            ExerciseNote exn = new ExerciseNote();
-            return exn;
-        }
-    }
-
-    @Transactional
-    public Exercise newExercise(String name,String type) {
-        Exercise ex = new Exercise();
-        ex.setName(name);
-        ex.setType(type);
-        long ex_id = ex.getId();
-        save(ex);
-        return ex;
-    }
-
+    // remove an exercise
     @Transactional
     public boolean removeExercise(Exercise exercise){
-         if (entityManager.contains(exercise)) {
+        long exerciseId = exercise.getId();
+        if (entityManager.contains(exercise)) {
+            List<ExerciseNote> exerciseNotes = getAllExerciseNotesOfExercise(exercise);
+            for (ExerciseNote exerciseNote: exerciseNotes) {
+                removeNote(exerciseNote);
+            }
+            List<ExerciseImage> exerciseImages = getAllImagesOfExercise(exercise);
+            for (ExerciseImage exerciseImage: exerciseImages) {
+                removeImage(exerciseImage);
+            }
+
             entityManager.remove(exercise);
             return true;
         }
-        else return false;
+        return false;
     }
 
+    // update an exercise
     @Transactional
     public Exercise updateExercise(Exercise exerciseToUpdate, Exercise exercise){
         exerciseToUpdate.setName(exercise.getName());
@@ -116,9 +119,26 @@ public class ExerciseManager {
         return exerciseToUpdate;
     }
 
+    // get all exercises
     @Transactional
     public List<Exercise> getAllExercises(){
         TypedQuery<Exercise> query = entityManager.createQuery("SELECT e FROM Exercise e", Exercise.class);
+        return query.getResultList();
+    }
+
+    // get all notes of an exercise
+    @Transactional
+    public List<ExerciseNote> getAllExerciseNotesOfExercise(Exercise exercise){
+        TypedQuery<ExerciseNote> query = entityManager.createQuery("SELECT e FROM ExerciseNote e WHERE e.exercise.id = :id", ExerciseNote.class);
+        query.setParameter("id", exercise.getId());
+        return query.getResultList();
+    }
+
+    // get all images of an exercise
+    @Transactional
+    public List<ExerciseImage> getAllImagesOfExercise(Exercise exercise){
+        TypedQuery<ExerciseImage> query = entityManager.createQuery("SELECT e FROM ExerciseImage e WHERE e.exercise.id = :id", ExerciseImage.class);
+        query.setParameter("id", exercise.getId());
         return query.getResultList();
     }
 
