@@ -1,6 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Http, Response} from "@angular/http";
 import 'rxjs/add/operator/map';
+import {Patient} from "./patient-form/Patient";
 
 /**
  * this is a so called service from the Angular framework. the goal is ti have exactly one injectable instance who makes
@@ -11,6 +12,7 @@ import 'rxjs/add/operator/map';
  @Injectable()
 export class PatientService implements OnInit{
 
+  patients: Patient[];
   ngOnInit(){
 
   }

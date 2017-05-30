@@ -1,6 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Http, Response} from "@angular/http";
 import 'rxjs/add/operator/map';
+import {Exercise} from "./Exercise";
 
 /**
  * this is a so called service from the Angular framework. the goal is ti have exactly one injectable instance who makes

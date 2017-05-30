@@ -47,6 +47,7 @@ export class PatientFormComponent implements OnInit {
   }
 
   getPatients(){
+    //this.patientService.getPatients().subscribe(data => this.patients = data);
     this.patientService.getPatients().subscribe(data => this.patients = data);
   }
 /*
