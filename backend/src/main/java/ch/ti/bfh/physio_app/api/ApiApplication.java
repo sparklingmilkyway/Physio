@@ -17,7 +17,6 @@ public class ApiApplication extends Application {
         return newHashSet(
                 UserResource.class,
                 ProgrammExerciseResource.class,
-                ApiApplication.class,
                 PraxisResource.class,
                 CorsFilter.class,
                 PatientResource.class,
