@@ -19,8 +19,8 @@ public class ExerciseImage extends pEntityWithID {
 
     }
 
-    public ExerciseImage(String note, Exercise exercise){
-        this.imageUniqueName = note;
+    public ExerciseImage(String imageUniqueName, Exercise exercise){
+        this.imageUniqueName = imageUniqueName;
         this.exercise = exercise;
     }
 

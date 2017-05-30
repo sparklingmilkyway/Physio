@@ -10,8 +10,10 @@ import ch.ti.bfh.physio_app.concept.*;
 import ch.ti.bfh.physio_app.concept.Exercise;
 import ch.ti.bfh.physio_app.concept.ExerciseNote;
 import ch.ti.bfh.physio_app.concept.Patient;
+import ch.ti.bfh.physio_app.service.ImageService;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +32,9 @@ public class ExerciseManager {
      */
     @PersistenceContext(unitName = "physio_app")
     private EntityManager entityManager;
+
+    @Inject
+    private ImageService imageService;
 
     @Transactional
     public void save(Exercise exercise) {
@@ -98,7 +103,7 @@ public class ExerciseManager {
             for (ExerciseNote exerciseNote: exerciseNotes) {
                 removeNote(exerciseNote);
             }
-            List<ExerciseImage> exerciseImages = getAllImagesOfExercise(exercise);
+            List<ExerciseImage> exerciseImages = getAllExerciseImagesOfExercise(exercise);
             for (ExerciseImage exerciseImage: exerciseImages) {
                 removeImage(exerciseImage);
             }
@@ -128,7 +133,7 @@ public class ExerciseManager {
 
     // get all notes of an exercise
     @Transactional
-    public List<ExerciseNote> getAllExerciseNotesOfExercise(Exercise exercise){
+    private List<ExerciseNote> getAllExerciseNotesOfExercise(Exercise exercise){
         TypedQuery<ExerciseNote> query = entityManager.createQuery("SELECT e FROM ExerciseNote e WHERE e.exercise.id = :id", ExerciseNote.class);
         query.setParameter("id", exercise.getId());
         return query.getResultList();
@@ -136,7 +141,7 @@ public class ExerciseManager {
 
     // get all images of an exercise
     @Transactional
-    public List<ExerciseImage> getAllImagesOfExercise(Exercise exercise){
+    private List<ExerciseImage> getAllExerciseImagesOfExercise(Exercise exercise){
         TypedQuery<ExerciseImage> query = entityManager.createQuery("SELECT e FROM ExerciseImage e WHERE e.exercise.id = :id", ExerciseImage.class);
         query.setParameter("id", exercise.getId());
         return query.getResultList();
@@ -146,78 +151,48 @@ public class ExerciseManager {
 
     // PICTURE STUFF
 
+    // adding a image to an exercise
     @Transactional
-    public List<Picture> getAllPicturesOfExercise(Exercise exercise){
-        long exerciseId = exercise.getId();
-        TypedQuery<Picture> query = entityManager.createQuery("SELECT p FROM Picture p Where p.exercise.id = :id", Picture.class);
-        query.setParameter("id", exerciseId);
-        return query.getResultList();
+    public String addImageToExercise(String imageAsString, long exerciseId){
+        Exercise exercise = getExerciseById(exerciseId);
+
+        // creating a new ExerciseImage
+        ExerciseImage exerciseImage = new ExerciseImage();
+        exerciseImage.setExercise(exercise);
+
+        // setting image name to ex_EXERCISEID_IMAGEID
+        exerciseImage.setImageUniqueName(exerciseId+"_"+exerciseImage.getId());
+
+        // converting imageAsString to a file
+        imageService.saveImage(imageAsString, exerciseImage.getImageUniqueName());
+
+        save(exerciseImage);
+
+        return "Image saved";
     }
 
-
+    // get all path for images of an exercise
     @Transactional
-    public void save(Picture picture) {
-        entityManager.persist(picture);
+    public List<String> getImagesOfAnExercise(long exerciseId){
+        List<String> imagePaths = getExerciseImagePathList(exerciseId);
+        List<String> imagesAsStrings = new ArrayList<>();
+        for (String path : imagePaths)
+            imagesAsStrings.add(imageService.getImageString(path));
+        return imagesAsStrings;
     }
 
-
+    // get all path for images of an exercise
     @Transactional
-    public Picture getPictureById(long id){
-        TypedQuery<Picture> query = entityManager.createQuery("SELECT p FROM Picture p where p.id = :id", Picture.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+    private List<String> getExerciseImagePathList(long exerciseId){
+        List<ExerciseImage> exerciseImages = getAllExerciseImagesOfExercise(getExerciseById(exerciseId));
+
+        List<String> result = new ArrayList<>();
+        String base = imageService.path + exerciseId + "_";
+
+        for (ExerciseImage exerciseImage : exerciseImages)
+            result.add(base + exerciseImage.getId() + ".jpg");
+        return result;
     }
 
-    @Transactional
-    public File getPictureFileById(long id){
-        //Picture picture = getPictureById(id);
-        File pictureFile = new File("c:\\data\\exImages\\"+id+".jpg");
-        return pictureFile;
-    }
-
-    @Transactional
-    public String addPictureFileToExercise(Exercise exercise, InputStream uploadedInputStream){
-
-        // Create Picture in DB and get unique ID
-        Picture picture = new Picture(exercise);
-        long id = picture.getId();
-        save(picture);
-
-        //Server
-        //String uploadedFileLocation = "/data/exImages/" + fileDetail.getFileName();
-        //local Vanessa
-        String uploadedFileLocation = "/Users/Vanessa/Desktop/" + id + ".jpg";
-
-        System.out.println(uploadedFileLocation);
-
-        // save it
-        File  objFile=new File(uploadedFileLocation);
-        if(objFile.exists())
-            objFile.delete();
-
-        saveToFile(uploadedInputStream, uploadedFileLocation);
-
-        String output = "File uploaded via Jersey based RESTFul Webservice to: " + uploadedFileLocation;
-
-        return output;
-    }
-
-    private void saveToFile(InputStream uploadedInputStream, String uploadedFileLocation) {
-
-        try {
-            OutputStream outputStream = null;
-            int read = 0;
-            byte[] bytes = new byte[1024];
-
-            outputStream = new FileOutputStream(new File(uploadedFileLocation));
-            while ((read = uploadedInputStream.read(bytes)) != -1) {
-                outputStream.write(bytes, 0, read);
-            }
-            outputStream.flush();
-            outputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
 

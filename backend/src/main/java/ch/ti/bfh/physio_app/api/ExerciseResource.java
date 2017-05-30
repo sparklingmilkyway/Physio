@@ -91,14 +91,19 @@ public class ExerciseResource {
     @GET
     @Path("/remove/{id}")
     public boolean removePatient(@PathParam("id") long id){
-        return exerciseManager.removeExercise(id);
+        return exerciseManager.removeExercise(exerciseManager.getExerciseById(id));
     }
 
     // get image for exercise
     @GET
-    @Path("/image/{id}")
-    public Response getImage(@PathParam("id") long id) {
-        final File file =  exerciseManager.getPictureFileById(id);
+    @Path("/image/{exerciseId}")
+    public Response getImage(@PathParam("exerciseId") long exerciseId) {
+
+        return ok(exerciseManager.getImagesOfAnExercise(exerciseId)).build();
+
+        /*
+        final File file =  exerciseManager.getPictureFileById(exerciseId);
+
         final StreamingOutput stream = rawOutputStream -> {
             try (final InputStream inputStream = new FileInputStream(file)) {
                 final OutputStream outputStream = new BufferedOutputStream(rawOutputStream);
@@ -110,21 +115,15 @@ public class ExerciseResource {
         return ok(stream)
                 .type("image/jpeg")
                 .build();
+        */
 
     }
 
 
     @POST
-    @Path("/fileupload/exercise={id}")  //Your Path or URL to call this service
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response uploadFile(
-            @DefaultValue("true") @FormDataParam("enabled") boolean enabled,
-            @FormDataParam("file") InputStream uploadedInputStream,
-            @FormDataParam("file") FormDataContentDisposition fileDetail,
-            @PathParam("id") long exerciseID) {
-
-        String result = exerciseManager.addPictureFileToExercise(exerciseManager.getExerciseById(exerciseID), uploadedInputStream);
-
+    @Path("/image/{exerciseId}")
+    public Response uploadFile(String imageAsString, @PathParam("exerciseId") long exerciseId) {
+        String result = exerciseManager.addImageToExercise(imageAsString, exerciseId);
         return Response.status(200).entity(result).build();
     }
 }
