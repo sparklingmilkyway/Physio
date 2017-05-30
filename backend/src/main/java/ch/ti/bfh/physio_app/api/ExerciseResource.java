@@ -74,8 +74,14 @@ public class ExerciseResource {
     @GET
     @Path("/get/id={id}")
     public Response getExercise(@PathParam("id") long id){
-        Exercise exercise = exerciseManager.getExerciseById(id);
-        return ok(exercise).build();
+        try {
+            Exercise exercise = exerciseManager.getExerciseById(id);
+            return ok(exercise).build();
+        } catch (Exception ex){
+            Exercise exercise = new Exercise();
+            exercise.setName("Kein Exercise mit dieser ID gefunden...");
+            return ok(exercise).build();
+        }
     }
 
 

@@ -23,6 +23,7 @@ import { ExerciseAddFormComponent } from './exercise-form/exercise-add-form/exer
 import { ExerciseDetailFormComponent } from './exercise-form/exercise-detail-form/exercise-detail-form.component';
 import { ExerciseSearchFormComponent } from './exercise-form/exercise-search-form/exercise-search-form.component';
 import { PopupModule } from 'ng2-opd-popup';
+import { ProgramCreateFormComponent } from './program-form/program-create-form/program-create-form.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { PopupModule } from 'ng2-opd-popup';
     PatientDetailsFormComponent,
     ExerciseAddFormComponent,
     ExerciseDetailFormComponent,
-    ExerciseSearchFormComponent
+    ExerciseSearchFormComponent,
+    ProgramCreateFormComponent
     //
   ],
   imports: [
