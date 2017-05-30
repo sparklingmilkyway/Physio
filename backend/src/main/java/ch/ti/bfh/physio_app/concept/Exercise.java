@@ -14,11 +14,13 @@ public class Exercise extends pEntityWithID {
     private String ex_name;
     private String ex_type;
 
+    /*
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "exercise", cascade = CascadeType.ALL)
     private List<ExerciseNote> ex_notes = new ArrayList<>();
+    */
 
     @ManyToOne
-    private Therapeut therapeut;
+    private Therapeut therapeut = null;
 
     /** TO KEEP HIBERNATE HAPPY */
     public Exercise(){ }
@@ -26,13 +28,6 @@ public class Exercise extends pEntityWithID {
     public Exercise(String name, String type, Therapeut therapeut){
         this.ex_name = name;
         this.ex_type = type;
-        this.therapeut = therapeut;
-    }
-
-    public Exercise(String name, String type, ArrayList<ExerciseNote> notes, Therapeut therapeut){
-        this.ex_name = name;
-        this.ex_type = type;
-        this.ex_notes = notes;
         this.therapeut = therapeut;
     }
 
@@ -52,6 +47,7 @@ public class Exercise extends pEntityWithID {
         this.ex_type = type;
     }
 
+    /*
     public List<ExerciseNote> getNotes() {
         return ex_notes;
     }
@@ -59,6 +55,7 @@ public class Exercise extends pEntityWithID {
     public void setNotes(List<ExerciseNote> notes) {
         this.ex_notes = notes;
     }
+    */
 
     public Therapeut getTherapeut() {
         return therapeut;

@@ -42,37 +42,31 @@ public class ExerciseResource {
     private PatientManager patientManager;
 
     @Inject
-    private LoginManager loginManager;
-
-    @Inject
     private ExerciseManager exerciseManager;
 
-    // CREATING A NEW EXERCISE
-    @GET
-    @Path("/create/name={exerciseName}/type={exerciseType}/therapeut={theraId}")
-    public Response createExercise( @PathParam("exerciseName") String exerciseName,
-                                      @PathParam("exerciseType") String exerciseType,
-                                      @PathParam("theraId") long therapeutID) {
-        Therapeut therapeut = therapeutManager.getTherapeutById(therapeutID);
-        Exercise exercise = new Exercise(exerciseName, exerciseType, therapeut);
+
+
+    // creating a new exercise
+    @POST
+    @Path("")
+    public Response createExercise(Exercise exercise) {
         exerciseManager.save(exercise);
         return ok(exercise).build();
     }
 
-    // UPDATING A EXERCISE
-    @GET
-    @Path("/update/id={exerciseID}/name={exerciseName}/type={exerciseType}/therapeut={theraId}")
-    public Response updateExercise(@PathParam("exerciseID") long exerciseID,
-                                   @PathParam("exerciseName") String exerciseName,
-                                     @PathParam("exerciseType") String exerciseType,
-                                     @PathParam("theraId") long therapeutID) {
-        Therapeut therapeut = therapeutManager.getTherapeutById(therapeutID);
-        Exercise exercise = exerciseManager.updateExercise(exerciseID, exerciseName, exerciseType, therapeut);
+    // updating a exercise
+    @POST
+    @Path("/update")
+    public Response updateExercise(Exercise exercise) {
+        Exercise exerciseToUpdate = exerciseManager.getExerciseById(exercise.getId());
+        exerciseManager.updateExercise(exerciseToUpdate, exercise);
         return ok(exercise).build();
     }
 
+
+    // get exercise by id
     @GET
-    @Path("/get/id={id}")
+    @Path("/{id}")
     public Response getExercise(@PathParam("id") long id){
         try {
             Exercise exercise = exerciseManager.getExerciseById(id);
@@ -85,6 +79,7 @@ public class ExerciseResource {
     }
 
 
+    // get all exercises
     @GET
     @Path("/get")
     public List<Exercise> getExercises(){
@@ -92,12 +87,15 @@ public class ExerciseResource {
         return exerciseList;
     }
 
+    // remove exercise
     @GET
-    @Path("/remove/id={id}")
+    @Path("/remove/{id}")
     public boolean removePatient(@PathParam("id") long id){
         return exerciseManager.removeExercise(id);
     }
 
+    // get image for exercise
+    @GET
     @Path("/image/{id}")
     public Response getImage(@PathParam("id") long id) {
         final File file =  exerciseManager.getPictureFileById(id);

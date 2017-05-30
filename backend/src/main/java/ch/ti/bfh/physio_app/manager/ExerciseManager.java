@@ -108,14 +108,14 @@ public class ExerciseManager {
     }
 
     @Transactional
-    public Exercise updateExercise(long exerciseID, String name, String type, Therapeut therapeut){
-        Exercise exercise = getExerciseById(exerciseID);
-        exercise.setName(name);
-        exercise.setType(type);
-        exercise.setTherapeut(therapeut);
-        save(exercise);
-        return exercise;
+    public Exercise updateExercise(Exercise exerciseToUpdate, Exercise exercise){
+        exerciseToUpdate.setName(exercise.getName());
+        exerciseToUpdate.setTherapeut(exercise.getTherapeut());
+        exerciseToUpdate.setType(exercise.getType());
+        save(exerciseToUpdate);
+        return exerciseToUpdate;
     }
+
     @Transactional
     public List<Exercise> getAllExercises(){
         TypedQuery<Exercise> query = entityManager.createQuery("SELECT e FROM Exercise e", Exercise.class);
