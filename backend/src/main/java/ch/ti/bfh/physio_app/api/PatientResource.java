@@ -34,16 +34,7 @@ import static javax.ws.rs.core.Response.ok;
 public class PatientResource{
 
     @Inject
-    private PraxisManager praxisManager;
-
-    @Inject
-    private TherapeutManager therapeutManager;
-
-    @Inject
     private PatientManager patientManager;
-
-    @Inject
-    private LoginManager loginManager;
 
 
     // CREATING A NEW PATIENT
