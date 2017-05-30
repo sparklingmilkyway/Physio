@@ -1,0 +1,28 @@
+<div class="column col-6" align="center">
+  <div class="indexDiv column col-4" align="center" style="display: inline-block;">
+    <button (click)="getExercises()">Übungen laden..</button>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Gruppe</th>
+        <th>Therapeut</th>
+      </tr>
+      <tr *ngFor="let exercise of exercises">
+        <td>{{exercise.name}}</td>
+        <td>{{exercise.type}}</td>
+        <td>{{exercise.therapeut}}</td>
+        <td><a router-link='Details'>Details</a></td>
+        <td><button class="standartButton" (click)="addToProgramm(exercise)" >hinzufügen</button> </td>
+      </tr>
+    </table>
+      <p>Hinzugefügte Übungen</p>
+    <table>
+      <th>Name</th>
+      <th>Gruppe</th>
+    <tr *ngFor="let exercise of addedExercises">
+      <td>{{exercise.name}}</td>
+      <td>{{exercise.type}}</td>
+    </tr>
+    </table>
+  </div>
+</div>
