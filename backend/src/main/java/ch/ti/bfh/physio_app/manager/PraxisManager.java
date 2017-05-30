@@ -27,15 +27,29 @@ public class PraxisManager {
         entityManager.persist(praxis);
     }
 
+
+    /*  // used, when more than one praxis in the DB
     @Transactional
     public Praxis getPraxisById(long id){
         return entityManager.find(Praxis.class,id);
     }
+    */
 
     @Transactional
-    public List<Therapeut> getTherapeuts(Praxis praxis){
-        long id = praxis.getId();
-        TypedQuery<Therapeut> query = entityManager.createQuery("SELECT t FROM Therapeut t WHERE t.praxis.id = :id", Therapeut.class);
+    public Praxis getPraxis(){
+        TypedQuery<Praxis> query = entityManager.createQuery("SELECT p FROM Praxis p", Praxis.class);
+        return query.getSingleResult();
+    }
+
+
+    // parameter "long praxisId" is only used, when more than one praxis in the DB
+    @Transactional
+    public List<Therapeut> getTherapeuts(/* long praxisId */){
+        // used, when more than one praxis in the DB
+        // TypedQuery<Therapeut> query = entityManager.createQuery("SELECT t FROM Therapeut t WHERE t.praxis.id = :praxisId", Therapeut.class);
+        // query.setParameter("praxisId", praxisId);
+
+        TypedQuery<Therapeut> query = entityManager.createQuery("SELECT t FROM Therapeut t", Therapeut.class);
         return query.getResultList();
     }
 

@@ -31,32 +31,45 @@ public class PraxisResource {
     private PatientManager patientManager;
 
 
-    @GET
-    @Path("/add")
-    public Response addPraxis() {
-        Praxis praxis = new Praxis("Praxisname");
+    @POST
+    @Path("")
+    public Response addPraxis(Praxis praxis) {
         praxisManager.save(praxis);
         return ok(praxis).build();
     }
 
-
     @GET
+    @Path("")
+    public Response getPraxis() {
+        Praxis praxis = praxisManager.getPraxis();
+        return ok(praxis).build();
+    }
+
+    @POST
     @Path("/addTherapeut")
-    public Response addTherapeut() {
-        long id = 1;
-        Praxis praxis = praxisManager.getPraxisById(id);
-        Therapeut therapeut = new Therapeut(praxis,"Prename1", "Surname1", "email@mail", "pwhash1");
+    public Response addTherapeut(Therapeut therapeut) {
         therapeutManager.save(therapeut);
         return ok(therapeut).build();
     }
 
     @GET
-    @Path("/getTherapeuts")
-    public Response getTherapeuts() {
-        long id = 1;
-        Praxis praxis = praxisManager.getPraxisById(id);
-        List<Therapeut> therapeuts = praxisManager.getTherapeuts(praxis);
+    @Path("/getTherapeuts/{praxisId}")
+    public Response getTherapeuts(@PathParam("praxisId") long praxisId) {
+
+        // used, when more than one praxis in the DB
+        // List<Therapeut> therapeuts = praxisManager.getTherapeuts(praxisId);
+
+        List<Therapeut> therapeuts = praxisManager.getTherapeuts();
         return ok(therapeuts).build();
     }
+
+
+    @GET
+    @Path("/getTherapeut/{id}")
+    public Response getTherapeut(@PathParam("id") long id) {
+        Therapeut therapeut = therapeutManager.getTherapeutById(id);
+        return ok(therapeut).build();
+    }
+
 
 }
