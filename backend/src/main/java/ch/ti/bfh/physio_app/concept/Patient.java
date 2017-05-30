@@ -12,8 +12,15 @@ import java.util.Set;
  * will corrupt the junit tests.
  */
 @Entity
-public class Patient extends User{
+public class Patient extends pEntityWithID {
 
+
+    @Column
+    private String surname;
+    @Column
+    private String firstname;
+    @Column
+    private String email;
     @ManyToOne
     private Therapeut therapeut;
 
@@ -21,9 +28,35 @@ public class Patient extends User{
     /** TO KEEP HIBERNATE HAPPY */
     public Patient(){ }
 
-    public Patient(String surname, String firstname, String email, String passwordhash, Therapeut therapeut){
-        super(surname, firstname, email,passwordhash);
+    public Patient(String firstname, String surname, String email, Therapeut therapeut) {
+        this.surname = surname;
+        this.firstname = firstname;
+        this.email = email;
         this.therapeut = therapeut;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Therapeut getTherapeut() {
