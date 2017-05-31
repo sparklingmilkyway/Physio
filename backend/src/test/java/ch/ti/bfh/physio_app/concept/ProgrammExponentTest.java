@@ -12,63 +12,63 @@ public class ProgrammExponentTest {
     public void getExercise() throws Exception {
         Exercise exercise = new Exercise( "exercise","back",new Therapeut());
         Exercise exercise1 = new Exercise("exercise", "back", new Therapeut());
+        Programm programm = new Programm("program");
+        ProgrammComponent programmComponent = new ProgrammComponent(exercise, programm, 3,12);
 
-        ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
-
-        assertNotEquals(programmExponent.getExercise(),exercise1);
-        assertEquals(programmExponent.getExercise(),exercise);
+        assertNotEquals(programmComponent.getExercise(),exercise1);
+        assertEquals(programmComponent.getExercise(),exercise);
     }
 
     @Test
     public void setExercise() throws Exception {
         Exercise exercise = new Exercise("exercise","back", new Therapeut());
         Exercise exercise1 = new Exercise("exercise", "back", new Therapeut());
+        Programm programm = new Programm("program");
+        ProgrammComponent programmComponent = new ProgrammComponent(exercise, programm, 3,12);
 
-        ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
-
-        programmExponent.setExercise(exercise1);
-        assertEquals(programmExponent.getExercise(),exercise1);
+        programmComponent.setExercise(exercise1);
+        assertEquals(programmComponent.getExercise(),exercise1);
     }
 
     @Test
     public void getReps() throws Exception {
         Exercise exercise = new Exercise("exercise","back", new Therapeut());
+        Programm programm = new Programm("program");
+        ProgrammComponent programmComponent = new ProgrammComponent(exercise, programm, 3,12);
 
-        ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
-
-        assertEquals(programmExponent.getReps(),12);
+        assertEquals(programmComponent.getReps(),12);
     }
 
     @Test
     public void setReps() throws Exception {
         Exercise exercise = new Exercise("exercise","back", new Therapeut());
+        Programm programm = new Programm("program");
+        ProgrammComponent programmComponent = new ProgrammComponent(exercise, programm, 3,12);
 
-        ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
+        programmComponent.setReps(14);
 
-        programmExponent.setReps(14);
-
-        assertEquals(programmExponent.getReps(),14);
-        assertNotEquals(programmExponent.getReps(),12);
+        assertEquals(programmComponent.getReps(),14);
+        assertNotEquals(programmComponent.getReps(),12);
     }
 
     @Test
     public void getSets() throws Exception {
         Exercise exercise = new Exercise("exercise","back", new Therapeut());
+        Programm programm = new Programm("program");
+        ProgrammComponent programmComponent = new ProgrammComponent(exercise, programm, 3,12);
 
-        ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
-
-        assertEquals(programmExponent.getSets(),3);
+        assertEquals(programmComponent.getSets(),3);
     }
 
     @Test
     public void setSets() throws Exception {
         Exercise exercise = new Exercise("exercise","back", new Therapeut());
+        Programm programm = new Programm("program");
+        ProgrammComponent programmComponent = new ProgrammComponent(exercise, programm, 3,12);
 
-        ProgrammExponent programmExponent = new ProgrammExponent(exercise,3,12);
+        programmComponent.setSets(4);
 
-        programmExponent.setSets(4);
-
-        assertEquals(programmExponent.getSets(),4);
-        assertNotEquals(programmExponent.getSets(),3);
+        assertEquals(programmComponent.getSets(),4);
+        assertNotEquals(programmComponent.getSets(),3);
     }
 }

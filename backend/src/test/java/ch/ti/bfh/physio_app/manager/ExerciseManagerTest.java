@@ -71,7 +71,7 @@ public class ExerciseManagerTest {
         assertEquals(ex.getNotes().get(arrayListLength),"Hallo welt");
         */
     }
-
+/*
     @Test
     public void removeNote() throws Exception {
         Exercise ex = new Exercise();
@@ -89,14 +89,14 @@ public class ExerciseManagerTest {
         ExerciseNote exn = new ExerciseNote("Hallo Welt",ex);
         exm.addNote(exn, ex);
         exm.removeNote(exn,ex);
-        assertNotEquals(exm.getNote(ex,exn),exn);*/
+        assertNotEquals(exm.getNote(ex,exn),exn);
 
-    }
+    } */
 
     @Test
     public void newExercise() throws Exception {
-        Exercise ex = cut.newExercise("EX", "back");
-
+        Exercise ex = new Exercise("EX", "back", null);
+        cut.save(ex);
         Mockito.verify(mockedEntityMangager, Mockito.times(1)).persist(ex);
 
         /*

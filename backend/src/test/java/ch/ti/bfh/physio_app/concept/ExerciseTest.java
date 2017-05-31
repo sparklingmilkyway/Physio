@@ -43,10 +43,5 @@ public class ExerciseTest {
         assertEquals(exercise.getType(),"liverStretch");
     }
 
-    @Test
-    public void getNotes() throws Exception {
-        Exercise exercise = new Exercise("stretching","Back", new Therapeut());
-        assertNotNull(exercise.getNotes());
-    }
 
 }
