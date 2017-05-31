@@ -12,39 +12,48 @@ import {Patient} from "./patient-form/Patient";
  @Injectable()
 export class PatientService implements OnInit{
 
-  patients: Patient[];
+  private baseUrl : string;
+
   ngOnInit(){
 
   }
+
   constructor(private http: Http) {
+    this.baseUrl = "http://127.0.0.1:8080/api/patient";
   }
 
-  addPatient(surname : string, lastname : string){
-    return this.http.request(`http://127.0.0.1:8080/api/patient/add/fn=`+ surname + `/sn=` + lastname)
-      .map((res:Response) => res.json());
+
+  // POST METHODS
+  addPatient(patient : Patient) {
+    return this.http.post(this.baseUrl, patient).map((res:Response) => res.json());
   }
 
-  addPatientNew(surname: string, lastname: string, email: string){
-    return this.http.request(`http://127.0.0.1:8080/api/patient/create/fn=`+surname+`/sn=`+lastname+`/email=`+email+`/pw=123/therapeut=1`)
+  changePatient(patient: Patient){
+    return this.http.post(this.baseUrl+'/update', patient).map((res:Response) => res.json());
   }
+
+
+
+  // GET METHODS
 
   getPatient(id){
-    return this.http.request(`http://127.0.0.1:8080/api/patient/get/id=`+id).map((res:Response) => res.json());
+    return this.http.get(this.baseUrl+"/"+id).map((res:Response) => res.json());
   }
 
   getPatientbySurname(surname: string){
-    return this.http.request(`http://127.0.0.1:8080/api/patient/get/sn=`+surname).map((res:Response) => res.json());
+    return this.http.get(this.baseUrl+`/sn=`+surname).map((res:Response) => res.json());
   }
 
   getPatients(){
-    return this.http.request(`http://127.0.0.1:8080/api/patient/get/`).map((res:Response) => res.json());
+    return this.http.get(this.baseUrl).map((res:Response) => res.json());
   }
+
+
+  // REQUEST METHODS
 
   removePatient(id){
-    return this.http.request(`http://127.0.0.1:8080/api/patient/remove/id=`+id).map((res:Response) => res.json());
+    return this.http.request(this.baseUrl+`/remove/`+id).map((res:Response) => res.json());
   }
 
-  changePatient(id, theraId, surname: string, lastname: string, email: string){
-    return this.http.request(`http://127.0.0.1:8080/api/patient/update/id=`+ id +`/fn=`+lastname+`/sn=`+surname+`/email=`+email+`/therapeut=`+ 1)
-  }
+
 }

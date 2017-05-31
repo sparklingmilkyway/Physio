@@ -2,6 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 import {Http, Response} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {Exercise} from "./Exercise";
+import {Stream} from "stream";
 
 /**
  * this is a so called service from the Angular framework. the goal is ti have exactly one injectable instance who makes
@@ -13,30 +14,52 @@ import {Exercise} from "./Exercise";
 @Injectable()
 export class ExerciseService implements OnInit{
 
+  private baseUrl : string;
+
   ngOnInit(){
 
   }
- constructor(private http: Http) { }
-
- addExercise(name: string, type: string, therapeut: number){
- return this.http.request(`http://127.0.0.1:8080/api/exercise/create/name=`+ name + `/type=` + type+`/therapeut=`+therapeut)
- .map((res:Response) => res.json());
+ constructor(private http: Http) {
+    this.baseUrl = 'http://127.0.0.1:8080/api/exercise';
  }
 
- getExercises(){
-    return this.http.request(`http://127.0.0.1:8080/api/exercise/get/`).map((res:Response) => res.json());
- }
 
- getExercise(id: number){
-   return this.http.request(`http://127.0.0.1:8080/api/exercise/get/id=`+id)
-     .map((res:Response) => res.json());
- }
- changeExercise(id: number,name: string,type: string){
-   return this.http.request(`http://127.0.0.1:8080/api/exercise/update/id=`+id+`/name=`+name+`/type=`+type+`/therapeut=`+1);
- }
+ // POST METHODS
+
+  addExercise(exercise : Exercise){
+    return this.http.post(this.baseUrl, exercise).map((res:Response) => res.json());
+  }
+
+  changeExercise(exercise : Exercise){
+    return this.http.post(this.baseUrl + '/update', exercise).map((res:Response) => res.json());
+  }
+
+  // object is false!!
+  addImageToExercise(id: number, image: Object) {
+    return this.http.post(this.baseUrl + '/' + id + '/image', image).map((res:Response) => res.json());
+
+  }
+
+
+
+  // GET METHODS
+
+  getExercises(){
+    return this.http.get(this.baseUrl).map((res:Response) => res.json());
+  }
+
+  getExercise(id: number){
+   return this.http.get(this.baseUrl+'/'+id).map((res:Response) => res.json());
+  }
+
+  getImageOfExercise(id: number){
+    return this.http.get(this.baseUrl + '/' + id + '/image').map((res:Response) => res.json());
+  }
+
+
+ // REQUEST METHODS
 
  removeExercise(id: number){
-    return this.http.request(`http://127.0.0.1:8080/api/exercise/remove/id=`+id)
-      .map((res:Response) => res.json());
+   return this.http.request(this.baseUrl+'/remove/'+id).map((res:Response) => res.json());
  }
 }
