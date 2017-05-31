@@ -52,7 +52,7 @@ public class ImageService {
         try {
             // decodes the base64 string into byte array
             byte[] imageByte = Base64.decodeBase64(baseString);
-            FileOutputStream image = new FileOutputStream("/Users/Vanessa/Desktop/file.jpg");
+            FileOutputStream image = new FileOutputStream(savingLocation);
             image.write(imageByte);
             image.close();
         } catch (FileNotFoundException e) {
