@@ -8,7 +8,6 @@ import {WelcomeFormComponent} from "./welcome-form/welcome-form.component";
 import {PatientFormComponent} from "./patient-form/patient-form.component";
 import {ExerciseFormComponent} from "./exercise-form/exercise-form.component";
 import {ProgramFormComponent} from "./program-form/program-form.component";
-import {AdminComponent} from "app/admin/admin.component";
 import {PatientAddFormComponent} from "./patient-form/patient-add-form/patient-add-form.component";
 import {patientRouting, patientRoutingComponents} from "./patient-form/patient.routing";
 import {exerciseRouting, exerciseRoutingComponents} from "./exercise-form/exercise.routing";
@@ -24,7 +23,6 @@ export const appRoutes: Routes = [
   {path: 'Home', component: WelcomeFormComponent},
  // {path:'Übungen', component: ExerciseFormComponent},
   //{path:'Programme', component: ProgramFormComponent},
-  {path:'Admin', component: AdminComponent},
   ...patientRouting,
   ...exerciseRouting,
   ...programRouting
