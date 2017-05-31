@@ -11,7 +11,7 @@ import javax.persistence.*;
  * reps property not in the exercise but in the ProgrammExponent class.
  */
 @Entity
-public class ProgrammExponent extends pEntityWithID {
+public class ProgrammComponent extends pEntityWithID {
 
     @OneToOne
     private Exercise exercise;
@@ -19,11 +19,11 @@ public class ProgrammExponent extends pEntityWithID {
     @ManyToOne
     private Programm programm;
 
-    @ManyToOne
-    private Therapeut therapeut;
+    // @ManyToOne
+    // private Therapeut therapeut;
 
-    @ManyToOne
-    private Patient patient;
+    // @ManyToOne
+    // private Patient patient;
 
     @Column
     private int reps;
@@ -33,14 +33,15 @@ public class ProgrammExponent extends pEntityWithID {
 
 
     /** TO KEEP HIBERNATE HAPPY */
-    public ProgrammExponent(){
+    public ProgrammComponent(){
 
     }
 
-    public ProgrammExponent(Exercise exercise, int sets, int reps){
+    public ProgrammComponent(Exercise exercise, Programm programm, int reps, int sets) {
         this.exercise = exercise;
-        this.sets = sets;
+        this.programm = programm;
         this.reps = reps;
+        this.sets = sets;
     }
 
     public Exercise getExercise() {
@@ -59,6 +60,7 @@ public class ProgrammExponent extends pEntityWithID {
         this.programm = programm;
     }
 
+    /*
     public Therapeut getTherapeut() {
         return therapeut;
     }
@@ -74,6 +76,7 @@ public class ProgrammExponent extends pEntityWithID {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+    */
 
     public int getReps() {
         return reps;

@@ -4,9 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 
-import ch.ti.bfh.physio_app.concept.Exercise;
-import ch.ti.bfh.physio_app.concept.Programm;
-import ch.ti.bfh.physio_app.concept.ProgrammExponent;
+import ch.ti.bfh.physio_app.concept.*;
 import java.util.List;
 /**
  * All Operations including Database queries for the Programm class are created in here. We use an EntityManger for all
@@ -21,38 +19,61 @@ public class ProgrammManager {
     private EntityManager entityManager;
 
     @Transactional
-    public Programm createProgramm(String name){
-        Programm programm = new Programm(name);
-        entityManager.persist(programm);
-        return programm;
-    }
-
-    @Transactional
-    public Programm createProgramm(String name, List<ProgrammExponent> programmExponents){
-        Programm programm = new Programm(name, programmExponents);
-        save(programm);
-        return programm;
-    }
-
-    @Transactional
-    public Programm addExercise(Programm programm, Exercise exercise, int reps, int sets){
-        programm.getProgrammExponents().add(new ProgrammExponent(exercise, sets, reps));
-        save(programm);
-        return programm;
-    }
-
-    @Transactional
     public void save(Programm programm) {
         entityManager.persist(programm);
     }
 
     @Transactional
+    public void save(ProgrammComponent programmComponent) {
+        entityManager.persist(programmComponent);
+    }
+
+    @Transactional
+    public Programm addProgrammExponentToProgramm(Programm programm, Exercise exercise, int reps, int sets){
+        ProgrammComponent programmComponent = new ProgrammComponent(exercise, programm, sets, reps);
+        save(programmComponent);
+        programm.getProgrammComponent().add(programmComponent);
+        save(programm);
+        return programm;
+    }
+
+
+    @Transactional
+    public List<Programm> getAllProgramms(){
+        TypedQuery<Programm> query = entityManager.createQuery("SELECT p FROM Programm p", Programm.class);
+        return query.getResultList();
+
+    }
+
+    @Transactional
+    public Programm getProgrammById(long id){
+        TypedQuery<Programm> query = entityManager.createQuery("SELECT p FROM Programm p WHERE p.id= :id", Programm.class);
+        return query.getSingleResult();
+
+    }
+
+    @Transactional
+    public boolean removeProgrammComponent(ProgrammComponent programmComponent){
+            if (entityManager.contains(programmComponent)) {
+                entityManager.remove(programmComponent);
+                // Programm programm = programmComponent.getProgramm();
+                // programm.getProgrammComponent().remove(programmComponent);
+                // save(programm);
+
+                return true;
+            }
+            return false;
+
+        }
+
+    @Transactional
     public boolean removeProgrammExponentByExercise(Programm programm, Exercise exercise){
-        List<ProgrammExponent> programmExponents = programm.getProgrammExponents();
+        List<ProgrammComponent> programmComponents = programm.getProgrammComponent();
         boolean successWithDeletion = false;
-        for (ProgrammExponent exp : programmExponents) {
-            if (exp.getExercise().getId() == exercise.getId()) {
-                programmExponents.remove(exp);
+        for (ProgrammComponent component : programmComponents) {
+            if (component.getExercise().getId() == exercise.getId()) {
+                // programmComponents.remove(component);
+                entityManager.remove(component);
                 successWithDeletion = true;
             }
         }
@@ -60,36 +81,20 @@ public class ProgrammManager {
         return successWithDeletion;
     }
 
-    @Transactional
-    public boolean removeProgrammExponent(Programm programm, ProgrammExponent programmExponent){
-        List<ProgrammExponent> programmExponents = programm.getProgrammExponents();
-        if(programmExponents.contains(programmExponent)){
-            programmExponents.remove(programmExponent);
-            save(programm);
-            return true;
-        }
-        return false;
-    }
-
-    @Transactional
-    private Programm getProgrammById(long id) throws Exception {
-        if(entityManager.find(Programm.class, id)!=null)
-            return entityManager.find(Programm.class, id);
-        else throw new Exception();
-
-    }
 
     @Transactional
     private List<Programm> getProgrammsByName(String name) throws Exception {
         TypedQuery<Programm> query = entityManager.createQuery("SELECT p FROM Programm p WHERE p.programm_name = :name", Programm.class);
+        query.setParameter("name", name);
         return query.getResultList();
+
     }
 
     @Transactional
-    private ProgrammExponent getProgrammExponentById(long id) throws Exception{
-        if(entityManager.find(Programm.class, id)!=null)
-            return entityManager.find(ProgrammExponent.class, id);
-        else throw new Exception();
+    private List<ProgrammComponent> getProgrammComponentsByProgramm(long programmId) {
+        TypedQuery<ProgrammComponent> query = entityManager.createQuery("SELECT p FROM ProgrammComponent p WHERE p.programm.id = :programmId", ProgrammComponent.class);
+        query.setParameter("programmId", programmId);
+        return query.getResultList();
     }
 
 }

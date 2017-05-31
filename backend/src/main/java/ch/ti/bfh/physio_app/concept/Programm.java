@@ -15,7 +15,7 @@ import java.util.*;
 public class Programm extends pEntityWithID{
 
     @OneToMany
-    private List<ProgrammExponent> programmExponents = new ArrayList<>();
+    private List<ProgrammComponent> programmComponent = new ArrayList<>();
 
     @Column
     private String programm_name;
@@ -30,17 +30,17 @@ public class Programm extends pEntityWithID{
         this.programm_name = name;
     }
 
-    public Programm(String name, List<ProgrammExponent> programmExponents){
+    public Programm(String name, List<ProgrammComponent> programmExponents){
         this.programm_name = name;
-        this.programmExponents = programmExponents;
+        this.programmComponent = programmExponents;
     }
 
-    public List<ProgrammExponent> getProgrammExponents() {
-        return programmExponents;
+    public List<ProgrammComponent> getProgrammComponent() {
+        return programmComponent;
     }
 
-    public void setProgrammExponents(List<ProgrammExponent> programmExponents) {
-        this.programmExponents = programmExponents;
+    public void setProgrammComponent(List<ProgrammComponent> programmComponent) {
+        this.programmComponent = programmComponent;
     }
 
     public String getProgramm_name() {

@@ -81,7 +81,7 @@ public class ExerciseResource {
 
     // get all exercises
     @GET
-    @Path("/get")
+    @Path("")
     public List<Exercise> getExercises(){
         List<Exercise> exerciseList = exerciseManager.getAllExercises();
         return exerciseList;
