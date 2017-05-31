@@ -147,13 +147,22 @@ public class ExerciseManager {
         return query.getResultList();
     }
 
+    // get all one ExerciseImage of an exercise
+    @Transactional
+    private ExerciseImage getOneExerciseImage(Exercise exercise){
+        TypedQuery<ExerciseImage> query = entityManager.createQuery("SELECT e FROM ExerciseImage e WHERE e.exercise.id = :id", ExerciseImage.class);
+        query.setParameter("id", exercise.getId());
+        // TODO better query for first result
+        return query.getSingleResult();
+    }
+
 
 
     // PICTURE STUFF
 
     // adding a image to an exercise
     @Transactional
-    public String addImageToExercise(String imageAsString, long exerciseId){
+    public String addImageToExercise(/* String imageAsString, */ long exerciseId){
         Exercise exercise = getExerciseById(exerciseId);
 
         // creating a new ExerciseImage
@@ -163,23 +172,20 @@ public class ExerciseManager {
         // setting image name to ex_EXERCISEID_IMAGEID
         exerciseImage.setImageUniqueName(exerciseId+"_"+exerciseImage.getId());
 
-        // converting imageAsString to a file
-        imageService.saveImage(imageAsString, exerciseImage.getImageUniqueName());
-
         save(exerciseImage);
 
-        return "Image saved";
+        return exerciseImage.getImageUniqueName();
     }
 
-    // get all path for images of an exercise
+
+    // get file of an image
     @Transactional
-    public List<String> getImagesOfAnExercise(long exerciseId){
-        List<String> imagePaths = getExerciseImagePathList(exerciseId);
-        List<String> imagesAsStrings = new ArrayList<>();
-        for (String path : imagePaths)
-            imagesAsStrings.add(imageService.getImageString(path));
-        return imagesAsStrings;
+    public File getImageFileOfExercise(long exerciseId){
+        ExerciseImage exerciseImage = getOneExerciseImage(getExerciseById(exerciseId));
+        String path = imageService.path + exerciseId + "_"+ exerciseImage.getId() + ".jpg";
+        return imageService.getImageByPath(path);
     }
+
 
     // get all path for images of an exercise
     @Transactional

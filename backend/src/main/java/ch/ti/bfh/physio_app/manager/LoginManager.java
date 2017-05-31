@@ -3,6 +3,8 @@ package ch.ti.bfh.physio_app.manager;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.*;
+import javax.security.auth.login.FailedLoginException;
+import javax.security.auth.login.LoginException;
 import javax.transaction.Transactional;
 
 import ch.ti.bfh.physio_app.concept.*;
@@ -23,15 +25,13 @@ public class LoginManager {
     @PersistenceContext(unitName = "physio_app")
     private EntityManager entityManager;
 
-
-
     public String doHash(String pwToHash){
         //DO HASHING HERE
         return pwToHash;
     }
 
-
-
-
-
+    public boolean auth(String pwToHash){
+        //DO HASHING HERE
+        return false;
+    }
 }
