@@ -4,6 +4,7 @@ package ch.ti.bfh.physio_app.api;
 import ch.ti.bfh.physio_app.concept.Exercise;
 import ch.ti.bfh.physio_app.concept.Therapeut;
 import ch.ti.bfh.physio_app.manager.*;
+import ch.ti.bfh.physio_app.service.ImageService;
 import org.apache.commons.io.IOUtils;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
@@ -94,15 +95,12 @@ public class ExerciseResource {
         return exerciseManager.removeExercise(exerciseManager.getExerciseById(id));
     }
 
-    // get image for exercise
+    // get image for exercise AT MOMENT ONLY ONE
     @GET
-    @Path("/image/{exerciseId}")
+    @Path("/{exerciseId}/image")
     public Response getImage(@PathParam("exerciseId") long exerciseId) {
 
-        return ok(exerciseManager.getImagesOfAnExercise(exerciseId)).build();
-
-        /*
-        final File file =  exerciseManager.getPictureFileById(exerciseId);
+        final File file =  exerciseManager.getImageFileOfExercise(exerciseId);
 
         final StreamingOutput stream = rawOutputStream -> {
             try (final InputStream inputStream = new FileInputStream(file)) {
@@ -111,19 +109,24 @@ public class ExerciseResource {
                 outputStream.flush();
             }
         };
-
         return ok(stream)
                 .type("image/jpeg")
                 .build();
-        */
-
     }
 
-
+    // nice to know: http request is always a stream
+    // upload image for exercise
     @POST
-    @Path("/image/{exerciseId}")
-    public Response uploadFile(String imageAsString, @PathParam("exerciseId") long exerciseId) {
-        String result = exerciseManager.addImageToExercise(imageAsString, exerciseId);
-        return Response.status(200).entity(result).build();
+    @Consumes(MediaType.WILDCARD)
+    @Path("/{id}/image")
+    public Response uploadImage(@PathParam("id") int exerciseId, InputStream inputStream) throws IOException {
+        String uniqueExcerciseImageName = exerciseManager.addImageToExercise(exerciseId);
+        final File outputFile = new File(ImageService.path + uniqueExcerciseImageName + ".jpg");
+        try (OutputStream outputStream =  new BufferedOutputStream(new FileOutputStream(outputFile))) {
+            IOUtils.copy(inputStream, outputStream);
+        }
+
+        return ok().build();
     }
+
 }

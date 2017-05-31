@@ -43,15 +43,15 @@ public class PraxisResource {
     }
 
     @POST
-    @Path("/addTherapeut")
+    @Path("/therapeut")
     public Response addTherapeut(Therapeut therapeut) {
         therapeutManager.save(therapeut);
         return ok(therapeut).build();
     }
 
     @GET
-    @Path("/getTherapeuts/{praxisId}")
-    public Response getTherapeuts(@PathParam("praxisId") long praxisId) {
+    @Path("/therapeut")
+    public Response getTherapeuts() {
 
         // used, when more than one praxis in the DB
         // List<Therapeut> therapeuts = praxisManager.getTherapeuts(praxisId);
@@ -60,9 +60,8 @@ public class PraxisResource {
         return ok(therapeuts).build();
     }
 
-
     @GET
-    @Path("/getTherapeut/{id}")
+    @Path("/therapeut/{id}")
     public Response getTherapeut(@PathParam("id") long id) {
         Therapeut therapeut = therapeutManager.getTherapeutById(id);
         return ok(therapeut).build();
