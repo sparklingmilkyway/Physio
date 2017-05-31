@@ -9,11 +9,11 @@ import {PatientService} from "../../patient.service";
 })
 export class PatientAddFormComponent implements OnInit {
 
+  firstname : string;
   surname : string;
-  lastname : string;
   email : string;
   patient = {};
-  patients: Patient[];
+  patients: Patient[]
 
   constructor(private patientService: PatientService) {
   }
@@ -22,7 +22,8 @@ export class PatientAddFormComponent implements OnInit {
   }
 
   loadPatientAdd(){
-    this.patientService.addPatientNew(this.surname, this.lastname,this.email).subscribe(data => this.patient = data);
+    var newPatient = new Patient(this.firstname, this.surname, this.email, null);
+    this.patientService.addPatient(newPatient).subscribe(data => this.patient = data);
     this.getPatients();
     location.reload();
   }

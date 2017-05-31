@@ -22,7 +22,9 @@ export class PatientDetailsFormComponent implements OnInit {
   }
 
   changePatient(){
-    this.patientService.changePatient(this.patient.id,this.patient.therapeut,this.patient.surname,this.patient.firstname,this.patient.email).subscribe(data => this.patients = data);
+    var patientToUpdate = this.patient;
+    patientToUpdate.update(this.patient.id, this.patient.firstname,this.patient.surname,this.patient.email, this.patient.therapeut);
+    this.patientService.changePatient(patientToUpdate).subscribe(data => this.patient = data);
     location.reload();
   }
 }

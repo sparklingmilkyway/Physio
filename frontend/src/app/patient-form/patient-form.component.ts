@@ -50,13 +50,7 @@ export class PatientFormComponent implements OnInit {
     //this.patientService.getPatients().subscribe(data => this.patients = data);
     this.patientService.getPatients().subscribe(data => this.patients = data);
   }
-/*
-  loadPatientAdd(){
-    this.patientService.addPatient(this.value1, this.value2).subscribe(data => this.patient = data);
-    this.getPatients();
-    location.reload();
-  }
-*/
+
   findPatientGet(){
     this.patientService.getPatient(this.id).subscribe(data => this.patient = data);
   }
@@ -76,7 +70,9 @@ export class PatientFormComponent implements OnInit {
   }
 
   changePatient(){
-    this.patientService.changePatient(this.selectedPatient.id,this.selectedPatient.therapeut,this.selectedPatient.surname,this.selectedPatient.firstname,this.selectedPatient.email).subscribe(data => this.patient = data);
+    var patientToUpdate = this.selectedPatient;
+    patientToUpdate.update(this.selectedPatient.id, this.selectedPatient.firstname,this.selectedPatient.surname,this.selectedPatient.email, this.selectedPatient.therapeut);
+    this.patientService.changePatient(patientToUpdate).subscribe(data => this.patient = data);
     location.reload();
   }
 
