@@ -14,7 +14,6 @@ import { PatientFormComponent } from './patient-form/patient-form.component';
 import { ExerciseFormComponent } from './exercise-form/exercise-form.component';
 import { ProgramFormComponent } from './program-form/program-form.component';
 import {PraxisService} from "./praxis.service";
-import { AdminComponent } from './admin/admin.component';
 import { PatientAddFormComponent } from './patient-form/patient-add-form/patient-add-form.component';
 import { PatientManipulateFormComponent } from './patient-form/patient-manipulate-form/patient-manipulate-form.component';
 import {SubTabComponent, SubTabsComponent} from './sub-tabs/sub-tabs.component';
@@ -36,7 +35,6 @@ import { ProgramCreateFormComponent } from './program-form/program-create-form/p
     PatientFormComponent,
     ExerciseFormComponent,
     ProgramFormComponent,
-    AdminComponent,
     routingComponents,
     PatientAddFormComponent,
     PatientManipulateFormComponent,
