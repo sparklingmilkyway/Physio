@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ExerciseService} from "../exercise.service";
 import {Exercise} from "../Exercise";
+import {Therapeut} from "../../Therapeut";
 
 @Component({
   selector: 'app-exercise-add-form',
@@ -11,7 +12,7 @@ export class ExerciseAddFormComponent implements OnInit {
 
   name: string;
   gruppe: string;
-  therapeut: number;
+  therapeut: Therapeut;
   exercise = {};
   exercises: Exercise[];
 
@@ -21,7 +22,8 @@ export class ExerciseAddFormComponent implements OnInit {
   }
 
   loadExerciseAdd(){
-    this.exerciseService.addExercise(this.name,this.gruppe,this.therapeut).subscribe(data => this.exercise = data );
+    var newExercise = new Exercise(this.name,this.gruppe,this.therapeut)
+    this.exerciseService.addExercise(newExercise).subscribe(data => this.exercise = data );
     this.getExercises();
     location.reload();
   }

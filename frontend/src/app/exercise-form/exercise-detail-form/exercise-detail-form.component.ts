@@ -18,8 +18,9 @@ export class ExerciseDetailFormComponent implements OnInit {
   }
 
   changeExercise(){
-    this.exerciseService.changeExercise(this.exercise.id,this.exercise.name,this.exercise.type)
-      .subscribe(data => this.exercises);
+    var exerciseToUpdate = this.exercise;
+    this.exercise.update(exerciseToUpdate.id, exerciseToUpdate.name, exerciseToUpdate.type, exerciseToUpdate.therapeut);
+    this.exerciseService.changeExercise(exerciseToUpdate).subscribe(data => this.exercises);
     location.reload();
   }
 

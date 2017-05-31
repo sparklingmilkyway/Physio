@@ -19,6 +19,7 @@ export class ExerciseSearchFormComponent implements OnInit {
     this.selectedExercise = exercise;
   }
 
+  // fehlt noch in Service!!! zurzeit nur mit ID suchen
   getExerciseById(){
     this.exerciseService.getExercise(this.searchValue).subscribe(data => this.exercise = data);
   }
