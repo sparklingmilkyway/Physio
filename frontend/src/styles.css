@@ -6,9 +6,9 @@ Global style settings done here. Specific style setting will be done inside the 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
-@import url(_assets/css/navigation.css);
-@import url(_assets/css/table.css);
-@import url(_assets/css/button.css);
+@import url(assets/css/navigation.css);
+@import url(assets/css/table.css);
+@import url(assets/css/button.css);
 
 
 
@@ -101,7 +101,7 @@ for changes on our Form Elements(Login,Register etc.)
 */
 form{
   align-self: center;
-  background-color: lightblue;
+  /*background-color: lightblue; */
 
 }
 

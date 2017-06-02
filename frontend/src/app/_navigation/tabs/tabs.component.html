@@ -3,7 +3,7 @@
     <li><img src="favicon.ico" height="40px"></li>
     <li class="li-elem" *ngFor="let tab of tabs" [class.active] = "tab.active" (click)="activate(tab)">
       <a routerLink='{{tab.title}}' class="link">
-        <!-- <img src="../../../_assets/img/{{tab.title}}.png" height="40px"> -->
+       <img src="../../../assets/images/{{tab.title}}.png" height="40px">
         {{tab.title}}
 
       </a>

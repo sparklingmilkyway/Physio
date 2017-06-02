@@ -6,7 +6,6 @@ import javax.enterprise.context.ApplicationScoped;
 import java.io.*;
 
 @ApplicationScoped
-// https://myjeeva.com/convert-image-to-string-and-string-to-image-in-java.html#download-source-code
 public class ImageService {
 
     // local saving location for vanessa
@@ -14,7 +13,6 @@ public class ImageService {
 
     // server saving location
     // public static String path = "/data/exImages/";
-
 
 
     // get image with given path

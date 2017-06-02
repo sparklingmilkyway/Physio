@@ -1,0 +1,15 @@
+
+<section>
+  <div class="center">
+
+    <form (ngSubmit)="addExercise()">
+      <table class="add">
+        <tr><input placeholder = "Name" required="required" pattern="[A-Za-z0-9]{1,20}" [(ngModel)]="this.name" [ngModelOptions]="{standalone: true}"></tr>
+        <tr><input placeholder = "Type" required="required"  [(ngModel)]="this.type" [ngModelOptions]="{standalone: true}"></tr>
+        <tr>  <button type="submit">Übung hinzufügen</button></tr>
+      </table>
+    </form>
+
+  </div>
+
+</section>

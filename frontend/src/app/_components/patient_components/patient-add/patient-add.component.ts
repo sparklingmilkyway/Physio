@@ -13,6 +13,7 @@ export class PatientAddComponent implements OnInit {
   firstname: string;
   surname: string;
   email: string;
+  private patient: Patient;
 
   constructor(private patientService: PatientService, private router: Router) {
   }
@@ -22,8 +23,8 @@ export class PatientAddComponent implements OnInit {
 
 
   addPatient() {
-    var patient = new Patient(null, this.firstname, this.surname, this.email, null);
-    this.patientService.addPatient(patient);
+    this.patient.update(null, this.firstname, this.surname, this.email, null);
+    this.patientService.addPatient(this.patient);
     this.router.navigateByUrl("/patient");
   }
 }

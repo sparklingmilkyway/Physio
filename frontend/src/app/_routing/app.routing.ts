@@ -3,12 +3,11 @@
  */
 
 import{RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from "../_components/home/home.component";
-import {SearchComponent} from "../_components/search/search.component";
-import {AddComponent} from "../_components/add/add.component";
-import {ExerciseComponent} from "../_components/exercise/exercise.component";
-import {PatientComponent} from "../_components/patient_components/patient/patient.component";
 import {addRouting, addRoutingComponent} from "./add.routing";
+import {exerciseRouting, exerciseRoutingComponent} from "./exercise.routing";
+import {patientRouting, patientRoutingComponent} from "./patient.routing";
+import {homeRouting, homeRoutingComponent} from "./home.routing";
+import {searchRouting, searchRoutingComponent} from "./search.routing";
 
 
 /**
@@ -18,16 +17,11 @@ import {addRouting, addRoutingComponent} from "./add.routing";
  * this is the very root component of our angular Routes. These are necessary to properly navigate through our application.
  */
 export const appRoutes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path:'search', component: SearchComponent},
-  {path:'add', component: AddComponent},
-  {path:'exercise', component: ExerciseComponent},
-  {path:'patient', component: PatientComponent},
-
-  ...addRouting
-  //...patientRouting,
-  //...exerciseRouting,
- // ...programRouting
+  ...addRouting,
+  ...homeRouting,
+  ...searchRouting,
+  ...exerciseRouting,
+  ...patientRouting
 ];
 
 export const appRouting = RouterModule.forRoot(appRoutes);
@@ -35,14 +29,9 @@ export const appRouting = RouterModule.forRoot(appRoutes);
 
 export const routingComponents = [
 
-  HomeComponent,
-  SearchComponent,
-  AddComponent,
-  ExerciseComponent,
-  PatientComponent,
-
-  ...addRoutingComponent
-  // ...patientRoutingComponents,
-  // ...exerciseRoutingComponents,
-  // ...programRoutingComponents
+  ...addRoutingComponent,
+  ...searchRoutingComponent,
+  ...homeRoutingComponent,
+  ...exerciseRoutingComponent,
+  ...patientRoutingComponent
 ];
