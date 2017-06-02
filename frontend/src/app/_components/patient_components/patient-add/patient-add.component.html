@@ -1,0 +1,16 @@
+
+<section>
+  <div class="center">
+
+<form (ngSubmit)="addPatient()">
+  <table class="add">
+    <tr><input placeholder = "Vorname" required="required" pattern="[A-Za-z0-9]{1,20}" [(ngModel)]="this.firstname" [ngModelOptions]="{standalone: true}"></tr>
+    <tr><input placeholder = "Nachname" required="required"  [(ngModel)]="this.surname" [ngModelOptions]="{standalone: true}"></tr>
+    <tr><input placeholder = "E-Mail" required="required" type="email" [(ngModel)]="this.email" [ngModelOptions]="{standalone: true}">
+    <tr>  <button type="submit">Patient hinzufügen</button></tr>
+  </table>
+</form>
+
+  </div>
+
+</section>

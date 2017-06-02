@@ -1,0 +1,22 @@
+
+
+<div class="column col-6" align="center">
+  <div class="indexDiv column col-4" align="center" style="display: inline-block;">
+    <table>
+      <tr>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>Details</th>
+      </tr>
+      <tr *ngFor="let patient of patients" (click)="onSelect(patient)">
+        <td>{{patient.surname}}</td>
+        <td>{{patient.firstname}}</td>
+        <td><a (click)="clickButton()"> Details </a></td>
+        <td><button class="standartButton" (click)="removePatient(patient.id)">löschen</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="column col-2" style="display: inline-block;">
+  </div>
+</div>

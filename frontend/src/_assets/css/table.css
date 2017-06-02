@@ -1,0 +1,20 @@
+table{
+  border-collapse: collapse;
+  width: 80%;
+  align-content: center;
+}
+
+td, th{
+  border: none;
+  text-align: left;
+  padding: 8px;
+}
+
+tr.color_even:nth-child(even) {
+  background-color: #E2F0F5;
+}
+
+
+table.add{
+  width: 80%;
+}
