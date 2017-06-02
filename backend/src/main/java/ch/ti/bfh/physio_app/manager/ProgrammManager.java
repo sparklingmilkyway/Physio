@@ -29,25 +29,32 @@ public class ProgrammManager {
     }
 
     @Transactional
-    public Programm addProgrammExponentToProgramm(Programm programm, Exercise exercise, int reps, int sets){
-        ProgrammComponent programmComponent = new ProgrammComponent(exercise, programm, sets, reps);
-        save(programmComponent);
-        programm.getProgrammComponent().add(programmComponent);
+    public Programm addProgrammComponentToProgramm(Programm programm, ProgrammComponent component){
+        programm.getProgrammComponent().add(component);
         save(programm);
         return programm;
     }
 
 
-    @Transactional
+    public ProgrammComponent getProgrammComponentById(long id){
+        TypedQuery<ProgrammComponent> query = entityManager.createQuery("SELECT p FROM ProgrammComponent p WHERE p.id = :id", ProgrammComponent.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+
+    }
+
+
+
     public List<Programm> getAllProgramms(){
         TypedQuery<Programm> query = entityManager.createQuery("SELECT p FROM Programm p", Programm.class);
         return query.getResultList();
 
     }
 
-    @Transactional
+
     public Programm getProgrammById(long id){
         TypedQuery<Programm> query = entityManager.createQuery("SELECT p FROM Programm p WHERE p.id= :id", Programm.class);
+        query.setParameter("id", id);
         return query.getSingleResult();
 
     }
@@ -82,7 +89,7 @@ public class ProgrammManager {
     }
 
 
-    @Transactional
+
     private List<Programm> getProgrammsByName(String name) throws Exception {
         TypedQuery<Programm> query = entityManager.createQuery("SELECT p FROM Programm p WHERE p.programm_name = :name", Programm.class);
         query.setParameter("name", name);
@@ -90,8 +97,8 @@ public class ProgrammManager {
 
     }
 
-    @Transactional
-    private List<ProgrammComponent> getProgrammComponentsByProgramm(long programmId) {
+
+    public List<ProgrammComponent> getProgrammComponentsByProgramm(long programmId) {
         TypedQuery<ProgrammComponent> query = entityManager.createQuery("SELECT p FROM ProgrammComponent p WHERE p.programm.id = :programmId", ProgrammComponent.class);
         query.setParameter("programmId", programmId);
         return query.getResultList();

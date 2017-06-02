@@ -2,6 +2,7 @@ package ch.ti.bfh.physio_app.api;
 
 import ch.ti.bfh.physio_app.concept.Exercise;
 import ch.ti.bfh.physio_app.concept.Programm;
+import ch.ti.bfh.physio_app.concept.ProgrammComponent;
 import ch.ti.bfh.physio_app.manager.ExerciseManager;
 import ch.ti.bfh.physio_app.manager.ProgrammManager;
 
@@ -22,17 +23,77 @@ public class ProgrammResource {
     @Inject
     private ProgrammManager programmManager;
 
-    @GET
+    // creating a new programm
+    @POST
     @Path("")
-    public List<Programm> getAllProgramms(){
-        return programmManager.getAllProgramms();
+    public Response createProgramm(Programm programm) {
+        programmManager.save(programm);
+        return ok(programm).build();
     }
 
-    @GET
-    @Path("{id}")
-    public Programm getProgrammByID(@PathParam("id") long programmId) {
-        return programmManager.getProgrammById(programmId);
+    // updating a programm
+    @POST
+    @Path("/update")
+    public Response updateProgramm(Programm programm) {
+        programmManager.save(programm);
+        Programm updatedProgramm = programmManager.getProgrammById(programm.getId());
+        return ok(updatedProgramm).build();
     }
+
+    // add a component to programm
+    @POST
+    @Path("/{id}/component")
+    public Response addComponentToProg(@PathParam("id") long programmId, ProgrammComponent programmComponent) {
+        Programm programm = programmManager.addProgrammComponentToProgramm(programmManager.getProgrammById(programmId), programmComponent);
+        return ok(programm).build();
+    }
+
+    // get components of programm
+    @GET
+    @Path("/{id}/component")
+    public List<ProgrammComponent> getComponentsOfProgramm(@PathParam("id") long programmId) {
+        List<ProgrammComponent> components = programmManager.getProgrammComponentsByProgramm(programmId);
+        return components;
+    }
+
+    // create component
+    @POST
+    @Path("/component")
+    public Response createComponent(ProgrammComponent programmComponent){
+        programmManager.save(programmComponent);
+        return ok(programmComponent).build();
+
+    }
+
+    // get all programms
+    @GET
+    @Path("")
+    public List<Programm> getProgramms() {
+        List<Programm> programms = programmManager.getAllProgramms();
+        return programms;
+    }
+
+    // get programm by id
+    @GET
+    @Path("/{id}")
+    public Programm getProgramm(@PathParam("id") long id){
+            Programm programm = programmManager.getProgrammById(id);
+            return programm;
+    }
+
+    // get component by id
+    @GET
+    @Path("/component/{id}")
+    public ProgrammComponent getProgrammcomponent(@PathParam("id") long id){
+        ProgrammComponent programmComponent = programmManager.getProgrammComponentById(id);
+        return programmComponent;
+    }
+
+
+
+
+
+
 
 
 }

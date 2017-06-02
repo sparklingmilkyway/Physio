@@ -36,6 +36,7 @@ public class TherapeutManager {
         entityManager.persist(therapeut);
     }
 
+    @Transactional
     public void remove(Therapeut therapeut){
         entityManager.remove(therapeut);
     }
@@ -45,12 +46,24 @@ public class TherapeutManager {
         return entityManager.find(Therapeut.class, id);
     }
 
+
     @Transactional
     private List<Therapeut> getTherapeutBySurname(long id){
         TypedQuery<Therapeut> query = entityManager.createQuery("SELECT t FROM Therapeut t WHERE t.surname = :name", Therapeut.class);
         return query.getResultList();
 
     }
+
+    // update an therapeut
+    @Transactional
+    public Therapeut update(Therapeut therapeutToUpdate, Therapeut therapeut){
+        therapeutToUpdate.setEmail(therapeut.getEmail());
+        therapeutToUpdate.setFirstname(therapeut.getFirstname());
+        therapeutToUpdate.setSurname(therapeut.getSurname());
+        save(therapeutToUpdate);
+        return therapeutToUpdate;
+    }
+
 
 
 }

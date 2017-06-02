@@ -1,4 +1,4 @@
-package ch.ti.bfh.physio_app.service;
+package ch.ti.bfh.physio_app.manager;
 
 import org.apache.commons.codec.binary.Base64;
 

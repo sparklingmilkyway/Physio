@@ -2,12 +2,9 @@ package ch.ti.bfh.physio_app.api;
 
 
 import ch.ti.bfh.physio_app.concept.Exercise;
-import ch.ti.bfh.physio_app.concept.Therapeut;
 import ch.ti.bfh.physio_app.manager.*;
-import ch.ti.bfh.physio_app.service.ImageService;
+import ch.ti.bfh.physio_app.manager.ImageService;
 import org.apache.commons.io.IOUtils;
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
-import org.glassfish.jersey.media.multipart.FormDataParam;
 
 
 import javax.inject.Inject;

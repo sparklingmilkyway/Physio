@@ -25,6 +25,9 @@ public class LoginManager {
     @PersistenceContext(unitName = "physio_app")
     private EntityManager entityManager;
 
+    // TODO
+
+    /**
     public String doHash(String pwToHash){
         //DO HASHING HERE
         return pwToHash;
@@ -34,4 +37,5 @@ public class LoginManager {
         //DO HASHING HERE
         return false;
     }
+     **/
 }
