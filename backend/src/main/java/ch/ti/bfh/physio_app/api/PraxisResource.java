@@ -28,6 +28,7 @@ public class PraxisResource {
     private TherapeutManager therapeutManager;
 
 
+    //
     @POST
     @Path("")
     public Response addPraxis(Praxis praxis) {

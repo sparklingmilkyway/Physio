@@ -13,7 +13,6 @@ public class ApiApplication extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         return newHashSet(
-                UserResource.class,
                 ProgrammResource.class,
                 PraxisResource.class,
                 CorsFilter.class,
