@@ -1,0 +1,42 @@
+<div class="column col-6" align="center">
+  <popup (confirmClick)="changePatient()" #popup1>
+    <app-patient-details-form [patient]="selectedPatient">loading..</app-patient-details-form>
+  </popup>
+<div class="indexDiv column col-4" align="center" style="display: inline-block;">
+  <!--
+  <li *ngFor="let patient of patients">
+    <span>{{patient.surname}} {{patient.firstname}}</span>
+    <span>{{patient.id}}</span>
+    <br>
+  </li>-->
+  <table>
+    <tr>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>Details</th>
+    </tr>
+    <tr *ngFor="let patient of patients" (click)="onSelect(patient)">
+      <td>{{patient.surname}}</td>
+      <td>{{patient.firstname}}</td>
+      <td><a (click)="clickButton()"> Details </a></td>
+      <td><button class="standartButton" (click)="removePatient(patient.id)">löschen</button></td>
+  </tr>
+</table>
+</div>
+  <div class="col-2" style="display: inline-block;">
+    <!--<app-patient-details-form [patient]="selectedPatient">loading..</app-patient-details-form>-->
+  </div>
+  <div class="indexDiv column col-4" align="center" style="display: inline-block;">
+  <br>
+    <div class="indexDiv">
+    <ul>
+      <li><a routerLink="Hinzufügen">Hinzufügen</a></li>
+      <li><a routerLink="Suchen">Suchen</a></li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
+  <br>
+  </div>
+  <div class="column col-2" style="display: inline-block;">
+  </div>
+</div>

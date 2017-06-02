@@ -1,0 +1,32 @@
+<h1>{{text}}</h1>
+<div class="column col-6" align="center">
+  <div class="indexDiv column col-4" align="center">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Gruppe</th>
+        <th>Therapeut</th>
+      </tr>
+      <tr *ngFor="let exercise of exercises" (click)="onSelect(exercise)">
+        <td>{{exercise.name}}</td>
+        <td>{{exercise.type}}</td>
+        <td>{{exercise.therapeut}}</td>
+        <td><a router-link='Details'>Details</a></td>
+        <td><button class="standartButton" (click)="removeExercise(exercise.id)" >löschen</button> </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-2">
+    <app-exercise-detail-form [exercise]="selectedExercise">Loading...</app-exercise-detail-form>
+  </div>
+</div>
+<div class="indexDiv column col-4" align="center">
+  <br>
+  <div class="indexDiv">
+    <ul>
+      <li><a routerLink="Hinzufügen">Hinzufügen</a></li>
+      <li><a routerLink="Suchen">Suchen</a></li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
+</div>
