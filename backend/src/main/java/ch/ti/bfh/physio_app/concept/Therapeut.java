@@ -9,9 +9,9 @@ import java.util.Set;
 public class Therapeut extends pEntityWithID{
 
     @Column
-    private String surname;
-    @Column
     private String firstname;
+    @Column
+    private String surname;
     @Column
     private String email;
     @Column
