@@ -81,7 +81,7 @@ public class PatientResource{
 
     // get all patients
     @GET
-    @Path("/all")
+    @Path("")
     public List<Patient> getPatients(){
         List<Patient> patientList = patientManager.getAllPatients();
         return patientList;
