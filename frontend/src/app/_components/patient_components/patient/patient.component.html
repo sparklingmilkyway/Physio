@@ -9,8 +9,8 @@
         <th>Details</th>
       </tr>
       <tr *ngFor="let patient of patients" (click)="onSelect(patient)">
-        <td>{{patient.surname}}</td>
         <td>{{patient.firstname}}</td>
+        <td>{{patient.surname}}</td>
         <td><a (click)="clickButton()"> Details </a></td>
         <td><button class="standartButton" (click)="removePatient(patient.id)">löschen</button></td>
       </tr>

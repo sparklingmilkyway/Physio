@@ -16,8 +16,8 @@ export class PatientComponent implements OnInit {
   value1:string = "Vorname";
   value2:string = "Nachname";
   id:number;
+  firstname: string;
   surname : string;
-  text: string = "Patienten";
   patient = {};
   patients: Patient[];
   private selectedPatient: Patient;
@@ -48,16 +48,10 @@ export class PatientComponent implements OnInit {
   } */
 
   getPatients(){
-    //this.patientService.getPatients().subscribe(data => this.patients = data);
     this.patientService.getPatients().subscribe(data => this.patients = data);
   }
+
   /*
-   loadPatientAdd(){
-   this.patientService.addPatient(this.value1, this.value2).subscribe(data => this.patient = data);
-   this.getPatients();
-   location.reload();
-   }
-   */
   findPatientGet(){
     this.patientService.getPatient(this.id).subscribe(data => this.patient = data);
   }
@@ -66,6 +60,7 @@ export class PatientComponent implements OnInit {
     this.patientService.getPatientbySurname(this.surname).subscribe(data => this.patient = data);
   }
 
+*/
   removePatient(id){
     this.patientService.removePatient(id).subscribe(data => this.patient = data);
     this.getPatients();
@@ -74,7 +69,6 @@ export class PatientComponent implements OnInit {
 
   onSelect(patient: Patient){
     this.selectedPatient = patient;
-    this.getPatients();
   }
 
   changePatient(){
