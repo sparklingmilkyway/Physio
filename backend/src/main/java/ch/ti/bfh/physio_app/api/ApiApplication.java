@@ -1,5 +1,7 @@
 package ch.ti.bfh.physio_app.api;
 
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.Set;
@@ -16,7 +18,8 @@ public class ApiApplication extends Application {
                 PraxisResource.class,
                 CorsFilter.class,
                 PatientResource.class,
-                ExerciseResource.class
+                ExerciseResource.class,
+                JacksonJsonProvider.class
         );
     }
 }
