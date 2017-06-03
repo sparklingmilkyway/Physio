@@ -8,6 +8,7 @@ import {exerciseRouting, exerciseRoutingComponent} from "./exercise.routing";
 import {patientRouting, patientRoutingComponent} from "./patient.routing";
 import {homeRouting, homeRoutingComponent} from "./home.routing";
 import {searchRouting, searchRoutingComponent} from "./search.routing";
+import {LoginComponent} from "../_components/login/login.component";
 
 
 /**
@@ -16,8 +17,10 @@ import {searchRouting, searchRoutingComponent} from "./search.routing";
  *
  * this is the very root component of our angular Routes. These are necessary to properly navigate through our application.
  */
-export const appRoutes: Routes = [
-  ...addRouting,
+export const appRoutes: Routes = [{
+  path: 'login', component: LoginComponent,
+},
+...addRouting,
   ...homeRouting,
   ...searchRouting,
   ...exerciseRouting,
@@ -29,6 +32,7 @@ export const appRouting = RouterModule.forRoot(appRoutes);
 
 export const routingComponents = [
 
+  LoginComponent,
   ...addRoutingComponent,
   ...searchRoutingComponent,
   ...homeRoutingComponent,
