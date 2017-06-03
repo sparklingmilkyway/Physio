@@ -1,49 +1,61 @@
+div.navi{
+  margin: auto;
+  background: green;
+  width: 100%;
+
+  -moz-box-shadow: 0px 10px 14px -7px #95aaad;
+  -webkit-box-shadow: 0px 10px 14px -7px #95aaad;
+  box-shadow: 0px 10px 14px -7px #95aaad;
+
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e2f0f5), color-stop(1, #afd0db));
+  background:-moz-linear-gradient(top, #e2f0f5 5%, #afd0db 100%);
+  background:-webkit-linear-gradient(top, #e2f0f5 5%, #afd0db 100%);
+  background:-o-linear-gradient(top, #e2f0f5 5%, #afd0db 100%);
+  background:-ms-linear-gradient(top, #e2f0f5 5%, #afd0db 100%);
+  background:linear-gradient(to bottom, #e2f0f5 5%, #afd0db 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e2f0f5', endColorstr='#afd0db',GradientType=0);
+
+  background-color:#e2f0f5;
+
+  /*
+  -moz-border-radius:1px;
+  -webkit-border-radius:1px;
+  border-radius:1px;
+  */
+
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  padding-top: 1em;
+  text-align: center;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #51899c;
+
+}
+
 nav{
   width: 100%;
-  background:#E2F0F5;
   font-size: 1.5em;
-  position: relative;
+  /*
+  background: violet;
+  */
+
 }
 
 nav ul{
   overflow: hidden;
-  margin: 0;
-  padding: 1em;
+  /* background: orange; */
 }
 
 nav ul li{
+  text-align: center;
   list-style: none;
   float: left;
   text-align: center;
-  width: 16.6667%; /* fallback for non-calc() browsers */
-  width: calc(100% / 8);
+  width: 16.67%; /* fallback for non-calc() browsers */
+  width: calc(100% / 5);
   box-sizing: border-box;
-}
-
-nav ul li:first-child {
-  border-left: none;
-}
-nav a :hover {
-  color: #000;
-  font-weight: inherit;
-
-}
-
-nav .active {
-  text-decoration: underline;
-  font-weight: bolder;
-
-}
-
-nav ul li a {
-  display: block;
-  text-decoration: none;
-  color: #333333;
-  padding: 10px 0;
-}
-
-
-div.navigationDiv{
-  border-style: dotted;
-  background-color: lightgray;
+  display: inline-block;
+  margin: auto;
+  padding: 0.5em; /* background: yellow; */
 }
