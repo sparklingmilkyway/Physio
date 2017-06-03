@@ -1,12 +1,14 @@
 table{
   border-collapse: collapse;
-  width: 80%;
+  width: 100%;
+  /*
   align-content: center;
+   */
 }
 
 td, th{
   border: none;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 

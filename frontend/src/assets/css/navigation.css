@@ -57,5 +57,31 @@ nav ul li{
   box-sizing: border-box;
   display: inline-block;
   margin: auto;
-  padding: 0.5em; /* background: yellow; */
+  padding: 0.5em;
+  border-style: hidden;
+  border:transparent;
+
+
+  /*
+  background: yellow;
+  */
+}
+
+nav ul li:hover{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+61,ffffff+100&1+17,0+100 */
+  background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 17%, rgba(255,255,255,0.47) 61%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 17%,rgba(255,255,255,0.47) 61%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 17%,rgba(255,255,255,0.47) 61%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  margin-left:1%;
 }
