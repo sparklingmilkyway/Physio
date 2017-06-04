@@ -7,6 +7,15 @@ import javax.security.auth.login.FailedLoginException;
 import javax.security.auth.login.LoginException;
 import javax.transaction.Transactional;
 
+
+
+
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
+import java.security.Key;
+import io.jsonwebtoken.*;
+import java.util.Date;
+
 import ch.ti.bfh.physio_app.concept.*;
 
 import java.util.List;
@@ -25,13 +34,27 @@ public class LoginManager {
     @PersistenceContext(unitName = "physio_app")
     private EntityManager entityManager;
 
+    // TODO
+
+    public boolean auth(Therapeut therapeut, String password){
+        String hashedPw = doHash(password);
+
+        if(therapeut.getPasswordHash()== hashedPw)
+            return true;
+        else  return false;
+    }
+
+
     public String doHash(String pwToHash){
         //DO HASHING HERE
         return pwToHash;
     }
 
-    public boolean auth(String pwToHash){
-        //DO HASHING HERE
-        return false;
-    }
+
+
+
+
+
+
+
 }

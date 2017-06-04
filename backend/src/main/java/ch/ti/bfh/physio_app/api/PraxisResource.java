@@ -28,6 +28,7 @@ public class PraxisResource {
     private TherapeutManager therapeutManager;
 
 
+    // creating a new praxis
     @POST
     @Path("")
     public Response addPraxis(Praxis praxis) {
@@ -35,6 +36,7 @@ public class PraxisResource {
         return ok(praxis).build();
     }
 
+    // get a new praxis
     @GET
     @Path("")
     public Response getPraxis() {
@@ -42,6 +44,7 @@ public class PraxisResource {
         return ok(praxis).build();
     }
 
+    // creating a new therapeut
     @POST
     @Path("/therapeut")
     public Response addTherapeut(Therapeut therapeut) {
@@ -49,6 +52,7 @@ public class PraxisResource {
         return ok(therapeut).build();
     }
 
+    // get all therapeuts
     @GET
     @Path("/therapeut")
     public Response getTherapeuts() {
@@ -60,11 +64,21 @@ public class PraxisResource {
         return ok(therapeuts).build();
     }
 
+    // get therapeut by id
     @GET
     @Path("/therapeut/{id}")
     public Response getTherapeut(@PathParam("id") long id) {
         Therapeut therapeut = therapeutManager.getTherapeutById(id);
         return ok(therapeut).build();
+    }
+
+    // update therapeut
+    @POST
+    @Path("/therapeut/update")
+    public Response getTherapeut(Therapeut therapeut) {
+        therapeutManager.save(therapeut);
+        Therapeut updatedTherapeut = therapeutManager.getTherapeutById(therapeut.getId());
+        return ok(updatedTherapeut).build();
     }
 
 }

@@ -9,10 +9,10 @@ import java.util.Set;
 public class Therapeut extends pEntityWithID{
 
     @Column
-    private String surname;
-    @Column
     private String firstname;
     @Column
+    private String surname;
+    @Column(unique=true)
     private String email;
     @Column
     private String passwordHash;

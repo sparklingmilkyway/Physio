@@ -7,6 +7,11 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
+/**
+ * http://www.baeldung.com/cors-in-jax-rs
+ * We’re injecting ‘Access-Control-Allow-*‘ header with ‘*’, that means any URL endpoints to this server instance can be accessed via any domain;
+ * if we want to restrict the cross-domain access explicitly, we have to mention that domain in this header
+ */
 @Provider
 public class CorsFilter implements ContainerResponseFilter {
 

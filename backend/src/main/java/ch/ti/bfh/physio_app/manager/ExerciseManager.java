@@ -3,14 +3,11 @@ package ch.ti.bfh.physio_app.manager;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.*;
 import javax.inject.Inject;
-import javax.persistence.*;
 import javax.transaction.Transactional;
 
 import ch.ti.bfh.physio_app.concept.*;
 import ch.ti.bfh.physio_app.concept.Exercise;
 import ch.ti.bfh.physio_app.concept.ExerciseNote;
-import ch.ti.bfh.physio_app.concept.Patient;
-import ch.ti.bfh.physio_app.service.ImageService;
 
 import java.io.*;
 import java.util.ArrayList;
