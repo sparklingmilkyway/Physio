@@ -1,63 +1,3 @@
-<<<<<<< HEAD
-import {routingComponents, appRouting} from './app.routing';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
-import { AppComponent } from './app.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import {TabComponent, TabsComponent} from './tabs/tabs.component';
-import { WelcomeFormComponent } from './welcome-form/welcome-form.component';
-import { PatientFormComponent } from './patient-form/patient-form.component';
-import { ExerciseFormComponent } from './exercise-form/exercise-form.component';
-import { ProgramFormComponent } from './program-form/program-form.component';
-import {PraxisService} from "./praxis.service";
-import { PatientAddFormComponent } from './patient-form/patient-add-form/patient-add-form.component';
-import { PatientManipulateFormComponent } from './patient-form/patient-manipulate-form/patient-manipulate-form.component';
-import { PatientDetailsFormComponent } from './patient-form/patient-details-form/patient-details-form.component';
-import { ExerciseAddFormComponent } from './exercise-form/exercise-add-form/exercise-add-form.component';
-import { ExerciseDetailFormComponent } from './exercise-form/exercise-detail-form/exercise-detail-form.component';
-import { ExerciseSearchFormComponent } from './exercise-form/exercise-search-form/exercise-search-form.component';
-import { PopupModule } from 'ng2-opd-popup';
-import { ProgramCreateFormComponent } from './program-form/program-create-form/program-create-form.component';
-
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginFormComponent,
-    TabsComponent,
-    TabComponent,
-    WelcomeFormComponent,
-    PatientFormComponent,
-    ExerciseFormComponent,
-    ProgramFormComponent,
-    routingComponents,
-    PatientAddFormComponent,
-    PatientManipulateFormComponent,
-    PatientDetailsFormComponent,
-    ExerciseAddFormComponent,
-    ExerciseDetailFormComponent,
-    ExerciseSearchFormComponent,
-    ProgramCreateFormComponent
-    //
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    appRouting,
-    PopupModule.forRoot()
-  ],
-  providers: [PraxisService],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-=======
 import {routingComponents, appRouting} from './_routing/app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -131,4 +71,3 @@ import {AlertComponent} from "./_directives/alert.component";
   bootstrap: [AppComponent]
 })
 export class AppModule { }
->>>>>>> newfrontend
