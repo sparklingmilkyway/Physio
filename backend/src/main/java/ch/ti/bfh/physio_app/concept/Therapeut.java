@@ -12,7 +12,7 @@ public class Therapeut extends pEntityWithID{
     private String firstname;
     @Column
     private String surname;
-    @Column
+    @Column(unique=true)
     private String email;
     @Column
     private String passwordHash;

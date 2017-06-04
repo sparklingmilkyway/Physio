@@ -48,8 +48,9 @@ public class TherapeutManager {
 
 
     @Transactional
-    private List<Therapeut> getTherapeutBySurname(long id){
+    private List<Therapeut> getTherapeutBySurname(String name){
         TypedQuery<Therapeut> query = entityManager.createQuery("SELECT t FROM Therapeut t WHERE t.surname = :name", Therapeut.class);
+        query.setParameter("name", name);
         return query.getResultList();
 
     }
@@ -75,6 +76,12 @@ public class TherapeutManager {
         entityManager.remove(getTherapeutById(id));
     }
 
+    @Transactional
+    public Therapeut getTherapeutByEmail(String email){
+        TypedQuery<Therapeut> query = entityManager.createQuery("SELECT t FROM Therapeut t WHERE t.email = :email", Therapeut.class);
+        query.setParameter("email", email);
+        return query.getSingleResult();
 
+    }
 
 }

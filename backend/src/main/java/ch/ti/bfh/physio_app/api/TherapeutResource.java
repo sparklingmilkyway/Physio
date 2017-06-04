@@ -56,12 +56,20 @@ public class TherapeutResource {
     }
 
 
-    // get therapeut by id
+    // delete therapeut by id
     @DELETE
     @Path("/{id}")
-    public Response delet(@PathParam("id") long id) {
+    public Response delete(@PathParam("id") long id) {
         therapeutManager.delete(id);
         return ok().build();
+    }
+
+    // get therapeut by email
+    @GET
+    @Path("/{email}")
+    public Response getTherapeutByEmail(@PathParam("email") String email) {
+        Therapeut therapeut = therapeutManager.getTherapeutByEmail(email);
+        return ok(therapeut).build();
     }
 
 
