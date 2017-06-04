@@ -20,3 +20,15 @@ tr.color_even:nth-child(even) {
 table.add{
   width: 80%;
 }
+
+
+td.left{
+  text-align: right;
+  width: 50%;
+
+
+}
+td.right{
+  text-align: left;
+  width: 50%;
+}
