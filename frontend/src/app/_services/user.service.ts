@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {Therapeut} from "../_classes/Therapeut";
 
-
+/**
+ * The user service contains a standard set of CRUD methods for managing users(therapeuts maybe oneday also patients),
+ * it contains a jwt() method that's used to add the JWT token from local storageto the Authorization header of each http request.
+ */
 @Injectable()
 export class UserService {
 

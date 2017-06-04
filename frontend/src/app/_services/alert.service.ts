@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
 
+/**
+ * The alert service enables any component in the application to display alert messages at the top of the page via the alert component.
+ */
 @Injectable()
 export class AlertService {
   private subject = new Subject<any>();
