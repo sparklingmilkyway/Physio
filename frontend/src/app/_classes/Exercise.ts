@@ -1,5 +1,8 @@
 import {Therapeut} from "./Therapeut";
 
+/**
+ * The exercise model is a small class that defines the properties of an exercise.
+ */
 export class Exercise{
 
   id: number;

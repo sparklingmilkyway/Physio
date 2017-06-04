@@ -1,5 +1,8 @@
 import {Therapeut} from "./Therapeut";
 
+/**
+ * The patient model is a small class that defines the properties of a patient.
+ */
 export class Patient{
 
   id: number;

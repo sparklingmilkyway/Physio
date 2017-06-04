@@ -1,5 +1,8 @@
 import {Patient} from "./Patient";
 
+/**
+ * The programm model is a small class that defines the properties of a programm.
+ */
 export class Programm{
 
   id: number;

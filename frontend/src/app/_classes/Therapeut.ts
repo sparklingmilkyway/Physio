@@ -1,3 +1,7 @@
+
+/**
+ * The therapeut model is a small class that defines the properties of a therapeut.
+ */
 export class Therapeut{
 
   id: number;
