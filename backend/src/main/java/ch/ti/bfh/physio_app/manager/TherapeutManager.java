@@ -64,6 +64,17 @@ public class TherapeutManager {
         return therapeutToUpdate;
     }
 
+    @Transactional
+    public List<Therapeut> getTherapeuts(){
+        TypedQuery<Therapeut> query = entityManager.createQuery("SELECT t FROM Therapeut t", Therapeut.class);
+        return query.getResultList();
+    }
+
+    @Transactional
+    public void delete(long id){
+        entityManager.remove(getTherapeutById(id));
+    }
+
 
 
 }
