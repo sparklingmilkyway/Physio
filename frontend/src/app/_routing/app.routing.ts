@@ -8,7 +8,7 @@ import {exerciseRouting, exerciseRoutingComponent} from "./exercise.routing";
 import {patientRouting, patientRoutingComponent} from "./patient.routing";
 import {homeRouting, homeRoutingComponent} from "./home.routing";
 import {searchRouting, searchRoutingComponent} from "./search.routing";
-import {LoginComponent} from "../_components/login/login.component";
+import {LoginComponent} from "../_components/_login_components/login/login.component";
 
 
 /**
