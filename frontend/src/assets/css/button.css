@@ -38,3 +38,12 @@ button:active {
   position:relative;
   top:1px;
 }
+
+button.sameSize {
+  width: 250px;
+  text-align: center;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  margin: 4px;
+
+}

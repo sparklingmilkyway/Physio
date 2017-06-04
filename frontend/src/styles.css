@@ -59,6 +59,12 @@ section {
    */
 }
 
+article{
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: left;
+}
+
 div.center{
   margin-left: auto;
   margin-right: auto;
