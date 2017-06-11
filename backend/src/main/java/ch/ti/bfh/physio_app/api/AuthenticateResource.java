@@ -1,5 +1,6 @@
 package ch.ti.bfh.physio_app.api;
 
+import ch.ti.bfh.physio_app.concept.LoginReq;
 import ch.ti.bfh.physio_app.concept.Therapeut;
 import ch.ti.bfh.physio_app.concept.UserDTO;
 import ch.ti.bfh.physio_app.manager.JWTService;
@@ -33,18 +34,18 @@ public class AuthenticateResource {
     // login
     @POST
     @Path("")
-    public Response login(String email, String password) {
+    public Response login(LoginReq loginReq) {
 
-        Therapeut therapeut = therapeutManager.getTherapeutByEmail(email);
+        Therapeut therapeut = therapeutManager.getTherapeutByEmail(loginReq.getEmail());
 
-        if (loginManager.auth(therapeut, password)) {
+        if (loginManager.auth(therapeut, loginReq.getPassword())) {
 
             String token = jwtService.getSignature(therapeut);
             UserDTO userDTO = new UserDTO(therapeut, token);
             return Response
                     .status(Response.Status.OK)
                     .entity(userDTO)
-                    .type(MediaType.TEXT_PLAIN)
+                    .type(MediaType.APPLICATION_JSON)
                     .build();
         }
 
@@ -52,7 +53,7 @@ public class AuthenticateResource {
             return Response
                     .status(Response.Status.BAD_REQUEST)
                     .entity("Username or password is incorrect")
-                    .type( MediaType.TEXT_PLAIN)
+                    .type( MediaType.APPLICATION_JSON)
                     .build();
         }
     }

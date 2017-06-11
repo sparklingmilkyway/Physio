@@ -1,5 +1,6 @@
 package ch.ti.bfh.physio_app.api;
 
+import ch.ti.bfh.physio_app.concept.Therapeut;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
 import javax.ws.rs.ApplicationPath;
@@ -14,11 +15,15 @@ public class ApiApplication extends Application {
     public Set<Class<?>> getClasses() {
         return newHashSet(
                 ProgrammResource.class,
+                AuthenticateResource.class,
                 PraxisResource.class,
-                CorsFilter.class,
                 PatientResource.class,
+                ProgrammResource.class,
+                TherapeutResource.class,
                 ExerciseResource.class,
-                JacksonJsonProvider.class
+                JacksonJsonProvider.class,
+                CorsFilter.class,
+                TestResource.class
         );
     }
 }

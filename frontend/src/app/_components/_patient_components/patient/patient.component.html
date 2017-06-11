@@ -1,22 +1,42 @@
+<div class="center">
+  <section>
+
+    <h2>Patienten</h2>
+
+    <article class="nocenter">
 
 
-<div class="column col-6" align="center">
-  <div class="indexDiv column col-4" align="center" style="display: inline-block;">
-    <table>
-      <tr>
-        <th>Vorname</th>
-        <th>Nachname</th>
-        <th>Details</th>
-      </tr>
-      <tr *ngFor="let patient of patients" (click)="onSelect(patient)">
-        <td>{{patient.firstname}}</td>
-        <td>{{patient.surname}}</td>
-        <td><a (click)="clickButton()"> Details </a></td>
-        <td><button class="standartButton" (click)="removePatient(patient.id)">löschen</button></td>
-      </tr>
-    </table>
-  </div>
+      <table class="patient">
+        <tr class="patient">
+          <th class="patient">Vorname</th>
+          <th class="patient">Nachname</th>
+          <th class="patient">Details</th>
+        </tr>
+        <tr class="patient" *ngFor="let patient of patients" (click)="onSelect(patient)">
+          <td class="patient">{{patient.firstname}}</td>
+          <td class="patient">{{patient.surname}}</td>
+          <td class="patient"><a (click)="clickButton()"> Details </a></td>
+          <td class="patient"><button class="standartButton" (click)="removePatient(patient.id)">löschen</button></td>
+        </tr>
+      </table>
 
-  <div class="column col-2" style="display: inline-block;">
-  </div>
+    </article>
+
+    <router-outlet></router-outlet>
+
+
+  </section>
 </div>
+
+
+
+<div class="center">
+  <section>
+
+
+
+
+  </section>
+</div>
+
+

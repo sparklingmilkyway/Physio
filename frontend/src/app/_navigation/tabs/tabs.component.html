@@ -1,6 +1,6 @@
   <nav>
     <ul>
-      <li  routerLink='{{tab.title}}' *ngFor="let tab of tabs" [class.active] = "tab.active" (click)="activate(tab)">
+      <li routerLink='{{tab.title}}' *ngFor="let tab of tabs" [class.active] = "tab.active" (click)="activate(tab)">
         <img  src="../../../assets/images/{{tab.title}}.png" height="40em">
         <!-- {{tab.title}} -->
       </li>

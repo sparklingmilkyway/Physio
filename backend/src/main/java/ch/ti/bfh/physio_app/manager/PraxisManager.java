@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import ch.ti.bfh.physio_app.concept.Praxis;
 import ch.ti.bfh.physio_app.concept.Therapeut;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 /**
@@ -36,7 +37,7 @@ public class PraxisManager {
     */
 
     @Transactional
-    public Praxis getPraxis(){
+    public Praxis getPraxis() {
         TypedQuery<Praxis> query = entityManager.createQuery("SELECT p FROM Praxis p", Praxis.class);
         return query.getSingleResult();
     }

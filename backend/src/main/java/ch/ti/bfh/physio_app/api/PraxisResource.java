@@ -39,9 +39,9 @@ public class PraxisResource {
     // get a new praxis
     @GET
     @Path("")
-    public Response getPraxis() {
+    public Praxis getPraxis() {
         Praxis praxis = praxisManager.getPraxis();
-        return ok(praxis).build();
+        return praxis;
     }
 
     // creating a new therapeut

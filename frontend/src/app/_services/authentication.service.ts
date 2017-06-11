@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {LoginReq} from "../_classes/LoginReq";
 
 /**
  * The authentication service is used to login and logout of the application,
@@ -17,19 +18,21 @@ import 'rxjs/add/operator/map';
 export class AuthenticationService {
 
   private baseUrl : string;
+  private loginReq : LoginReq;
 
   constructor(private http: Http) {
     this.baseUrl = "http://127.0.0.1:8080/api/authenticate";
   }
 
-  login(username: string, password: string) {
-    return this.http.post(this.baseUrl, JSON.stringify({ username: username, password: password }))
+  login(email: string, password: string) {
+    this.loginReq = new LoginReq(email, password);
+    return this.http.post(this.baseUrl, this.loginReq)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
-        let user = response.json();
-        if (user && user.token) {
+        let userDTO = response.json();
+        if (userDTO && userDTO.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('currentUser', JSON.stringify(userDTO));
         }
       });
   }

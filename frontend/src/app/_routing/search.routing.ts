@@ -9,8 +9,9 @@ import {SearchComponent} from "../_components/search/search.component";
 import {PatientSearchComponent} from "../_components/_patient_components/patient-search/patient-search.component";
 import {ExerciseSearchComponent} from "../_components/_exercise_components/exercise-search/exercise-search.component";
 import {ProgrammSearchComponent} from "../_components/_programm_components/programm-search/programm-search.component";
+import {AuthGuard} from "../_guards/auth.guard";
 export const searchRouting = [{
-  path: 'search', component: SearchComponent,
+  path: 'search', component: SearchComponent, canActivate: [AuthGuard],
 
   children: [
     {path:'patientsearch', component: PatientSearchComponent},

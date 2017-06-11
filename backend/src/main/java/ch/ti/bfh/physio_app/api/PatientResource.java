@@ -1,24 +1,10 @@
 package ch.ti.bfh.physio_app.api;
 
 import ch.ti.bfh.physio_app.concept.Patient;
-import ch.ti.bfh.physio_app.concept.Praxis;
-import ch.ti.bfh.physio_app.concept.Therapeut;
-import ch.ti.bfh.physio_app.manager.LoginManager;
 import ch.ti.bfh.physio_app.manager.PatientManager;
-import ch.ti.bfh.physio_app.manager.PraxisManager;
-import ch.ti.bfh.physio_app.manager.TherapeutManager;
-import com.sun.org.apache.regexp.internal.RE;
-
-
-import javax.ejb.EJBException;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.interceptor.Interceptor;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;

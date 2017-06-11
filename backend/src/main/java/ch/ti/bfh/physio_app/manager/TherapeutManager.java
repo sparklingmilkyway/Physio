@@ -22,6 +22,7 @@ import java.util.Set;
 @ApplicationScoped
 public class TherapeutManager {
 
+
     @PersistenceContext(unitName = "physio_app")
     private EntityManager entityManager;
 

@@ -16,7 +16,7 @@ export class PraxisService implements OnInit {
   ) {
     this.baseUrl = 'http://127.0.0.1:8080/api/praxis';
   }
-
+/*
   // POST METHODS
 
   addTherapeut(therapeut : Therapeut) {
@@ -38,5 +38,6 @@ export class PraxisService implements OnInit {
     return this.http.get(this.baseUrl+'/thearpeut/').map((res:Response) => res.json());
   }
 
+*/
 
 }

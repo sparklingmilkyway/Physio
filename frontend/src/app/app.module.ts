@@ -28,6 +28,7 @@ import {AlertService} from "./_services/alert.service";
 import {AuthenticationService} from "./_services/authentication.service";
 import {UserService} from "./_services/user.service";
 import {AlertComponent} from "./_directives/alert.component";
+import { AddOverviewComponent } from './_components/add-overview/add-overview.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {AlertComponent} from "./_directives/alert.component";
     PatientSearchComponent,
     ProgrammSearchComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    AddOverviewComponent
 
     //
   ],

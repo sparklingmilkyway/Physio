@@ -1,4 +1,5 @@
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-tab',
@@ -22,6 +23,7 @@ export class TabComponent{
 
 export class TabsComponent implements AfterContentInit{
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+
 
   ngAfterContentInit(){
     this.tabs.first.active= true;

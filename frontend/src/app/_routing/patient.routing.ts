@@ -6,8 +6,9 @@ import {ExerciseAddComponent} from "../_components/_exercise_components/exercise
 import {ProgrammAddComponent} from "../_components/_programm_components/programm-add/programm-add.component";
 import {HomeComponent} from "../_components/home/home.component";
 import {SearchComponent} from "../_components/search/search.component";
+import {AuthGuard} from "../_guards/auth.guard";
 export const patientRouting = [{
-  path: 'patient', component: PatientComponent
+  path: 'patient', component: PatientComponent, canActivate: [AuthGuard]
 }];
 
 export const patientRoutingComponent = [

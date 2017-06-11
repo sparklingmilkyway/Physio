@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/frontendVanessa/frontendVanessa.iml" filepath="$PROJECT_DIR$/frontendVanessa/frontendVanessa.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/physio_app.iml" filepath="$PROJECT_DIR$/.idea/physio_app.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/physio_app_backend.iml" filepath="$PROJECT_DIR$/backend/physio_app_backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/frontend/physio_app_frontend.iml" filepath="$PROJECT_DIR$/frontend/physio_app_frontend.iml" />

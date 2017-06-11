@@ -77,6 +77,7 @@ public class JWTService {
 
 
     /*
+
     //Sample method to construct a JWT
     private String createJWT(String id, String issuer, String subject, long ttlMillis) {
 
@@ -120,6 +121,7 @@ public class JWTService {
         System.out.println("Issuer: " + claims.getIssuer());
         System.out.println("Expiration: " + claims.getExpiration());
     }
-*/
+
+    */
 
 }

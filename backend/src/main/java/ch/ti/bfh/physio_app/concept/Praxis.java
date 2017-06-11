@@ -29,7 +29,6 @@ public class Praxis extends pEntityWithID{
         this.name = name;
     }
 
-    @XmlElement(name = "name")
     public String getName() {
         return name;
     }

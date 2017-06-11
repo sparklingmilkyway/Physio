@@ -10,10 +10,9 @@ import {Router} from "@angular/router";
 })
 export class PatientAddComponent implements OnInit {
 
-  firstname: string;
-  surname: string;
-  email: string;
-  private patient: Patient;
+  infos: any = {};
+  loading = false;
+  patient: Patient;
 
   constructor(private patientService: PatientService, private router: Router) {
   }
@@ -23,8 +22,15 @@ export class PatientAddComponent implements OnInit {
 
 
   addPatient() {
-    this.patient.update(null, this.firstname, this.surname, this.email, null);
+    this.patient.update(null, this.infos.firstname, this.infos.surname, this.infos.email, null);
     this.patientService.addPatient(this.patient);
     this.router.navigateByUrl("/patient");
   }
+
+
+
+
+
+
+
 }

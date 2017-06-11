@@ -39,19 +39,20 @@ footer{
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #efefef;
   text-align: center;
 }
 
 section {
+  top: 120px;
   right: 0;
   left: 0;
 
 
   width: 100%;
-  height: auto;
-  position: fixed;
+  height: 100%;
+  position: absolute;
   margin: auto;
   overflow: auto;
   /*
@@ -60,9 +61,12 @@ section {
 }
 
 article{
-  padding-left: 5%;
-  padding-right: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
   text-align: left;
+  /*
+  background: red;
+   */
 }
 
 div.center{

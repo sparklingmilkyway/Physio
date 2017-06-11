@@ -114,6 +114,13 @@
             <artifactId>java-jwt</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/de.svenkubiak/jBCrypt -->
+        <dependency>
+            <groupId>de.svenkubiak</groupId>
+            <artifactId>jBCrypt</artifactId>
+        </dependency>
+
+
 
 
 
