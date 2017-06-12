@@ -86,11 +86,22 @@ public class ExerciseResource {
     }
 
     // remove exercise
+    /*
     @GET
     @Path("/remove/{id}")
-    public boolean removePatient(@PathParam("id") long id){
+    public boolean removeExercise(@PathParam("id") long id){
         return exerciseManager.removeExercise(exerciseManager.getExerciseById(id));
     }
+     */
+
+
+    // remove patient
+    @GET
+    @Path("/remove/{id}")
+    public Response removeExercise(@PathParam("id") long id){
+        return ok(exerciseManager.removeExercise(exerciseManager.getExerciseById(id))).build();
+    }
+
 
     // get image for exercise AT MOMENT ONLY ONE
     @GET

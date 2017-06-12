@@ -9,6 +9,7 @@ import {patientRouting, patientRoutingComponent} from "./patient.routing";
 import {homeRouting, homeRoutingComponent} from "./home.routing";
 import {searchRouting, searchRoutingComponent} from "./search.routing";
 import {LoginComponent} from "../_components/_login_components/login/login.component";
+import {programmRouting, programmRoutingComponent} from "./programm.routing";
 
 
 /**
@@ -24,6 +25,7 @@ export const appRoutes: Routes = [{
   ...homeRouting,
   ...searchRouting,
   ...exerciseRouting,
+  ...programmRouting,
   ...patientRouting
 ];
 
@@ -37,5 +39,6 @@ export const routingComponents = [
   ...searchRoutingComponent,
   ...homeRoutingComponent,
   ...exerciseRoutingComponent,
+  ...programmRoutingComponent,
   ...patientRoutingComponent
 ];

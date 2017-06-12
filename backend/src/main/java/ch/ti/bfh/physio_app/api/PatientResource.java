@@ -84,7 +84,7 @@ public class PatientResource{
     // remove patient
     @GET
     @Path("/remove/{id}")
-    public boolean removePatient(@PathParam("id") long id){
-        return patientManager.removePatient(id);
+    public Response removePatient(@PathParam("id") long id){
+        return ok(patientManager.removePatient(id)).build();
     }
 }

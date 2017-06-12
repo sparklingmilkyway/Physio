@@ -51,8 +51,8 @@ export class PatientService implements OnInit{
 
   // REQUEST METHODS
 
-  removePatient(id){
-    return this.http.request(this.baseUrl+`/remove/`+id).map((res:Response) => res.json());
+  removePatient(id) {
+    return this.http.request(this.baseUrl + `/remove/` + id).map((res: Response) => res.json());
   }
 
 

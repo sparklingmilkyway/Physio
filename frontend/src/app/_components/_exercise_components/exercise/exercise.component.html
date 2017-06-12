@@ -1,7 +1,36 @@
 <div class="center">
   <section>
 
-    <p>exercise works</p>
+    <h2>Übungen</h2>
+    <!--
+    <br>
+    <app-exercise-details>...</app-exercise-details>
+    <br>
+    -->
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Gruppe</th>
+        <th>Therapeut</th>
+      </tr>
+
+     <tr *ngFor="let exercise of exercises" (click)="onSelect(exercise)">
+        <td>{{exercise.name}}</td>
+        <td>{{exercise.type}}</td>
+        <td>{{exercise.therapeut.surname}}</td>
+        <td><a class="linkforInfo" (click)="goToExerciseDetails(exercise.id)"> Details </a> | <a class="linkforInfo" (click)="removeExercise(exercise.id)"> Löschen </a></td>
+     </tr>
+
+    </table>
+
+     <!--
+     <app-exercise-detail-form [exercise]="selectedExercise">Loading...</app-exercise-detail-form>
+     -->
+
 
   </section>
 </div>
+
+
+
+

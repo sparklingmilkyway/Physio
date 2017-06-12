@@ -1,21 +1,18 @@
 
-
-  <form (ngSubmit)="addPatient()">
-    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstname.null }">
+  <form name="form" (ngSubmit)="addPatient()" #f="ngForm">
+    <div class="form-group" >
       <label for="firstname"> Vorname des Patienten</label>
-      <input type="text" id="firstname" placeholder = "Vorname" class="form-control" name="firstname" required />
-      <div *ngIf="f.submitted && !firstname.null" class="help-block">Bitte Vornamen eingeben!</div>
+      <input type="text" id="firstname" placeholder = "Vorname"  name="firstname" [(ngModel)]="firstname" required />
     </div>
 
-    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !surname.null }">
+    <div class="form-group" >
       <label for="surname"> Nachname des Patienten</label>
-      <input type="text" id="surname" placeholder = "Vorname" class="form-control" name="surname" required />
-      <div *ngIf="f.submitted && !surname.null" class="help-block">Bitte Nachnamen eingeben!</div>
+      <input type="text" id="surname" placeholder = "Nachname" name="surname" [(ngModel)]="surname" required />
     </div>
 
-    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+    <div class="form-group">
       <label for="email">E-Mail des Patienten</label>
-      <input type="text" id="email" placeholder = "E-Mail" class="form-control" />
+      <input type="text" id="email" name="email" placeholder = "E-Mail"  [(ngModel)]="email"/>
     </div>
     <br>
 
@@ -24,3 +21,33 @@
       <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
     </div>
   </form>
+
+
+  <!--
+
+  <form name="form" (ngSubmit)="addPatient()" #f="ngForm">
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstname }">
+      <label for="firstname"> Vorname des Patienten</label>
+      <input type="text" id="firstname" placeholder = "Vorname" class="form-control" name="firstname" [(ngModel)]="model.firstname" #firstname="ngModel" required />
+      <div *ngIf="f.submitted && !firstname.null" class="help-block">Bitte Vornamen eingeben!</div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !surname.null }">
+      <label for="surname"> Nachname des Patienten</label>
+      <input type="text" id="surname" placeholder = "Nachname" class="form-control" name="surname" [(ngModel)]="model.surname" #surname="ngModel" required />
+      <div *ngIf="f.submitted && !surname.null" class="help-block">Bitte Nachnamen eingeben!</div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+      <label for="email">E-Mail des Patienten</label>
+      <input type="text" id="email" placeholder = "E-Mail" class="form-control" [(ngModel)]="model.email" #email="ngModel"/>
+    </div>
+    <br>
+
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Hinzufügen</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+  </form>
+
+  -->

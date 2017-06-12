@@ -38,6 +38,19 @@ export class HomeComponent implements OnInit {
   }
 
 
+  goToPatient() {
+    this.router.navigateByUrl("/patient")
+  }
+
+  goToExercise() {
+    this.router.navigateByUrl("/exercise")
+
+  }
+
+  goToProgramm() {
+    this.router.navigateByUrl("/programm")
+
+  }
 }
 
 

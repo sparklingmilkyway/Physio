@@ -18,12 +18,17 @@ export class TabComponent{
 
 @Component({
   selector: 'app-tabs',
-  templateUrl: 'tabs.component.html'
+  templateUrl: 'tabs.component.html',
 })
 
 export class TabsComponent implements AfterContentInit{
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
+
+
+  constructor(private router: Router){
+
+  }
 
   ngAfterContentInit(){
     this.tabs.first.active= true;
@@ -34,6 +39,8 @@ export class TabsComponent implements AfterContentInit{
       tab.active = false
     }
     tab.active = true;
+    this.router.navigateByUrl('/'+tab.title);
+
   }
 }
 

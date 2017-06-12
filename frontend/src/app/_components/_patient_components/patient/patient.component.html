@@ -3,40 +3,24 @@
 
     <h2>Patienten</h2>
 
-    <article class="nocenter">
 
 
-      <table class="patient">
-        <tr class="patient">
-          <th class="patient">Vorname</th>
-          <th class="patient">Nachname</th>
-          <th class="patient">Details</th>
+      <table>
+        <tr>
+          <th>Vorname</th>
+          <th>Nachname</th>
         </tr>
-        <tr class="patient" *ngFor="let patient of patients" (click)="onSelect(patient)">
-          <td class="patient">{{patient.firstname}}</td>
-          <td class="patient">{{patient.surname}}</td>
-          <td class="patient"><a (click)="clickButton()"> Details </a></td>
-          <td class="patient"><button class="standartButton" (click)="removePatient(patient.id)">löschen</button></td>
+        <tr *ngFor="let patient of patients" (click)="onSelect(patient)">
+          <td>{{patient.firstname}}</td>
+          <td>{{patient.surname}}</td>
+          <td><a (click)="goToPatientDetails(patient.id)"> Details </a> | <a (click)="removePatient(patient.id)">löschen</a></td>
         </tr>
       </table>
 
-    </article>
 
     <router-outlet></router-outlet>
 
 
   </section>
 </div>
-
-
-
-<div class="center">
-  <section>
-
-
-
-
-  </section>
-</div>
-
 

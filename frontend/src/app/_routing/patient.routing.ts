@@ -7,11 +7,17 @@ import {ProgrammAddComponent} from "../_components/_programm_components/programm
 import {HomeComponent} from "../_components/home/home.component";
 import {SearchComponent} from "../_components/search/search.component";
 import {AuthGuard} from "../_guards/auth.guard";
+import {PatientDetailsComponent} from "../_components/_patient_components/patient-details/patient-details.component";
 export const patientRouting = [{
   path: 'patient', component: PatientComponent, canActivate: [AuthGuard]
-}];
+},
+  {path: 'patient/:id', component:  PatientDetailsComponent, canActivate: [AuthGuard]}
+
+];
 
 export const patientRoutingComponent = [
-  SearchComponent
+  SearchComponent,
+  PatientDetailsComponent,
+  PatientComponent
 ]
 

@@ -35,6 +35,7 @@ public class TherapeutManager {
     @Transactional
     public void save(Therapeut therapeut) {
         entityManager.persist(therapeut);
+        entityManager.flush();
     }
 
     @Transactional

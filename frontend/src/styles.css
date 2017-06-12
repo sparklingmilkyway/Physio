@@ -60,6 +60,12 @@ section {
    */
 }
 
+a.linkforInfo {
+  text-decoration: underline;
+  color: #51899c;
+
+}
+
 article{
   margin-left: 5%;
   margin-right: 5%;
@@ -79,6 +85,10 @@ div.center{
 h1{
   font-size: 2em;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+img.exercise{
+  width: 500px;
 }
 
 

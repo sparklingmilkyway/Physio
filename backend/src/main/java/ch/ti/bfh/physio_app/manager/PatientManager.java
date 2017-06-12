@@ -28,12 +28,15 @@ public class PatientManager {
     @Transactional
     public void save(Patient patient) {
         entityManager.persist(patient);
+        entityManager.flush();
     }
 
-    /*@Transactional
+    /*
+    @Transactional
     public Patient getPatientById(long id){
         return entityManager.find(Patient.class,id);
-    }*/
+    }
+    */
 
     @Transactional
     public Therapeut getTherapeut(Patient patient){

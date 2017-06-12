@@ -18,11 +18,11 @@ export class AddOverviewComponent implements OnInit {
   }
 
   clickExerciseAdd(){
-    this.router.navigateByUrl('/add/patientadd');
+    this.router.navigateByUrl('/add/exerciseadd');
   }
 
   clickProgrammAdd(){
-    this.router.navigateByUrl('/add/patientadd');
+    this.router.navigateByUrl('/add/programmadd');
   }
 
 

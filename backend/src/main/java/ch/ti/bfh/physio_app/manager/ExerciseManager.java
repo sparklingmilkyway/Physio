@@ -36,16 +36,19 @@ public class ExerciseManager {
     @Transactional
     public void save(Exercise exercise) {
         entityManager.persist(exercise);
+        entityManager.flush();
     }
 
     @Transactional
     public void save(ExerciseNote exerciseNote) {
         entityManager.persist(exerciseNote);
+        entityManager.flush();
     }
 
     @Transactional
     public void save(ExerciseImage exerciseImage) {
         entityManager.persist(exerciseImage);
+        entityManager.flush();
     }
 
 

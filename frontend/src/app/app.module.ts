@@ -29,6 +29,10 @@ import {AuthenticationService} from "./_services/authentication.service";
 import {UserService} from "./_services/user.service";
 import {AlertComponent} from "./_directives/alert.component";
 import { AddOverviewComponent } from './_components/add-overview/add-overview.component';
+import { ExerciseDetailsComponent } from './_components/_exercise_components/exercise-details/exercise-details.component';
+import { PatientDetailsComponent } from './_components/_patient_components/patient-details/patient-details.component';
+import { ProgrammComponent } from './_components/_programm_components/programm/programm.component';
+import { ProgrammDetailsComponent } from './_components/_programm_components/programm-details/programm-details.component';
 
 
 @NgModule({
@@ -51,7 +55,11 @@ import { AddOverviewComponent } from './_components/add-overview/add-overview.co
     ProgrammSearchComponent,
     RegisterComponent,
     AlertComponent,
-    AddOverviewComponent
+    AddOverviewComponent,
+    ExerciseDetailsComponent,
+    PatientDetailsComponent,
+    ProgrammComponent,
+    ProgrammDetailsComponent
 
     //
   ],

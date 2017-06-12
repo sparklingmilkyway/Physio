@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientService} from "../../../_services/patient.service";
 import {Patient} from "../../../_classes/Patient";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-patient',
@@ -22,7 +23,7 @@ export class PatientComponent implements OnInit {
   patients: Patient[];
   private selectedPatient: Patient;
 
-  constructor(private patientService: PatientService/*, private popup: Popup*/) { }
+  constructor(private patientService: PatientService, private  route: ActivatedRoute, private router: Router/*, private popup: Popup*/) { }
 
   ngOnInit() {
     this.getPatients();
@@ -47,6 +48,10 @@ export class PatientComponent implements OnInit {
   changePatient(){
     this.patientService.changePatient(this.selectedPatient).subscribe(data => this.patient = data);
     location.reload();
+  }
+
+  goToPatientDetails(id) {
+    this.router.navigate(['/patient', id]);
   }
 
 
